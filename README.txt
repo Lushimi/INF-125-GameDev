@@ -5,5 +5,5 @@ Using Unity Ver. 2021.1.23f1
 Group:
 Felix Khon
 Jay Ray
-Aleksandr Smolin
 Jason Nguyen
+Aleksandr Smolin

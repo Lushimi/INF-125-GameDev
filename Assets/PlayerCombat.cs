@@ -20,6 +20,18 @@ public class PlayerCombat : MonoBehaviour
         {
             Dodge();
         }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            Assist();
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            Special();
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Parry();
+        }
     }
 
     // Player Melee Attack
@@ -50,5 +62,29 @@ public class PlayerCombat : MonoBehaviour
         // Play dodge animation
         // Move character in direction of dodge
         Debug.Log("Dodge");
+    }
+
+    //Player Assist Move
+    void Assist()
+    {
+        //Assist animation occurs
+        //Assisting character joins screen
+        Debug.Log("Assist");
+    }
+
+    //Player Special
+    void Special()
+    {
+        //Special animation occurs
+        //Special ability appears and does action
+        Debug.Log("Special");
+    }
+
+    //Player Parry
+    void Parry()
+    {
+        //Parry animation occurs
+        //Frame of invulnerability with ending lag
+        Debug.Log("Parry");
     }
 }

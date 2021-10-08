@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 591269567}
   - component: {fileID: 591269566}
   - component: {fileID: 591269565}
-  - component: {fileID: 591269570}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -153,10 +152,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 591269564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8df37dbbd0ab642b89ffa4b4302a76, type: 3}
+  m_Script: {fileID: 11500000, guid: fe865962cca6faf4b90b33c6fed7de5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 5
+  dodge: 0
+  stamina: 100
+  stamina_per_second: 3
+  health: 100
+  isInvulnerable: 0
 --- !u!65 &591269566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -234,18 +238,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591269570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591269564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552ba024708c136409e31a4cdce30642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &613975556
 GameObject:
   m_ObjectHideFlags: 0

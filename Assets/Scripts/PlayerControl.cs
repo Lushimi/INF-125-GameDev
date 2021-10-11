@@ -9,8 +9,10 @@ public class PlayerControl : MonoBehaviour
     public float speed = 5f;
     //Current dodge type
     public Dodge dodge;
-    //Current attack type
-    public Attack attack;
+    //Current melee attack type
+    public Attack meleeAttack;
+    //Current ranged attack type
+    public Attack rangedAttack;
     //Current stamina
     public float stamina = 100;
     //Stamina regen rate
@@ -86,10 +88,7 @@ public class PlayerControl : MonoBehaviour
     // Player Melee Attack
     void MeleeAttack()
     {
-        // Play an attack animation
-        // Detect enemies in range of attack
-        // Damage them
-
+        meleeAttack.attack();
         Debug.Log("Melee Attack");
     }
 
@@ -97,10 +96,7 @@ public class PlayerControl : MonoBehaviour
     // Player Ranged Attack
     void RangedAttack()
     {
-        // Play an ranged attack animation
-        // Detect enemies in range of attack
-        // Damage them
-
+        rangedAttack.attack();
         Debug.Log("Ranged Attack");
     }
 
@@ -108,9 +104,7 @@ public class PlayerControl : MonoBehaviour
     // Player Dodge Attack
     void Dodge()
     {
-        // Play dodge animation
-        // Move character in direction of dodge
-        if (stamina > 0) {
+        if (stamina > 0 && stamina >= dodge.staminaCost) {
             dodge.dodge();
             stamina -= dodge.staminaCost;
         }

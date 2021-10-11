@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
     // Player Dodge Attack
     void Dodge()
     {
-        if (stamina > 0 && stamina >= dodge.staminaCost) {
+        if (stamina >= dodge.staminaCost && stamina > 0) {
             dodge.dodge();
             stamina -= dodge.staminaCost;
         }

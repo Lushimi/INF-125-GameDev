@@ -233,6 +233,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1137835596353710393, guid: a22d488039a9669478e8fc615c1caead, type: 3}
   m_PrefabInstance: {fileID: 1137835596904605573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &591269565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591269564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e64288178926b44b27ecbc13964342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  startup: 0
+  endlag: 0
+  projectile: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
+  projectileSpeed: 15
 --- !u!4 &591269569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
@@ -805,6 +822,10 @@ PrefabInstance:
       propertyPath: rangedAttack
       value: 
       objectReference: {fileID: 591269573}
+    - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: fireballSpecial
+      value: 
+      objectReference: {fileID: 591269565}
     - target: {fileID: 1137835596353710393, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_Name
       value: Player

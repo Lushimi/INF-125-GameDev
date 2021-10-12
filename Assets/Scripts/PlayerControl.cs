@@ -9,10 +9,14 @@ public class PlayerControl : MonoBehaviour
     public float speed = 5f;
     //Current dodge type
     public Dodge dodge;
+    //Current parry type
+    public Parry parry;
     //Current melee attack type
     public Attack meleeAttack;
     //Current ranged attack type
     public Attack rangedAttack;
+    //Current special type
+    public Special fireballSpecial;
     //Current stamina
     public float stamina = 100;
     //Stamina regen rate
@@ -117,6 +121,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Assist animation occurs
         //Assisting character joins screen
+        //leave this for later
         Debug.Log("Assist");
     }
 
@@ -125,6 +130,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Special animation occurs
         //Special ability appears and does action
+        fireballSpecial.special();
         Debug.Log("Special");
     }
 
@@ -133,6 +139,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Parry animation occurs
         //Frame of invulnerability with ending lag
+        parry.parry();
         Debug.Log("Parry");
     }
 }

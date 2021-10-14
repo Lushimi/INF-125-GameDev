@@ -239,22 +239,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124023785}
+  m_GameObject: {fileID: 591269564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e64288178926b44b27ecbc13964342, type: 3}
+  m_Script: {fileID: 11500000, guid: 70ef59e2e89a45945b56d7ce6c3b42bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  startup: 0
-  endlag: 0
-  projectile: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
-  projectileSpeed: 15
---- !u!4 &591269569 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+  staminaCost: 65
+  startup: 0.05
+  invuln: 0.25
+  endLag: 0.1
+  dodgeSpeedMultiplier: 3.5
+--- !u!114 &591269566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
   m_PrefabInstance: {fileID: 1137835596904605573}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591269564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe865962cca6faf4b90b33c6fed7de5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &591269570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,10 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 30
-  startup: 0.2
+  startup: 0.025
   invuln: 0.4
-  endLag: 0.4
-  speed: 10
+  endLag: 0.25
+  dodgeSpeedMultiplier: 2
 --- !u!114 &591269571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +307,7 @@ MonoBehaviour:
   startup: 0
   invuln: 0
   endLag: 0
-  speed: 7.5
+  dodgeSpeedMultiplier: 1
 --- !u!114 &591269572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,51 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b7b623c2f09b646a29af752873becf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: 75
-  startup: 0.2
-  invuln: 1.2
-  endLag: 0.6
-  speed: -7.5
---- !u!114 &591269573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591269564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4582126f65eb7489b70213cfb3b159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  startup: 0
-  endlag: 0
-  range: 0
-  attackPoint: {fileID: 172540446}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &591269574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591269564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec35998bf5d13e54fbf1f91cd263f0db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  startup: 0
-  endlag: 0
-  range: 0
-  attackPoint: {fileID: 172540446}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
+  staminaCost: 65
+  startup: 0.025
+  invuln: 0.45
+  endLag: 0.3
+  dodgeSpeedMultiplier: -3
 --- !u!1 &605494765
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +335,8 @@ GameObject:
   m_Component:
   - component: {fileID: 605494766}
   - component: {fileID: 605494767}
+  - component: {fileID: 605494768}
+  - component: {fileID: 605494769}
   m_Layer: 5
   m_Name: Stamina Bar
   m_TagString: Untagged
@@ -394,7 +362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8, y: -192}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &605494767
@@ -448,6 +416,49 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &605494768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605494765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8cc980547e89146a9db66e0d56ef12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 605494767}
+  PlayerObject: {fileID: 591269566}
+  maxStamina: {fileID: 11400000, guid: f55f296266436024ebf48a2d6241a2af, type: 2}
+--- !u!114 &605494769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605494765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 605494768}
+        m_TargetAssemblyTypeName: StaminaBar, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &613975556
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +666,7 @@ GameObject:
   - component: {fileID: 1434339125}
   - component: {fileID: 1434339124}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Stamina Bar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,25 +831,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 591269571}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
-      propertyPath: speed
-      value: 10
+      propertyPath: maxHP
+      value: 
+      objectReference: {fileID: 11400000, guid: 8747823519c7a6b49bf20d065ea56585, type: 2}
+    - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: Player
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attack
       value: 
-      objectReference: {fileID: 591269573}
+      objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
-      propertyPath: meleeAttack
+      propertyPath: Player.dodgeMove
       value: 
-      objectReference: {fileID: 591269574}
+      objectReference: {fileID: 591269570}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
-      propertyPath: rangedAttack
+      propertyPath: playerHP.variable
       value: 
-      objectReference: {fileID: 591269573}
+      objectReference: {fileID: 11400000, guid: 2e368e66b5aff774bb6b8346dea7452d, type: 2}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
-      propertyPath: fireballSpecial
-      value: 
-      objectReference: {fileID: 591269565}
+      propertyPath: stamina_per_second
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: playerHP.UseConstant
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710393, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_Name
       value: Player
@@ -887,6 +906,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -3507192015880548996, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22d488039a9669478e8fc615c1caead, type: 3}

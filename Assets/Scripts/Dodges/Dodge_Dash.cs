@@ -10,7 +10,7 @@ public class Dodge_Dash : Dodge
         startup = 0.05f;
         invuln = 0.25f;
         endLag = 0.1f;
-        speed = 3.5f * gameObject.GetComponent<PlayerControl>().speed;
+        dodgeSpeedMultiplier = 3.5f;
     }
 
     void Start()

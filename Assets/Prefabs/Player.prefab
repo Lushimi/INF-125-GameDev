@@ -13,7 +13,11 @@ GameObject:
   - component: {fileID: 1137835596353710394}
   - component: {fileID: 1137835596353710395}
   - component: {fileID: 1137835596353710392}
-  - component: {fileID: -3507192015880548996}
+  - component: {fileID: 9159405618571017035}
+  - component: {fileID: 3459286438898377123}
+  - component: {fileID: 4938431438845445784}
+  - component: {fileID: 8837257208635183406}
+  - component: {fileID: 3881062752971239853}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -110,13 +114,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe865962cca6faf4b90b33c6fed7de5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 9159405618571017035}
+  dodgeMove: {fileID: 3459286438898377123}
+  movementVector: {x: 0, y: 0, z: 0}
+--- !u!114 &9159405618571017035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071b8cb4baa8a8946a66101737b66546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: {fileID: 11400000, guid: 8747823519c7a6b49bf20d065ea56585, type: 2}
+  maxStamina: {fileID: 11400000, guid: f55f296266436024ebf48a2d6241a2af, type: 2}
   speed: 5
-  dodge: {fileID: -3507192015880548996}
-  stamina: 100
-  stamina_per_second: 3
-  health: 100
+  currentStamina: 0
+  currentHealth: 0
+  staminaPerSecond: 3
   isInvulnerable: 0
---- !u!114 &-3507192015880548996
+  canAct: 1
+  StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
+--- !u!114 &3459286438898377123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,8 +151,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 30
-  startup: 0.2
+  startup: 0.025
   invuln: 0.4
-  endLag: 0.4
-  speed: 10
-  movementVector: {x: 0, y: 0, z: 0}
+  endLag: 0.25
+  dodgeSpeedMultiplier: 2
+--- !u!114 &4938431438845445784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ef59e2e89a45945b56d7ce6c3b42bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaCost: 65
+  startup: 0.05
+  invuln: 0.25
+  endLag: 0.1
+  dodgeSpeedMultiplier: 3.5
+--- !u!114 &8837257208635183406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397611414dcc8b542b2273c54cf6074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaCost: 90
+  startup: 0
+  invuln: 0
+  endLag: 0
+  dodgeSpeedMultiplier: 1
+--- !u!114 &3881062752971239853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b7b623c2f09b646a29af752873becf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaCost: 65
+  startup: 0.025
+  invuln: 0.45
+  endLag: 0.3
+  dodgeSpeedMultiplier: -3

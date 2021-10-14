@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dodge : MonoBehaviour
@@ -8,9 +7,11 @@ public class Dodge : MonoBehaviour
     public float startup;
     public float invuln;
     public float endLag;
-    public float speed;
+    public float dodgeSpeedMultiplier;
+    private PlayerData Player => gameObject.GetComponent<PlayerControl>().Player;
+    public float Speed => dodgeSpeedMultiplier * Player.speed;
 
-    public virtual void dodge() {
+    public virtual void PerformDodge() {
         StartCoroutine(IDodge());
     }
 
@@ -32,20 +33,20 @@ public class Dodge : MonoBehaviour
         float startupDeltaTime = startup / 75; //literal arbitrary, could use anything else
         for (float i = 0; i < startup; i += startupDeltaTime)
         {
-            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (speed * startup / (startup + invuln)) * startupDeltaTime;
+            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * startup / (startup + invuln)) * startupDeltaTime;
             yield return new WaitForSeconds(startupDeltaTime);
         }
 
         //iframe part of dodge
         float invulnDeltaTime = invuln / 75; //literal is arbitrary, could use anything else
-        gameObject.GetComponent<PlayerControl>().isInvulnerable = true;
+        Player.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
-            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (speed * invuln / (startup + invuln)) * invulnDeltaTime;
+            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * invuln / (startup + invuln)) * invulnDeltaTime;
             yield return new WaitForSeconds(invulnDeltaTime);
         }
 
-        gameObject.GetComponent<PlayerControl>().isInvulnerable = false;
+        Player.isInvulnerable = false;
     }
 
 }

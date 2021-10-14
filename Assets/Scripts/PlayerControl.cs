@@ -1,61 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PlayerControl : MonoBehaviour
 {
-    //Player speed
-    public float speed = 5f;
-    //Current dodge type
-    public Dodge dodge;
-    //Current parry type
-    public Parry parry;
-    //Current melee attack type
-    public Attack meleeAttack;
-    //Current ranged attack type
-    public Attack rangedAttack;
-    //Current special type
-    public Special fireballSpecial;
-    //Current stamina
-    public float stamina = 100;
-    //Stamina regen rate
-    public float stamina_per_second = 3;
-    //Current health
-    public float health = 100;
-    //Flag for checking if on-hit effects should apply
-    public bool isInvulnerable = false;
-    //Flag for checking if the character is not animation locked
-    private bool canAct = true;
+    //player's scriptable object data, stored in the asset folder
+    [SerializeField]
+    internal PlayerData Player;
+    [SerializeField]
+    internal Dodge dodgeMove;
+
     public Vector3 movementVector;
+
 
     public IEnumerator disableActions(float time)
     {
-        canAct = false;
+        Player.canAct = false;
 
         yield return new WaitForSeconds(time);
 
-        canAct = true;
+        Player.canAct = true;
+    }
+
+    private void Awake()
+    {
+        Player.Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Stamina regen
-        if (stamina < 100)
-        {
-            stamina += Math.Min(100 - stamina, Time.deltaTime * stamina_per_second);
-        }
-
-
-        if (canAct)
+        Player.StaminaRegen();
+        if (Player.canAct)
         {
             //Movement control
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
 
             movementVector = new Vector3(h, v, 0);
-            movementVector = movementVector.normalized * speed * Time.deltaTime;
+            movementVector = movementVector.normalized * Player.speed * Time.deltaTime;
 
             gameObject.transform.position += movementVector;
 
@@ -72,7 +54,7 @@ public class PlayerControl : MonoBehaviour
             {
                 Dodge();
             }
-            else if (Input.GetKeyDown(KeyCode.F))
+            else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
             {
                 Assist();
             }
@@ -108,9 +90,11 @@ public class PlayerControl : MonoBehaviour
     // Player Dodge Attack
     void Dodge()
     {
-        if (stamina >= dodge.staminaCost && stamina > 0) {
-            dodge.dodge();
-            stamina -= dodge.staminaCost;
+        // Play dodge animation
+        // Move character in direction of dodge
+        if (Player.currentStamina > 0) {
+            dodgeMove.PerformDodge();
+            Player.ReduceStamina(dodgeMove.staminaCost);
         }
 
         Debug.Log("Dodge");

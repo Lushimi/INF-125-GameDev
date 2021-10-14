@@ -7,7 +7,7 @@ public class Dodge_Blink : Dodge
     private void Reset()
     {
         staminaCost = 90f;
-        speed = 1.5f * gameObject.GetComponent<PlayerControl>().speed;
+        dodgeSpeedMultiplier = 1f;
     }
 
     void Start()
@@ -15,7 +15,8 @@ public class Dodge_Blink : Dodge
         Reset();
     }
 
-    public override void dodge() {
-        gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * speed;
+    public override void PerformDodge() 
+    {
+        gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * Speed;
     }
 }

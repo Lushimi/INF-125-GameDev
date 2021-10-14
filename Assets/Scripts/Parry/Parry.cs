@@ -7,6 +7,7 @@ public class Parry : MonoBehaviour
     public float startup;
     public float invuln;
     public float endLag;
+    private PlayerData Player => gameObject.GetComponent<PlayerControl>().Player;
 
     public virtual void parry()
     {
@@ -35,14 +36,14 @@ public class Parry : MonoBehaviour
 
         //iframe part of dodge
         float invulnDeltaTime = invuln / 75; //literal is arbitrary, could use anything else
-        gameObject.GetComponent<PlayerControl>().isInvulnerable = true;
+        Player.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
             //gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (speed * invuln / (startup + invuln)) * invulnDeltaTime;
             yield return new WaitForSeconds(invulnDeltaTime);
         }
 
-        gameObject.GetComponent<PlayerControl>().isInvulnerable = false;
+        Player.isInvulnerable = false;
     }
 
 }

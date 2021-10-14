@@ -4,25 +4,21 @@ using UnityEngine;
 [Serializable]
 public class PlayerData : MonoBehaviour
 {
+    //default values here
     [SerializeField]
     private FloatVariable maxHP;
     [SerializeField]
     private FloatVariable maxStamina;
 
-
-    //player's buttons
-
-
+    //stats here
     public float speed = 5f;
-
     public float currentStamina = 0;
-
     public float currentHealth = 0;
-
     public float staminaPerSecond = 3f;
 
     //Flag for checking if on-hit effects should apply
     public bool isInvulnerable = false;
+    //flag for checking if player can act
     public bool canAct = true;
 
     [SerializeField]

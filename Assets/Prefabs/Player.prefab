@@ -18,6 +18,10 @@ GameObject:
   - component: {fileID: 4938431438845445784}
   - component: {fileID: 8837257208635183406}
   - component: {fileID: 3881062752971239853}
+  - component: {fileID: 8719785253832276220}
+  - component: {fileID: 7350680183169668894}
+  - component: {fileID: 8090297006130647751}
+  - component: {fileID: 6584699428092977884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,6 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 9159405618571017035}
   dodgeMove: {fileID: 3459286438898377123}
+  meleeAttack: {fileID: 8719785253832276220}
+  rangedAttack: {fileID: 7350680183169668894}
+  specialAttack: {fileID: 8090297006130647751}
+  parryMove: {fileID: 6584699428092977884}
   movementVector: {x: 0, y: 0, z: 0}
 --- !u!114 &9159405618571017035
 MonoBehaviour:
@@ -206,3 +214,75 @@ MonoBehaviour:
   invuln: 0.45
   endLag: 0.3
   dodgeSpeedMultiplier: -3
+--- !u!114 &8719785253832276220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec35998bf5d13e54fbf1f91cd263f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  startup: 0
+  endlag: 0
+  range: 0
+  attackPoint: {fileID: 0}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &7350680183169668894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4582126f65eb7489b70213cfb3b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  startup: 0
+  endlag: 0
+  range: 0
+  attackPoint: {fileID: 0}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &8090297006130647751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e64288178926b44b27ecbc13964342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  startup: 0
+  endlag: 0
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+--- !u!114 &6584699428092977884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf827bd92b523c34d9fe475f50545264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startup: 0
+  invuln: 0
+  endLag: 0

@@ -8,6 +8,15 @@ public class PlayerControl : MonoBehaviour
     internal PlayerData Player;
     [SerializeField]
     internal Dodge dodgeMove;
+    [SerializeField]
+    internal MeleeAttack meleeAttack;
+    [SerializeField]
+    internal RangedAttack rangedAttack;
+    [SerializeField]
+    internal Special specialAttack;
+    [SerializeField]
+    internal Parry parryMove;
+
 
     public Vector3 movementVector;
 
@@ -114,7 +123,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Special animation occurs
         //Special ability appears and does action
-        fireballSpecial.special();
+        specialAttack.special();
         Debug.Log("Special");
     }
 
@@ -123,7 +132,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Parry animation occurs
         //Frame of invulnerability with ending lag
-        parry.parry();
+        parryMove.parry();
         Debug.Log("Parry");
     }
 }

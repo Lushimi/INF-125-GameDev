@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaminaBar : ResourceBars
+public class HealthBar : ResourceBars
 {
     public PlayerData Player;
     [SerializeField]
-    private FloatVariable maxStamina;
+    private FloatVariable maxHP;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        slider.maxValue = maxStamina;
-        slider.value = Player.currentStamina;
-        
+        slider.maxValue = maxHP;
+        slider.value = Player.currentHealth;
     }
 
     public override void UpdateUI() 
     {
-        slider.value = Player.currentStamina;
+        slider.value = Player.currentHealth;
     }
 }

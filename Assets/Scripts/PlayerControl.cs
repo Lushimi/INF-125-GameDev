@@ -9,8 +9,14 @@ public class PlayerControl : MonoBehaviour
     public float speed = 5f;
     //Current dodge type
     public Dodge dodge;
-    //Current attack type
-    public Attack attack;
+    //Current parry type
+    public Parry parry;
+    //Current melee attack type
+    public Attack meleeAttack;
+    //Current ranged attack type
+    public Attack rangedAttack;
+    //Current special type
+    public Special fireballSpecial;
     //Current stamina
     public float stamina = 100;
     //Stamina regen rate
@@ -86,10 +92,7 @@ public class PlayerControl : MonoBehaviour
     // Player Melee Attack
     void MeleeAttack()
     {
-        // Play an attack animation
-        // Detect enemies in range of attack
-        // Damage them
-
+        meleeAttack.attack();
         Debug.Log("Melee Attack");
     }
 
@@ -97,10 +100,7 @@ public class PlayerControl : MonoBehaviour
     // Player Ranged Attack
     void RangedAttack()
     {
-        // Play an ranged attack animation
-        // Detect enemies in range of attack
-        // Damage them
-
+        rangedAttack.attack();
         Debug.Log("Ranged Attack");
     }
 
@@ -108,9 +108,7 @@ public class PlayerControl : MonoBehaviour
     // Player Dodge Attack
     void Dodge()
     {
-        // Play dodge animation
-        // Move character in direction of dodge
-        if (stamina > 0) {
+        if (stamina >= dodge.staminaCost && stamina > 0) {
             dodge.dodge();
             stamina -= dodge.staminaCost;
         }
@@ -123,6 +121,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Assist animation occurs
         //Assisting character joins screen
+        //leave this for later
         Debug.Log("Assist");
     }
 
@@ -131,6 +130,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Special animation occurs
         //Special ability appears and does action
+        fireballSpecial.special();
         Debug.Log("Special");
     }
 
@@ -139,6 +139,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Parry animation occurs
         //Frame of invulnerability with ending lag
+        parry.parry();
         Debug.Log("Parry");
     }
 }

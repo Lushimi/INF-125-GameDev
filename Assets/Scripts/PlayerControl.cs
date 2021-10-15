@@ -84,7 +84,6 @@ public class PlayerControl : MonoBehaviour
     void MeleeAttack()
     {
         meleeAttack.attack();
-        Debug.Log("Melee Attack");
     }
 
 
@@ -92,7 +91,6 @@ public class PlayerControl : MonoBehaviour
     void RangedAttack()
     {
         rangedAttack.attack();
-        Debug.Log("Ranged Attack");
     }
 
 

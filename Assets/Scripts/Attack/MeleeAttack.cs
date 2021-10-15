@@ -8,8 +8,10 @@ public class MeleeAttack : MonoBehaviour
     public Animator animator;
 
     public Transform attackPoint;
-    public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+
+    public int attackDamage = 40;
+    public float attackRange = 0.5f;
 
     public void attack()
     {
@@ -21,7 +23,7 @@ public class MeleeAttack : MonoBehaviour
         // Damage enemies (loop over all enemies in collider array)
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<EnemyData>().TakeDamage(attackDamage);
         }
     }
 

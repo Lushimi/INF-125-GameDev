@@ -1267,11 +1267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.69
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.22
+      value: -3.13
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1279,19 +1279,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.9999403
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.010930518
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1303,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -1.253
       objectReference: {fileID: 0}
     - target: {fileID: 3881062752971239853, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_Enabled
@@ -1315,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 99914800}
     - target: {fileID: 8719785253832276220, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attackRange
-      value: 1.09
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 8719785253832276220, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: enemyLayers.m_Bits

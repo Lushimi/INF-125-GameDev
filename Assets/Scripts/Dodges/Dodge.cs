@@ -17,7 +17,6 @@ public class Dodge : MonoBehaviour
 
     public IEnumerator IDodge()
     {
-
         //Dodge with iframe
         //staminaCost - cost of dodge in stamina
         //startup - the time after the dodge starts but before the invuln takes effect
@@ -31,8 +30,10 @@ public class Dodge : MonoBehaviour
 
         //startup part of dodge
         float startupDeltaTime = startup / 75; //literal arbitrary, could use anything else
+ 
         for (float i = 0; i < startup; i += startupDeltaTime)
         {
+ 
             gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * startup / (startup + invuln)) * startupDeltaTime;
             yield return new WaitForSeconds(startupDeltaTime);
         }
@@ -42,6 +43,7 @@ public class Dodge : MonoBehaviour
         Player.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
+          
             gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * invuln / (startup + invuln)) * invulnDeltaTime;
             yield return new WaitForSeconds(invulnDeltaTime);
         }

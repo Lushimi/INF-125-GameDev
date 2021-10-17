@@ -16,6 +16,8 @@ public class MeleeAttack : MonoBehaviour
     public void attack()
     {
         // Play an melee attack animation
+        animator.SetFloat("lastMoveX", Input.GetAxis("Horizontal"));
+        animator.SetFloat("lastMoveY", Input.GetAxis("Vertical"));
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -23,8 +25,11 @@ public class MeleeAttack : MonoBehaviour
         // Damage enemies (loop over all enemies in collider array)
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyData>().TakeDamage(attackDamage);
+            enemy.GetComponent<BossData>().TakeDamage(attackDamage);
         }
+
+        animator.SetBool("isAttacking", true);
+
     }
 
 

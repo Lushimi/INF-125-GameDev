@@ -7,6 +7,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     internal PlayerData Player;
     [SerializeField]
+    internal Rigidbody2D rb;
+    [SerializeField]
     internal Dodge dodgeMove;
     [SerializeField]
     internal MeleeAttack meleeAttack;
@@ -16,10 +18,14 @@ public class PlayerControl : MonoBehaviour
     internal Special specialAttack;
     [SerializeField]
     internal Parry parryMove;
-
-
+    [SerializeField]
+    internal Animator animator;
+    [SerializeField]
+    internal float attackRate = 0.25f;
+    [SerializeField]
+    internal float attackCounter = 0.25f;
+    
     public Vector3 movementVector;
-
 
     public IEnumerator disableActions(float time)
     {
@@ -41,14 +47,18 @@ public class PlayerControl : MonoBehaviour
         Player.StaminaRegen();
         if (Player.canAct)
         {
+
             //Movement control
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            movementVector.x = Input.GetAxis("Horizontal");
+            movementVector.y = Input.GetAxis("Vertical");
+            movementVector.z = 0;
 
-            movementVector = new Vector3(h, v, 0);
-            movementVector = movementVector.normalized * Player.speed * Time.deltaTime;
+            animator.SetFloat("Horizontal", movementVector.x);
+            animator.SetFloat("Vertical", movementVector.y);
+            animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
-            gameObject.transform.position += movementVector;
+            rb.MovePosition(rb.position + new Vector2(movementVector.x, movementVector.y).normalized * Player.speed * Time.fixedDeltaTime);
+
 
             //Input processing
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -75,15 +85,31 @@ public class PlayerControl : MonoBehaviour
             {
                 Parry();
             }
+
         }
-
-
+        else
+        {
+            // prevents Player from attacking consecutively without cooldown
+            attackCounter -= Time.deltaTime;
+            if (attackCounter <= 0)
+            {
+                animator.SetBool("isAttacking", false);
+                Player.canAct = true;
+            }
+        }
+    
     }
+
+
+
+
 
     // Player Melee Attack
     void MeleeAttack()
     {
+        attackCounter = attackRate;
         meleeAttack.attack();
+        Player.canAct = false;
     }
 
 
@@ -97,7 +123,7 @@ public class PlayerControl : MonoBehaviour
     // Player Dodge Attack
     void Dodge()
     {
-        // Play dodge animation
+        // Play dodge animationa
         // Move character in direction of dodge
         if (Player.currentStamina > 0) {
             dodgeMove.PerformDodge();

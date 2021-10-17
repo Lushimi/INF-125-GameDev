@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class EnemyData : MonoBehaviour
+public class BossData : MonoBehaviour
 {
     //default values here
     [SerializeField]
@@ -14,7 +14,7 @@ public class EnemyData : MonoBehaviour
 
     //Flag for checking if on-hit effects should apply
     public bool isInvulnerable = false;
-    //flag for checking if player can act
+    //flag for checking if boss can act
     public bool canAct = true;
 
     // Start is called before the first frame update
@@ -37,9 +37,13 @@ public class EnemyData : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("Enemy died!");
+
+        // disable enemy
         GetComponent<Collider2D>().enabled = false;
         canAct = false;
-        Debug.Log("Enemy died!");
+        this.enabled = false;
+   
 
         // Die Animation
     }

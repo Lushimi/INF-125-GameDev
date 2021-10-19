@@ -444,6 +444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5028689177493945555, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3245912758373198599, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_Size.x
       value: 0.8125
@@ -1333,6 +1337,14 @@ PrefabInstance:
     - target: {fileID: 3881062752971239853, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090297006130647751, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
+    - target: {fileID: 8090297006130647751, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 8719785253832276220, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: animator

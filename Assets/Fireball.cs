@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    public int damage = 30;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //Destroy(gameObject);
+        BossData boss = collision.GetComponent<BossData>();
+
+        if (boss != null)
+        {
+            boss.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
     }
 }

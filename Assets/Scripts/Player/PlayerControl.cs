@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : EntityControl
 {
-    //player's scriptable object data, stored in the asset folder
+    //player data
     [SerializeField]
     internal PlayerData Player;
-    [SerializeField]
-    internal Rigidbody2D rb;
+
     [SerializeField]
     internal Dodge dodgeMove;
     [SerializeField]
@@ -19,22 +18,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     internal Parry parryMove;
     [SerializeField]
-    internal Animator animator;
-    [SerializeField]
-    internal float attackRate = 0.25f;
-    [SerializeField]
-    internal float attackCounter = 0.25f;
-    
-    public Vector3 movementVector;
 
-    public IEnumerator disableActions(float time)
-    {
-        Player.canAct = false;
-
-        yield return new WaitForSeconds(time);
-
-        Player.canAct = true;
-    }
 
     private void Awake()
     {
@@ -45,13 +29,16 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         Player.StaminaRegen();
-        if (Player.canAct)
+        if (canAct)
         {
 
             //Movement control
             movementVector.x = Input.GetAxis("Horizontal");
             movementVector.y = Input.GetAxis("Vertical");
             movementVector.z = 0;
+
+            //sets player orientation = to mouse position
+            orientationVector = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
@@ -90,11 +77,11 @@ public class PlayerControl : MonoBehaviour
         else
         {
             // prevents Player from attacking consecutively without cooldown
-            attackCounter -= Time.deltaTime;
-            if (attackCounter <= 0)
+            cooldown -= Time.deltaTime;
+            if (cooldown <= 0)
             {
                 animator.SetBool("isAttacking", false);
-                Player.canAct = true;
+                canAct = true;
             }
         }
     
@@ -107,9 +94,10 @@ public class PlayerControl : MonoBehaviour
     // Player Melee Attack
     void MeleeAttack()
     {
-        attackCounter = attackRate;
+        cooldown = meleeAttack.attackRate;
         meleeAttack.attack();
-        Player.canAct = false;
+        canAct = false;
+        Debug.Log("MeleeAttack");
     }
 
 
@@ -117,6 +105,7 @@ public class PlayerControl : MonoBehaviour
     void RangedAttack()
     {
         rangedAttack.attack();
+        Debug.Log("RangedAttack");
     }
 
 
@@ -126,11 +115,12 @@ public class PlayerControl : MonoBehaviour
         // Play dodge animationa
         // Move character in direction of dodge
         if (Player.currentStamina > 0) {
+            cooldown = (dodgeMove.cooldown);
             dodgeMove.PerformDodge();
             Player.ReduceStamina(dodgeMove.staminaCost);
+            canAct = false;
+            Debug.Log("Dodge");
         }
-
-        Debug.Log("Dodge");
     }
 
     //Player Assist Move
@@ -156,7 +146,9 @@ public class PlayerControl : MonoBehaviour
     {
         //Parry animation occurs
         //Frame of invulnerability with ending lag
+        cooldown = (parryMove.cooldown);
         parryMove.parry();
+        canAct = false;
         Debug.Log("Parry");
     }
 }

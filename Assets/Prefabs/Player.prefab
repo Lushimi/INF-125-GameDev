@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &99914799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99914800}
+  m_Layer: 0
+  m_Name: MeleeAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &99914800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99914799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1137835596353710404}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137835596353710393
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,9 +53,9 @@ GameObject:
   - component: {fileID: 7350680183169668894}
   - component: {fileID: 8090297006130647751}
   - component: {fileID: 6584699428092977884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +70,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.24, y: -2.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 99914800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,17 +205,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe865962cca6faf4b90b33c6fed7de5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 9159405618571017035}
   rb: {fileID: 3556059926477084371}
+  collider: {fileID: -434355223354114603}
+  animator: {fileID: 2928918565220437074}
+  cooldown: 0
+  isInvulnerable: 0
+  canAct: 1
+  movementVector: {x: 0, y: 0, z: 0}
+  orientationVector: {x: 0, y: 0, z: 0}
+  Player: {fileID: 9159405618571017035}
   dodgeMove: {fileID: 3459286438898377123}
   meleeAttack: {fileID: 8719785253832276220}
   rangedAttack: {fileID: 7350680183169668894}
   specialAttack: {fileID: 8090297006130647751}
   parryMove: {fileID: 6584699428092977884}
-  animator: {fileID: 2928918565220437074}
-  attackRate: 0.25
-  attackCounter: 0.25
-  movementVector: {x: 0, y: 0}
 --- !u!114 &9159405618571017035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,12 +233,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: {fileID: 11400000, guid: 8747823519c7a6b49bf20d065ea56585, type: 2}
   maxStamina: {fileID: 11400000, guid: f55f296266436024ebf48a2d6241a2af, type: 2}
+  bossVariables: {fileID: 0}
   speed: 5
   currentStamina: 0
   currentHealth: 0
   staminaPerSecond: 3
-  isInvulnerable: 0
-  canAct: 1
+  knockbackScale: 1
+  HealthChanged: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
   StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
 --- !u!114 &3459286438898377123
 MonoBehaviour:
@@ -286,13 +321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec35998bf5d13e54fbf1f91cd263f0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  attackPoint: {fileID: 0}
+  animator: {fileID: 2928918565220437074}
+  attackRate: 0.25
+  attackPoint: {fileID: 99914800}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   attackDamage: 40
-  attackRange: 0.5
+  attackRange: 1.01
 --- !u!114 &7350680183169668894
 MonoBehaviour:
   m_ObjectHideFlags: 0

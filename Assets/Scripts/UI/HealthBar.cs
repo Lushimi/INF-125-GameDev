@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class HealthBar : ResourceBars
 {
-    public PlayerData Player;
-    [SerializeField]
-    private FloatVariable maxHP;
-
+    public EntityData Entity;
 
     // Start is called before the first frame update
     void Start()
     {
-        slider.maxValue = maxHP;
-        slider.value = Player.currentHealth;
+        if (Entity.maxHP == null)
+            slider.maxValue = Entity.bossVariables;
+        else
+            slider.maxValue = Entity.maxHP;
+        slider.value = Entity.currentHealth;
     }
 
     public override void UpdateUI() 
     {
-        slider.value = Player.currentHealth;
+        slider.value = Entity.currentHealth;
     }
 }

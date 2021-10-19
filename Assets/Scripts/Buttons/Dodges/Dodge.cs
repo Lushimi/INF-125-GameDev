@@ -7,11 +7,13 @@ public class Dodge : MonoBehaviour
     public float startup;
     public float invuln;
     public float endLag;
+    public float cooldown => startup + invuln + endLag;
     public float dodgeSpeedMultiplier;
-    private PlayerData Player => gameObject.GetComponent<PlayerControl>().Player;
-    public float Speed => dodgeSpeedMultiplier * Player.speed;
+    private PlayerControl PlayerController => gameObject.GetComponent<PlayerControl>();
+    public float Speed => dodgeSpeedMultiplier * PlayerController.Player.speed;
 
     public virtual void PerformDodge() {
+        //Disable any other actions
         StartCoroutine(IDodge());
     }
 
@@ -25,30 +27,27 @@ public class Dodge : MonoBehaviour
         //speed - how fast the character moves during the dodge
         //movementVector - the direction of the dodge
 
-        //Disable any other actions
-        StartCoroutine(gameObject.GetComponent<PlayerControl>().disableActions(startup + invuln + endLag));
-
         //startup part of dodge
         float startupDeltaTime = startup / 75; //literal arbitrary, could use anything else
  
         for (float i = 0; i < startup; i += startupDeltaTime)
         {
  
-            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * startup / (startup + invuln)) * startupDeltaTime;
+            gameObject.transform.position += PlayerController.movementVector * (Speed * startup / (startup + invuln)) * startupDeltaTime;
             yield return new WaitForSeconds(startupDeltaTime);
         }
 
         //iframe part of dodge
         float invulnDeltaTime = invuln / 75; //literal is arbitrary, could use anything else
-        Player.isInvulnerable = true;
+        PlayerController.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
           
-            gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (Speed * invuln / (startup + invuln)) * invulnDeltaTime;
+            gameObject.transform.position += PlayerController.movementVector * (Speed * invuln / (startup + invuln)) * invulnDeltaTime;
             yield return new WaitForSeconds(invulnDeltaTime);
         }
 
-        Player.isInvulnerable = false;
+        PlayerController.isInvulnerable = false;
     }
 
 }

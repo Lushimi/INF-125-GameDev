@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8989925771136507691}
+  - component: {fileID: 6117880652488786894}
   - component: {fileID: -5028689177493945555}
   - component: {fileID: -3245912758373198599}
+  - component: {fileID: 4934154316307395043}
   - component: {fileID: -3673268391658415719}
+  - component: {fileID: 1228116736}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -33,6 +36,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &6117880652488786894
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &-5028689177493945555
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,6 +135,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4934154316307395043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e156dcf53efecc14f9b7f06fa6ba34bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6117880652488786894}
+  collider: {fileID: -5028689177493945555}
+  animator: {fileID: 0}
+  cooldown: 0
+  isInvulnerable: 0
+  canAct: 1
+  movementVector: {x: 0, y: 0, z: 0}
+  orientationVector: {x: 0, y: 0, z: 0}
+  Boss: {fileID: -3673268391658415719}
 --- !u!114 &-3673268391658415719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +168,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad46929c1b441b24482a0e087ef8fb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: {fileID: 11400000, guid: 8747823519c7a6b49bf20d065ea56585, type: 2}
+  maxHP: {fileID: 0}
+  maxStamina: {fileID: 0}
+  bossVariables: {fileID: 11400000, guid: bf7ee4ae090cf274284e3b2560758612, type: 2}
   speed: 5
+  currentStamina: 0
   currentHealth: 100
-  isInvulnerable: 0
-  canAct: 1
+  staminaPerSecond: 0
+  knockbackScale: 1
+  HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
+  StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
+--- !u!95 &1228116736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53670e3b8cc9d2f47b243d5c9b9b39e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

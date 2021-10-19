@@ -5,21 +5,17 @@ using UnityEngine.UI;
 
 public class StaminaBar : ResourceBars
 {
-    public PlayerData Player;
-    [SerializeField]
-    private FloatVariable maxStamina;
-
+    public EntityData Entity;
 
     // Start is called before the first frame update
     void Start()
     {
-        slider.maxValue = maxStamina;
-        slider.value = Player.currentStamina;
-        
+        slider.maxValue = Entity.maxStamina;
+        slider.value = Entity.currentStamina;
     }
 
     public override void UpdateUI() 
     {
-        slider.value = Player.currentStamina;
+        slider.value = Entity.currentStamina;
     }
 }

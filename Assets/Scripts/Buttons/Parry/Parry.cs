@@ -7,7 +7,8 @@ public class Parry : MonoBehaviour
     public float startup;
     public float invuln;
     public float endLag;
-    private PlayerData Player => gameObject.GetComponent<PlayerControl>().Player;
+    public float cooldown => startup + invuln + endLag;
+    private PlayerControl PlayerController => gameObject.GetComponent<PlayerControl>();
 
     public virtual void parry()
     {
@@ -23,9 +24,6 @@ public class Parry : MonoBehaviour
         //endlag - the time where the player can't act even though they are no longer in iframes
         //movementVector - the direction of the parry
 
-        //Disable any other actions
-        StartCoroutine(gameObject.GetComponent<PlayerControl>().disableActions(startup + invuln + endLag));
-
         //startup part of parry
         float startupDeltaTime = startup / 75; //literal arbitrary, could use anything else
         for (float i = 0; i < startup; i += startupDeltaTime)
@@ -36,14 +34,14 @@ public class Parry : MonoBehaviour
 
         //iframe part of dodge
         float invulnDeltaTime = invuln / 75; //literal is arbitrary, could use anything else
-        Player.isInvulnerable = true;
+        PlayerController.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
             //gameObject.transform.position += gameObject.GetComponent<PlayerControl>().movementVector.normalized * (speed * invuln / (startup + invuln)) * invulnDeltaTime;
             yield return new WaitForSeconds(invulnDeltaTime);
         }
 
-        Player.isInvulnerable = false;
+        PlayerController.isInvulnerable = false;
     }
 
 }

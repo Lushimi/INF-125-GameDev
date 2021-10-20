@@ -12,6 +12,6 @@ public class BossData : EntityData
         speed = bossVariables.speed;
         staminaPerSecond = bossVariables.staminaPerSecond;
         knockbackScale = bossVariables.knockbackScale;
-    }
+}
 
 }

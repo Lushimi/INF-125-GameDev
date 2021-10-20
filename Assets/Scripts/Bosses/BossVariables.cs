@@ -9,6 +9,7 @@ public class BossVariables : ScriptableObject
     public float maxHP = 0;
     public float staminaPerSecond;
     public float knockbackScale = 1f;
+    
 
     public static implicit operator float(BossVariables variable)
     {

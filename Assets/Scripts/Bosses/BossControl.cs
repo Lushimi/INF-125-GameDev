@@ -10,7 +10,7 @@ public class BossControl : EntityControl
     internal Rigidbody2D target;
     //[SerializeField]
     //internal BossAI bossai;
-
+    public bool verbose = false;
     public float decisionLocked = 0;
     public float meleeRange = 1.5f;
     public float roll = 0f;
@@ -48,10 +48,10 @@ public class BossControl : EntityControl
                     if(Boss.currentStamina>50)
                     {
                         Boss.currentStamina -= 50;
-                        Debug.Log("Trying to perform melee combo");
+                        if(verbose)Debug.Log("Trying to perform melee combo");
                     } else
                     {
-                        Debug.Log("Trying to perform melee attack");
+                        if(verbose)Debug.Log("Trying to perform melee attack");
                     }
                     
 
@@ -71,11 +71,11 @@ public class BossControl : EntityControl
                 if(decisionLocked<=0) decisionLocked = 3f;
             } else if(roll<=90)
             {
-                Debug.Log("Trying to perform ranged attack");
+                if (verbose) Debug.Log("Trying to perform ranged attack");
                 if (decisionLocked <= 0) decisionLocked = 1f;
             } else
             {
-                Debug.Log("Trying to perform wave attack");
+                if (verbose) Debug.Log("Trying to perform wave attack");
                 if (decisionLocked <= 0) decisionLocked = 0.5f;
             }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BIGKNIGHT
   m_EditorClassIdentifier: 
   speed: 5
-  maxStamina: 200
+  maxStamina: 60
   maxHP: 500
   staminaPerSecond: 15
   knockbackScale: 50

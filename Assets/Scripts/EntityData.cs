@@ -57,6 +57,8 @@ public abstract class EntityData : MonoBehaviour
         // disable enemy
         gameObject.SetActive(false);
 
+        // destroy enemy
+        Destroy(gameObject);
 
         // Die Animation
     }

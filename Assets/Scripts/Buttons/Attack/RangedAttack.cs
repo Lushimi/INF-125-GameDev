@@ -4,14 +4,19 @@ using UnityEngine;
 using System;
 
 public class RangedAttack : MonoBehaviour
-{ 
+{
+    public Transform rangedAttackPoint;
+    public GameObject bulletPrefab;
+
     public void attack()
     {
-        // Play an ranged attack animation
-        
-        // Detect enemies in range of attack
+        Shoot();
+    }
 
-        // Damage enemies (loop over all enemies in collider array)
+    void Shoot()
+    {
+        // shooting logic
+        Instantiate(bulletPrefab, rangedAttackPoint.position, rangedAttackPoint.rotation);
 
     }
 }

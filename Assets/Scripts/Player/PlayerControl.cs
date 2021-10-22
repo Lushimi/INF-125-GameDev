@@ -6,7 +6,6 @@ public class PlayerControl : EntityControl
     //player data
     [SerializeField]
     internal PlayerData Player;
-
     [SerializeField]
     internal Dodge dodgeMove;
     [SerializeField]
@@ -86,9 +85,6 @@ public class PlayerControl : EntityControl
         }
     
     }
-
-
-
 
 
     // Player Melee Attack

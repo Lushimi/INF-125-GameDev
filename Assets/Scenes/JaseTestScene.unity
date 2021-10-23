@@ -8124,11 +8124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99914800, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 99914800, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: animator
@@ -8152,11 +8152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.49
+      value: -7.66
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.46
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8224,7 +8224,7 @@ PrefabInstance:
       objectReference: {fileID: 1761781748}
     - target: {fileID: 8719785253832276220, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attackRange
-      value: 1.01
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8719785253832276220, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: enemyLayers.m_Bits

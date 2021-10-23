@@ -17,7 +17,8 @@ public class PlayerControl : EntityControl
     [SerializeField]
     internal Parry parryMove;
     [SerializeField]
-
+    internal Camera cam;
+    
 
     private void Awake()
     {
@@ -37,7 +38,23 @@ public class PlayerControl : EntityControl
             movementVector.z = 0;
 
             //sets player orientation = to mouse position
-            orientationVector = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
+            {
+                Vector3 orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
+                Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
+                Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
+
+                meleeAttack.attackPoint.position = rb.position + meleeAttack.attackRange * facing; 
+                rangedAttack.rangedAttackPoint.position = rb.position + 1f * facing;
+                
+                //set the facing child object to facing
+                GameObject child = gameObject.transform.Find("Facing").gameObject;
+                child.GetComponent<Transform>().position = facing;
+
+            }
+
+
+
 
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);

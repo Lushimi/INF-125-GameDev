@@ -10,6 +10,8 @@ public class BossControl : EntityControl
     internal Rigidbody2D target;
     [SerializeField]
     internal ComboAttack comboAttack;
+    [SerializeField]
+    internal Camera cam;
     //[SerializeField]
     //internal BossAI bossai;
     public bool verbose = false;
@@ -38,14 +40,29 @@ public class BossControl : EntityControl
  70-90: use a ranged attack on target
 90-100: use a wave attack on target
 */
+        Vector2 facing = (((target.position - rb.position) * 500).normalized);
+
+        //update melee attack point
+        GameObject matkp = gameObject.transform.Find("MeleeAttackPoint").gameObject;
+        matkp.GetComponent<Transform>().position = rb.position + meleeRange * facing;
+
+        //update ranged attack point
+        GameObject ratkp = gameObject.transform.Find("RangedAttackPoint").gameObject;
+        ratkp.GetComponent<Transform>().position = rb.position + 1f * facing;
+
+        //update facing
+        GameObject facingobj = gameObject.transform.Find("Facing").gameObject;
+        facingobj.GetComponent<Transform>().position = facing;
+
         decisionLocked -= Time.deltaTime;
+        gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
         if (canAct)
         {
             if (decisionLocked <= 0)
             {
                 roll = Random.Range(0f, 100f);
             }
-            gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
+            
             if (roll <= 70)
             {
                 if ((target.position - rb.position).magnitude < meleeRange)

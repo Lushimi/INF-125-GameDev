@@ -8,13 +8,20 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     public int damage = 40;
     public Rigidbody2D rb;
+    public Transform facing;
 
+    public void Setup(Transform facing)
+    {
+        this.facing = facing;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+
         // Changes rigidbody velocity
-        rb.velocity = transform.right * speed;
+        rb.velocity = new Vector2(facing.position.x,facing.position.y) * speed;
+
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
@@ -32,4 +39,8 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+
 }
+
+

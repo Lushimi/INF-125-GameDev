@@ -6,6 +6,7 @@ using System;
 public class RangedAttack : MonoBehaviour
 {
     public Transform rangedAttackPoint;
+    public Transform facing;
     public GameObject bulletPrefab;
 
     public void attack()
@@ -16,7 +17,8 @@ public class RangedAttack : MonoBehaviour
     void Shoot()
     {
         // shooting logic
-        Instantiate(bulletPrefab, rangedAttackPoint.position, rangedAttackPoint.rotation);
+        Transform bulletTransform=(Instantiate(bulletPrefab, rangedAttackPoint.position, rangedAttackPoint.rotation)).transform;
+        bulletTransform.GetComponent<Bullet>().Setup(facing);
 
     }
 }

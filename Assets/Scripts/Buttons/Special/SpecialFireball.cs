@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SpecialFireball : Special
+public class SpecialFireball : MonoBehaviour
 {
-    public GameObject projectile;
-    public float projectileSpeed = 10;
+    public Transform rangedAttackPoint;
+    public Transform facing;
+    public GameObject fireballPrefab;
 
-    public override void special()
+    public void special()
     {
-        GameObject fireball = Instantiate(projectile, transform) as GameObject;
-        fireball.transform.parent = null;
-        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-        rb.velocity = transform.forward * projectileSpeed;
+        Shoot();
+    }
+
+    void Shoot()
+    {
+        // shooting logic
+        Transform fireballTransform = (Instantiate(fireballPrefab, rangedAttackPoint.position, rangedAttackPoint.rotation)).transform;
+        fireballTransform.GetComponent<Fireball>().Setup(facing);
+
     }
 }

@@ -4817,9 +4817,9 @@ GameObject:
   - component: {fileID: 2375285017505168957}
   - component: {fileID: 8430748628309308996}
   - component: {fileID: 699772447722263112}
-  - component: {fileID: 6132532519859816748}
   - component: {fileID: -1416980408677279354}
   - component: {fileID: 56172534283247041}
+  - component: {fileID: 4704053856971520610}
   m_Layer: 0
   m_Name: SpecialFireball
   m_TagString: Untagged
@@ -4892,19 +4892,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6132532519859816748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7830812919132867637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d70e87d6e51664d9c87ecb41f8911a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
 --- !u!58 &-1416980408677279354
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4942,3 +4929,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4704053856971520610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7830812919132867637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d70e87d6e51664d9c87ecb41f8911a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  speed: 10
+  rb: {fileID: 56172534283247041}
+  facing: {fileID: 0}

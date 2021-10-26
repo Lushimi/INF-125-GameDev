@@ -13,7 +13,7 @@ public class PlayerControl : EntityControl
     [SerializeField]
     internal RangedAttack rangedAttack;
     [SerializeField]
-    internal Special specialAttack;
+    internal SpecialFireball specialAttack;
     [SerializeField]
     internal Parry parryMove;
     [SerializeField]

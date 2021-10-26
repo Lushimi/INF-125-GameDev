@@ -19,7 +19,6 @@ public class BossControl : EntityControl
     public float meleeRange = 1f;
     public float roll = 0f;
 
-    public float comboAttackDelay = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -71,11 +70,6 @@ public class BossControl : EntityControl
                     {
                         Boss.currentStamina = Boss.currentStamina - 50;
                         ComboAttack();
-                        //yield return new WaitForSeconds(comboAttackDelay);
-                        Invoke("MoveLeft", comboAttackDelay);
-                        Invoke("ComboAttack", comboAttackDelay);
-                        Invoke("MoveRight", comboAttackDelay+comboAttackDelay);
-                        Invoke("ComboAttack", comboAttackDelay+comboAttackDelay);
                     }
                     else
                     {
@@ -112,21 +106,22 @@ public class BossControl : EntityControl
 
 
         }
+        else
+        {
+            // prevents Player from attacking consecutively without cooldown
+            cooldown -= Time.deltaTime;
+            if (cooldown <= 0)
+            {
+                canAct = true;
+            }
+        }
     }
     void ComboAttack()
     {
-        comboAttack.attack();
         Debug.Log("Boss Combo Attack");
-    }
-
-    void MoveLeft()
-    {
-        rb.MovePosition(rb.position + new Vector2(1f, 0).normalized);
-    }
-
-    void MoveRight()
-    {
-        rb.MovePosition(rb.position + new Vector2(1f, 0).normalized);
+        cooldown = (comboAttack.cooldown);
+        comboAttack.comboAttack();
+        canAct = false;
     }
 
 }

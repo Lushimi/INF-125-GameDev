@@ -28,7 +28,7 @@ public abstract class EntityData : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        HealthChanged.Raise();
         if (currentHealth <= 0)
         {
             Die();

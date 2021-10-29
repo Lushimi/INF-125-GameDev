@@ -8131,6 +8131,10 @@ PrefabInstance:
       value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 613975558}
+    - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 591269577}

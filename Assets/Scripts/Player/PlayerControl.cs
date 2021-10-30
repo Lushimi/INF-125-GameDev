@@ -37,6 +37,16 @@ public class PlayerControl : EntityControl
             movementVector.y = Input.GetAxis("Vertical");
             movementVector.z = 0;
 
+            // Flip Sprite render x axis when switching directions
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (Input.GetAxis("Horizontal") < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+
             //sets player orientation = to mouse position
             if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
             {

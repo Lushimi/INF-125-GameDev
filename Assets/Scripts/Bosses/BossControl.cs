@@ -124,20 +124,21 @@ public class BossControl : EntityControl
         }
         else
         {
-            // prevents Player from attacking consecutively without cooldown
+            // prevents Boss from attacking consecutively without cooldown
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
+                animator.SetBool("isAttacking", false);
                 canAct = true;
             }
         }
     }
     void ComboAttack()
     {
-        Debug.Log("Boss Combo Attack");
         cooldown = (comboAttack.cooldown);
         comboAttack.comboAttack();
         canAct = false;
+        Debug.Log("Boss Combo Attack");
     }
 
 }

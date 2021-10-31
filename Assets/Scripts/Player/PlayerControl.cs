@@ -115,7 +115,7 @@ public class PlayerControl : EntityControl
     // Player Melee Attack
     void MeleeAttack()
     {
-        cooldown = meleeAttack.attackRate;
+        cooldown = meleeAttack.cooldown;
         meleeAttack.attack();
         canAct = false;
         Debug.Log("MeleeAttack");

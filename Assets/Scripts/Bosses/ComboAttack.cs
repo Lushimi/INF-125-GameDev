@@ -27,6 +27,7 @@ public class ComboAttack : MonoBehaviour
     //Command
     public void comboAttack()
     {
+        animator.SetBool("isAttacking", true);
         StartCoroutine(IComboAttack());
     }
 
@@ -46,7 +47,6 @@ public class ComboAttack : MonoBehaviour
 
     public void attack()
     {
-        //animator.SetTrigger("ComboAttack")
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
@@ -62,7 +62,6 @@ public class ComboAttack : MonoBehaviour
     //Final Combo Attack
     public void attackFinal()
     {
-        //animator.SetTrigger("ComboAttack")
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, finalAttackRange, enemyLayers);
@@ -73,6 +72,7 @@ public class ComboAttack : MonoBehaviour
             enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
             Debug.Log("Player damaged by combo attack!");
         }
+   
     }
 
     //Movement

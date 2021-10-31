@@ -6,7 +6,7 @@ using System;
 public class MeleeAttack : MonoBehaviour
 {
     public Animator animator;
-    public float attackRate = 0.25f;
+    public float cooldown = 0.25f;
     private Vector3 movementVector => gameObject.GetComponent<PlayerControl>().movementVector;
 
     public Transform attackPoint;

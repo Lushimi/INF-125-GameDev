@@ -512,6 +512,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 591269576}
+    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1228116736}
     - target: {fileID: 1695161211, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: target
       value: 

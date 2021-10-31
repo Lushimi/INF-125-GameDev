@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1695161213}
   - component: {fileID: 1185117119}
   m_Layer: 7
-  m_Name: BigKnight
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

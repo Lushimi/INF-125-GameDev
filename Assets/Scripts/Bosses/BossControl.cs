@@ -41,6 +41,22 @@ public class BossControl : EntityControl
 */
         Vector2 facing = (((target.position - rb.position) * 500).normalized);
 
+        // Flip Sprite render x axis when switching directions
+        if (facing.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (facing.x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+
+        animator.SetFloat("Horizontal", facing.x);
+        animator.SetFloat("Vertical", facing.y);
+        animator.SetFloat("Speed", facing.sqrMagnitude);
+
+
+
         //update melee attack point
         GameObject matkp = gameObject.transform.Find("MeleeAttackPoint").gameObject;
         matkp.GetComponent<Transform>().position = rb.position + meleeRange * facing;

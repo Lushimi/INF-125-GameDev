@@ -64,8 +64,6 @@ public class PlayerControl : EntityControl
             }
 
 
-
-
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
             animator.SetFloat("Speed", movementVector.sqrMagnitude);

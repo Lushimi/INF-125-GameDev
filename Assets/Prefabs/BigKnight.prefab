@@ -101,16 +101,16 @@ GameObject:
   - component: {fileID: 8989925771136507691}
   - component: {fileID: 6117880652488786894}
   - component: {fileID: -3245912758373198599}
+  - component: {fileID: 1695161214}
+  - component: {fileID: 1228116736}
   - component: {fileID: 4934154316307395043}
   - component: {fileID: -3673268391658415719}
-  - component: {fileID: 1228116736}
-  - component: {fileID: 1695161214}
   - component: {fileID: 1695161211}
   - component: {fileID: 1695161212}
   - component: {fileID: 1695161213}
   - component: {fileID: 1185117119}
   m_Layer: 7
-  m_Name: Boss
+  m_Name: BigKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,6 +206,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1695161214
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!95 &1228116736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53670e3b8cc9d2f47b243d5c9b9b39e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4934154316307395043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6117880652488786894}
   collider: {fileID: 1695161214}
-  animator: {fileID: 0}
+  animator: {fileID: 1228116736}
   cooldown: 0
   isInvulnerable: 0
   canAct: 0
@@ -256,41 +291,6 @@ MonoBehaviour:
   knockbackScale: 1
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
---- !u!95 &1228116736
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53670e3b8cc9d2f47b243d5c9b9b39e2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &1695161214
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.7
 --- !u!114 &1695161211
 MonoBehaviour:
   m_ObjectHideFlags: 0

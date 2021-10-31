@@ -520,9 +520,13 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 591269576}
+    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1228116736}
     - target: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_Name
-      value: Boss
+      value: BigKnight
       objectReference: {fileID: 0}
     - target: {fileID: 8989925771136507691, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_RootOrder
@@ -8124,11 +8128,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99914800, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.51
+      value: 0.344
       objectReference: {fileID: 0}
     - target: {fileID: 99914800, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: -0.339
       objectReference: {fileID: 0}
     - target: {fileID: 1137835596353710392, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: cam
@@ -8212,11 +8216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4690043353919670491, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.66
+      value: 0.341
       objectReference: {fileID: 0}
     - target: {fileID: 4690043353919670491, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: -0.349
       objectReference: {fileID: 0}
     - target: {fileID: 7350680183169668894, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: rangedAttackPoint

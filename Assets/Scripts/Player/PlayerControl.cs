@@ -1,11 +1,19 @@
-using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerControl : EntityControl
 {
+    [Header("Player")]
     //player data
     [SerializeField]
     internal PlayerData Player;
+    [SerializeField]
+    internal Camera cam;
+
+    [Header("Loadout")]
+    [SerializeField]
+    internal LoadoutManager loadout;
     [SerializeField]
     internal Dodge dodgeMove;
     [SerializeField]
@@ -16,13 +24,20 @@ public class PlayerControl : EntityControl
     internal SpecialFireball specialAttack;
     [SerializeField]
     internal Parry parryMove;
-    [SerializeField]
-    internal Camera cam;
+
+    public GameObject facingObject => transform.Find("Facing").gameObject;
+    public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
+
+    public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
+
+
+
     
 
     private void Awake()
     {
         Player.Reset();
+        Debug.Log(MeleeAttackPoint);
     }
 
     // Update is called once per frame
@@ -54,12 +69,19 @@ public class PlayerControl : EntityControl
                 Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
                 Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
 
-                meleeAttack.attackPoint.position = rb.position + meleeAttack.attackRange * facing; 
-                rangedAttack.rangedAttackPoint.position = rb.position + 1f * facing;
-                
+                //update melee/ranged attack points
+                try
+                {
+                    MeleeAttackPoint.position = rb.position + meleeAttack.attackRange * facing;
+                    RangedAttackPoint.position = rb.position + 1f * facing;
+                }
+                catch (Exception e)
+                {
+                   // Debug.LogError(e);
+                }
+
                 //set the facing child object to facing
-                GameObject child = gameObject.transform.Find("Facing").gameObject;
-                child.GetComponent<Transform>().position = facing;
+                facingObject.transform.position = facing;
 
             }
 
@@ -96,6 +118,15 @@ public class PlayerControl : EntityControl
             {
                 Parry();
             }
+            //this "L" button is just for testing the loadout
+            else if (Input.GetKeyDown(KeyCode.L))
+            {
+                ChangeLoadout();
+                meleeAttack = meleeAttack == null ? loadout.MeleeList[0] : meleeAttack;
+                rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
+                specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
+                parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
+            }
 
         }
         else
@@ -111,6 +142,10 @@ public class PlayerControl : EntityControl
     
     }
 
+    public void movePlayer(Vector3 moveVector)
+    {
+        transform.position += moveVector;
+    }
 
     // Player Melee Attack
     void MeleeAttack()
@@ -171,5 +206,17 @@ public class PlayerControl : EntityControl
         parryMove.parry();
         canAct = false;
         Debug.Log("Parry");
+    }
+
+    void ChangeLoadout()
+    {
+        foreach (var dodge in loadout.DodgeList)
+        {
+            if (dodge is Dodge_Roll)
+            {
+                dodgeMove = dodge;
+            }
+        }
+
     }
 }

@@ -8,7 +8,7 @@ public class Parry : MonoBehaviour
     public float invuln;
     public float endLag;
     public float cooldown => startup + invuln + endLag;
-    private PlayerControl PlayerController => gameObject.GetComponent<PlayerControl>();
+    private PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
 
     public virtual void parry()
     {

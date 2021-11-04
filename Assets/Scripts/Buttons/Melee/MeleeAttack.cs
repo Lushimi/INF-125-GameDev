@@ -5,12 +5,12 @@ using System;
 
 public class MeleeAttack : MonoBehaviour
 {
-    public Animator animator;
     public float cooldown = 0.25f;
-    private Vector3 movementVector => gameObject.GetComponent<PlayerControl>().movementVector;
+    private Vector3 movementVector => transform.parent.GetComponent<PlayerControl>().movementVector;
+    public Transform attackPoint => transform.parent.GetComponent<PlayerControl>().MeleeAttackPoint;
+    public Animator animator => transform.parent.GetComponent<PlayerControl>().animator;
 
-    public Transform attackPoint;
-    public LayerMask enemyLayers;
+    public LayerMask enemyLayers = LayerMask.NameToLayer("Enemies");
 
     public int attackDamage = 40;
     public float attackRange = 0.5f;
@@ -27,7 +27,8 @@ public class MeleeAttack : MonoBehaviour
         // Damage enemies (loop over all enemies in collider array)
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<BossData>().TakeDamage(attackDamage, this.gameObject);
+            Debug.Log("Enemy Hit");
+            enemy.GetComponent<BossData>().TakeDamage(attackDamage, transform.parent.gameObject);
         }
 
         animator.SetBool("isAttacking", true);

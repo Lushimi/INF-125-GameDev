@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class HealthBar : ResourceBars
 {
-    public EntityData Entity;
-
     // Start is called before the first frame update
     void Start()
     {

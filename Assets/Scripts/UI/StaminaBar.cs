@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class StaminaBar : ResourceBars
 {
-    public EntityData Entity;
-
     // Start is called before the first frame update
     void Start()
     {
-        slider.maxValue = Entity.maxStamina;
+        if (Entity.maxStamina == null)
+            slider.maxValue = Entity.bossVariables.maxStamina;
+        else
+            slider.maxValue = Entity.maxStamina;
         slider.value = Entity.currentStamina;
     }
 

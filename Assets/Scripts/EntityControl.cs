@@ -4,10 +4,9 @@ using UnityEngine;
 
 public abstract class EntityControl : MonoBehaviour
 {
+    [Header("Entity")]
     [SerializeField]
     internal Rigidbody2D rb;
-    [SerializeField]
-    internal Collider2D collider;
     [SerializeField]
     internal Animator animator;
     [SerializeField]

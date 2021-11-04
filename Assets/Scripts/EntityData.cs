@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class EntityData : MonoBehaviour
 {
+    [Header("Readonly Variables")]
     //default values here
     [SerializeField]
     internal FloatVariable maxHP;
@@ -11,6 +12,7 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal BossVariables bossVariables;
 
+    [Header("Entity Data")]
     //stats here
     public float speed;
     public float currentStamina = 0;
@@ -18,6 +20,7 @@ public abstract class EntityData : MonoBehaviour
     public float staminaPerSecond;
     public float knockbackScale = 100f;
 
+    [Header("Game Events")]
     [SerializeField]
     internal GameEvent HealthChanged;
     [SerializeField]
@@ -53,6 +56,7 @@ public abstract class EntityData : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("Enemy died!");
+        // Die Animation
 
         // disable enemy
         gameObject.SetActive(false);

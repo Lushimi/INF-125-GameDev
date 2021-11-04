@@ -9,7 +9,7 @@ public class Dodge : MonoBehaviour
     public float endLag;
     public float cooldown => startup + invuln + endLag;
     public float dodgeSpeedMultiplier;
-    private PlayerControl PlayerController => gameObject.GetComponent<PlayerControl>();
+    private PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
     public float Speed => dodgeSpeedMultiplier * PlayerController.Player.speed;
 
     public virtual void PerformDodge() {
@@ -32,8 +32,8 @@ public class Dodge : MonoBehaviour
  
         for (float i = 0; i < startup; i += startupDeltaTime)
         {
- 
-            gameObject.transform.position += PlayerController.movementVector * (Speed * startup / (startup + invuln)) * startupDeltaTime;
+
+            PlayerController.movePlayer(PlayerController.movementVector * (Speed * startup / (startup + invuln)) * startupDeltaTime);
             yield return new WaitForSeconds(startupDeltaTime);
         }
 
@@ -42,8 +42,8 @@ public class Dodge : MonoBehaviour
         PlayerController.isInvulnerable = true;
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
-          
-            gameObject.transform.position += PlayerController.movementVector * (Speed * invuln / (startup + invuln)) * invulnDeltaTime;
+
+            PlayerController.movePlayer(PlayerController.movementVector * (Speed * invuln / (startup + invuln)) * invulnDeltaTime);
             yield return new WaitForSeconds(invulnDeltaTime);
         }
 

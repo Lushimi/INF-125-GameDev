@@ -5,8 +5,8 @@ using System;
 
 public class RangedAttack : MonoBehaviour
 {
-    public Transform rangedAttackPoint;
-    public Transform facing;
+    public Transform rangedAttackPoint => transform.parent.Find("RangedAttackPoint");
+    public Transform facing => transform.parent.Find("Facing").transform;
     public GameObject bulletPrefab;
 
     public void attack()

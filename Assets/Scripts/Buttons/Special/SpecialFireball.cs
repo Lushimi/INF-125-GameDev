@@ -5,8 +5,8 @@ using System;
 
 public class SpecialFireball : MonoBehaviour
 {
-    public Transform rangedAttackPoint;
-    public Transform facing;
+    public Transform rangedAttackPoint => transform.parent.Find("RangedAttackPoint");
+    public Transform facing => transform.parent.Find("Facing").transform;
     public GameObject fireballPrefab;
 
     public void special()

@@ -15,5 +15,5 @@ MonoBehaviour:
   speed: 5
   maxStamina: 100
   maxHP: 500
-  staminaPerSecond: 15
+  staminaPerSecond: 60
   knockbackScale: 50

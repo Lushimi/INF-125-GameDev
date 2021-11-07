@@ -1007,6 +1007,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144080864}
   m_CullTransparentMesh: 1
+--- !u!95 &1220222540 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1228116736, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  m_PrefabInstance: {fileID: 1730837141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1256957558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1220222540}
     - target: {fileID: 1695161211, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: target
       value: 
@@ -1867,6 +1876,10 @@ PrefabInstance:
     - target: {fileID: 1137835596353710404, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711965455732394999, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: HubSceneToLoad
+      value: HubScene
       objectReference: {fileID: 0}
     - target: {fileID: 3131920184545752251, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: cam

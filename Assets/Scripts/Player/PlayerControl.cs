@@ -27,7 +27,6 @@ public class PlayerControl : EntityControl
 
     public GameObject facingObject => transform.Find("Facing").gameObject;
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
-
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
 
@@ -65,7 +64,7 @@ public class PlayerControl : EntityControl
             //sets player orientation = to mouse position
             if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
             {
-                Vector3 orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
+                orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
                 Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
                 Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
 
@@ -219,4 +218,5 @@ public class PlayerControl : EntityControl
         }
 
     }
+
 }

@@ -69,11 +69,20 @@ public abstract class EntityData : MonoBehaviour
 
     public virtual void StaminaRegen()
     {
-        if (currentStamina < 100)
+        if (bossVariables != null)
+        {
+            if (currentStamina < bossVariables.maxStamina)
+            {
+                currentStamina += Math.Min(100 - currentStamina, Time.deltaTime * staminaPerSecond);
+                StaminaChanged.Raise();
+            }
+        }
+        else if (currentStamina < maxStamina)
         {
             currentStamina += Math.Min(100 - currentStamina, Time.deltaTime * staminaPerSecond);
             StaminaChanged.Raise();
         }
+
     }
 
     public virtual void ReduceStamina(float amount)

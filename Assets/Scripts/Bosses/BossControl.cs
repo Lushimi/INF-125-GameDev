@@ -32,6 +32,8 @@ public class BossControl : EntityControl
     // Update is called once per frame
     void Update()
     {
+        //Stamina Regen
+        Boss.StaminaRegen();
         /*
 0-70: check if target is in range of melee attack:
             yes: try to do melee combo if enough stamina, otherwise do a single melee attack

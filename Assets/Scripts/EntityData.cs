@@ -26,30 +26,38 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent StaminaChanged;
 
+    private bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
+
     abstract public void Reset();
 
     public virtual void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        HealthChanged.Raise();
-        if (currentHealth <= 0)
+        if (!isInvulnerable)
         {
-            Die();
+            currentHealth -= damage;
+            HealthChanged.Raise();
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
     public virtual void TakeDamage(int damage, GameObject attacker)
     {
-        Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
-        currentHealth -= damage;
-        HealthChanged.Raise();
-        Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
-        myRb.AddForce( (knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
-        // Play hurt animation
-
-        if (currentHealth <= 0)
+        if (!isInvulnerable)
         {
-            Die();
+            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
+            currentHealth -= damage;
+            HealthChanged.Raise();
+            Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
+            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
+            // Play hurt animation
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 

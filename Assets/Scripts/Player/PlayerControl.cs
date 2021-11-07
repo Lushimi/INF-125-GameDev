@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using System;
 using UnityEngine;
 
@@ -30,9 +30,6 @@ public class PlayerControl : EntityControl
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
 
-
-    
-
     private void Awake()
     {
         Player.Reset();
@@ -43,6 +40,7 @@ public class PlayerControl : EntityControl
     void Update()
     {
         Player.StaminaRegen();
+
         if (canAct)
         {
 
@@ -121,6 +119,7 @@ public class PlayerControl : EntityControl
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 ChangeLoadout();
+                dodgeMove = dodgeMove == null ? loadout.DodgeList[0] : dodgeMove;
                 meleeAttack = meleeAttack == null ? loadout.MeleeList[0] : meleeAttack;
                 rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
                 specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
@@ -144,6 +143,21 @@ public class PlayerControl : EntityControl
     public void movePlayer(Vector3 moveVector)
     {
         transform.position += moveVector;
+    }
+
+    public void invulnOnHit()
+    {
+        StartCoroutine(ActivateInvincibility(1f));
+    }
+
+    public IEnumerator ActivateInvincibility(float invulnTime)
+    {
+        isInvulnerable = true;
+        for (float i = 0; i < invulnTime; i += (invulnTime/75) )
+        {
+            yield return new WaitForSeconds(invulnTime/75);
+        }
+        isInvulnerable = false;
     }
 
     // Player Melee Attack
@@ -209,14 +223,7 @@ public class PlayerControl : EntityControl
 
     void ChangeLoadout()
     {
-        foreach (var dodge in loadout.DodgeList)
-        {
-            if (dodge is Dodge_Roll)
-            {
-                dodgeMove = dodge;
-            }
-        }
-
+        loadout.checkList();
     }
 
 }

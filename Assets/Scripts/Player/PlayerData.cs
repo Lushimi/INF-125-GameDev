@@ -12,8 +12,8 @@ public class PlayerData : EntityData
     {
         currentHealth = maxHP;
         currentStamina = maxStamina;
-        speed = 5f;
-        staminaPerSecond = 3f;
+        speed = 6f;
+        staminaPerSecond = 17f;
     }
 
     public override void Die()

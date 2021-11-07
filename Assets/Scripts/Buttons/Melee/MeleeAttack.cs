@@ -10,7 +10,7 @@ public class MeleeAttack : MonoBehaviour
     public Transform attackPoint => transform.parent.GetComponent<PlayerControl>().MeleeAttackPoint;
     public Animator animator => transform.parent.GetComponent<PlayerControl>().animator;
 
-    public LayerMask enemyLayers = LayerMask.NameToLayer("Enemies");
+    public LayerMask enemyLayers => LayerMask.NameToLayer("Enemies");
 
     public int attackDamage = 40;
     public float attackRange = 0.5f;

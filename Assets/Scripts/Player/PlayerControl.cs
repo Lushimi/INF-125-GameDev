@@ -45,9 +45,10 @@ public class PlayerControl : EntityControl
         {
 
             //Movement control
-            movementVector.x = Input.GetAxis("Horizontal");
-            movementVector.y = Input.GetAxis("Vertical");
+            movementVector.x = Input.GetAxisRaw("Horizontal");
+            movementVector.y = Input.GetAxisRaw("Vertical");
             movementVector.z = 0;
+
 
             // Flip Sprite render x axis when switching directions
             if (Input.GetAxis("Horizontal") > 0)

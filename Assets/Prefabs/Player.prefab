@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2928918565220437074}
   - component: {fileID: 2711965455732394999}
   - component: {fileID: 3131920184545752251}
+  - component: {fileID: 2046163533}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -240,6 +241,7 @@ MonoBehaviour:
   knockbackScale: 50
   HealthChanged: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
   StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
+  RespawnScene: HubScene
 --- !u!114 &3131920184545752251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,12 +263,41 @@ MonoBehaviour:
   orientationVector: {x: 0, y: 0, z: 0}
   Player: {fileID: 2711965455732394999}
   cam: {fileID: 0}
+  invincibiltyTimeOnHit: 1
   loadout: {fileID: 733544222066610344}
   dodgeMove: {fileID: 0}
   meleeAttack: {fileID: 0}
   rangedAttack: {fileID: 0}
   specialAttack: {fileID: 0}
   parryMove: {fileID: 0}
+--- !u!114 &2046163533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3131920184545752251}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: invulnOnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7052129423359454678
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,11 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbac7fb9a313524c8a5540e74a750c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DodgeList:
-  - {fileID: 3072737302689632756}
-  - {fileID: 8216311099516950555}
-  - {fileID: 5518740092820463432}
-  - {fileID: 4295279909710053242}
+  DodgeList: []
   MeleeList:
   - {fileID: 8538629211859943348}
   RangedList:

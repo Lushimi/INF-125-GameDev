@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6117880652488786894}
-  collider: {fileID: 1695161214}
   animator: {fileID: 1228116736}
   cooldown: 0
   isInvulnerable: 0
@@ -269,6 +268,7 @@ MonoBehaviour:
   decisionLocked: 0
   meleeRange: 1.5
   roll: 0
+  invincibiltyTimeOnHit: 1.2
 --- !u!114 &-3673268391658415719
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class PlayerControl : EntityControl
     internal PlayerData Player;
     [SerializeField]
     internal Camera cam;
+    public float invincibiltyTimeOnHit;
 
     [Header("Loadout")]
     [SerializeField]
@@ -148,7 +149,7 @@ public class PlayerControl : EntityControl
 
     public void invulnOnHit()
     {
-        StartCoroutine(ActivateInvincibility(1f));
+        StartCoroutine(ActivateInvincibility(invincibiltyTimeOnHit));
     }
 
     public IEnumerator ActivateInvincibility(float invulnTime)

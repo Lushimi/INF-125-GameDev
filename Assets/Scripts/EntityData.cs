@@ -26,7 +26,7 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent StaminaChanged;
 
-    private bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
+    internal bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
 
     abstract public void Reset();
 

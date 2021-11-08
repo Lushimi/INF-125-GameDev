@@ -18,6 +18,7 @@ public class BossControl : EntityControl
     public float decisionLocked = 0;
     public float meleeRange = 1f;
     public float roll = 0f;
+    public float invincibiltyTimeOnHit;
 
 
     // Start is called before the first frame update
@@ -143,4 +144,21 @@ public class BossControl : EntityControl
         Debug.Log("Boss Combo Attack");
     }
 
+    public void invulnOnHit()
+    {
+        StartCoroutine(ActivateInvincibility(invincibiltyTimeOnHit));
+    }
+
+    //this also stuns the mob by putting the canAct to false
+    public IEnumerator ActivateInvincibility(float invulnTime)
+    {
+        isInvulnerable = true;
+        canAct = false;
+        for (float i = 0; i < invulnTime; i += (invulnTime / 75))
+        {
+            yield return new WaitForSeconds(invulnTime / 75);
+        }
+        canAct = true;
+        isInvulnerable = false;
+    }
 }

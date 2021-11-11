@@ -30,6 +30,7 @@ public class PlayerControl : EntityControl
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
+    public int bossesDefeated = 0;
 
     private void Awake()
     {
@@ -160,6 +161,18 @@ public class PlayerControl : EntityControl
             yield return new WaitForSeconds(invulnTime/75);
         }
         isInvulnerable = false;
+    }
+
+    //saves the game for player
+    void SaveGame()
+    {
+        SaveData saveData =
+    }
+
+    //loads the game for player
+    void LoadGame()
+    {
+
     }
 
     // Player Melee Attack

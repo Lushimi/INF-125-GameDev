@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Parry : MonoBehaviour
 {
+    public int parryType = 0;
     public float startup;
     public float invuln;
     public float endLag;

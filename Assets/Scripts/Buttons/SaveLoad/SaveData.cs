@@ -1,28 +1,20 @@
 using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
+[KnownType(typeof(Dodge_Roll))]
 [System.Serializable]
 public class SaveData
 {
 
-    public List<DodgeData> DodgeList;
-    public List<MeleeAttackData> MeleeList;
-    public List<RangedAttackData> RangedList;
-    public List<SpecialFireballData> SpecialList;
-    public List<ParryData> ParryList;
+    public LoadoutManager loadout;
 
-    public DodgeData dodge;
-    public MeleeAttackData meleeAttack;
-    public RangedAttackData rangedAttack;
-    public SpecialFireballData specialAttack;
-    public ParryData parryData;
+    public Dodge dodge;
+    public MeleeAttack meleeAttack;
+    public RangedAttack rangedAttack;
+    public SpecialFireball specialAttack;
+    public Parry parry;
 
     public int bossesDefeated;
-
-    public SaveData (PlayerControl player)
-    {
-
-    }
 }

@@ -118,6 +118,14 @@ public class PlayerControl : EntityControl
             {
                 Parry();
             }
+            else if (Input.GetKeyDown(KeyCode.O))
+            {
+                SaveGame();
+            }
+            else if (Input.GetKeyDown(KeyCode.P))
+            {
+                LoadGame();
+            }
             //this "L" button is just for testing the loadout
             else if (Input.GetKeyDown(KeyCode.L))
             {
@@ -166,12 +174,21 @@ public class PlayerControl : EntityControl
     //saves the game for player
     void SaveGame()
     {
-        SaveData saveData =
+        SaveLoad.Save(this);
+        Debug.Log("Saved game!");
     }
 
     //loads the game for player
     void LoadGame()
     {
+        SaveData save = SaveLoad.Load();
+        loadout = save.loadout;
+        dodgeMove = save.dodge;
+        meleeAttack = save.meleeAttack;
+        rangedAttack = save.rangedAttack;
+        specialAttack = save.specialAttack;
+        parryMove = save.parry;
+
 
     }
 

@@ -174,8 +174,8 @@ public class PlayerControl : EntityControl
     //saves the game for player
     void SaveGame()
     {
-        //meleeAttack.attackDamage = 2;
         SaveLoad.Save(this);
+        //meleeAttack.attackDamage = 2;
         Debug.Log("Saved game!");
     }
 
@@ -184,11 +184,11 @@ public class PlayerControl : EntityControl
     {
         SaveData save = SaveLoad.Load();
         //loadout = save.loadout;
-        dodgeMove = save.dodge;
-        meleeAttack = save.meleeAttack;
-        rangedAttack = save.rangedAttack;
-        specialAttack = save.specialAttack;
-        parryMove = save.parry;
+        //dodgeMove = save.dodge;
+        meleeAttack.setMeleeAttackData(save.meleeAttack);
+        rangedAttack.setRangedAttackData(save.rangedAttack);
+        specialAttack.setSpecialData(save.specialAttack);
+        parryMove.setParryData(save.parry);
 
 
     }

@@ -10,6 +10,8 @@ public class Parry : MonoBehaviour
     public float cooldown => startup + invuln + endLag;
     private PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
 
+    public int parryType;
+
     public virtual void parry()
     {
         StartCoroutine(IParry());
@@ -42,6 +44,15 @@ public class Parry : MonoBehaviour
         }
 
         PlayerController.isInvulnerable = false;
+    }
+
+    public void setParryData(ParryData parryData)
+    {
+        startup = parryData.startup;
+        invuln = parryData.invuln;
+        endLag = parryData.endLag;
+
+        parryType = parryData.parryType;
     }
 
 }

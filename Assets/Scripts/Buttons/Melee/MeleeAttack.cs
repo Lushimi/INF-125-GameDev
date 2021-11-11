@@ -15,6 +15,8 @@ public class MeleeAttack : MonoBehaviour
     public int attackDamage = 40;
     public float attackRange = 0.5f;
 
+    public int meleeAttackType;
+
     public void Awake()
     {
         LayerMask.NameToLayer("Enemies");
@@ -49,5 +51,13 @@ public class MeleeAttack : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void setMeleeAttackData(MeleeAttackData meleeAttack)
+    {
+        cooldown = meleeAttack.cooldown;
+        attackDamage = meleeAttack.attackDamage;
+        attackRange = meleeAttack.attackRange;
+        meleeAttackType = meleeAttack.meleeAttackType;
     }
 }

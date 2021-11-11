@@ -21,11 +21,11 @@ public class SaveLoad
         SaveData saveData = new SaveData();
 
         //saveData.loadout = player.loadout;
-        saveData.dodge = player.dodgeMove;
-        saveData.meleeAttack = player.meleeAttack;
-        saveData.rangedAttack = player.rangedAttack;
-        saveData.specialAttack = player.specialAttack;
-        saveData.parry = player.parryMove;
+        //saveData.dodge = player.dodgeMove;
+        saveData.meleeAttack = new MeleeAttackData(player.meleeAttack);
+        saveData.rangedAttack = new RangedAttackData(player.rangedAttack);
+        saveData.specialAttack = new SpecialFireballData(player.specialAttack);
+        saveData.parry = new ParryData(player.parryMove);
 
         //serialize to xml
         DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));

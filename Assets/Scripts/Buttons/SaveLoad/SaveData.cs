@@ -8,7 +8,7 @@ using UnityEngine;
 public class SaveData
 {
 
-    public LoadoutManager loadout;
+    //public LoadoutManager loadout;
 
     public Dodge dodge;
     public MeleeAttack meleeAttack;

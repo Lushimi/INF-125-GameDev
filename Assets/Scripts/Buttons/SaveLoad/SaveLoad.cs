@@ -20,7 +20,7 @@ public class SaveLoad
 
         SaveData saveData = new SaveData();
 
-        saveData.loadout = player.loadout;
+        //saveData.loadout = player.loadout;
         saveData.dodge = player.dodgeMove;
         saveData.meleeAttack = player.meleeAttack;
         saveData.rangedAttack = player.rangedAttack;
@@ -39,6 +39,7 @@ public class SaveLoad
 
     public static SaveData Load()
     {
+       
         string path = Application.persistentDataPath + "/save/" + "currSave.xml";
 
         if (!File.Exists(path))
@@ -46,13 +47,13 @@ public class SaveLoad
             return null;
         }
 
-        FileStream file = new FileStream(path,FileMode.Open);
+        FileStream file = new FileStream(path, FileMode.Open);
 
         try
         {
-            XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(file, new XmlDictionaryReaderQuotas());
+            //XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(file, new XmlDictionaryReaderQuotas());
             DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));
-            SaveData save = (SaveData)ser.ReadObject(reader, true);
+            SaveData save = (SaveData)ser.ReadObject(file);
             file.Close();
             return save;
         }

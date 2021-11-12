@@ -11,6 +11,8 @@ public class BossControl : EntityControl
     [SerializeField]
     internal ComboAttack comboAttack;
     [SerializeField]
+    internal WaveAttack waveAttack;
+    [SerializeField]
     internal Camera cam;
     //[SerializeField]
     //internal BossAI bossai;
@@ -18,6 +20,7 @@ public class BossControl : EntityControl
     public float decisionLocked = 0;
     public float meleeRange = 1f;
     public float roll = 0f;
+    public float waveRange = 9f; //random
     public float invincibiltyTimeOnHit;
 
 
@@ -78,9 +81,10 @@ public class BossControl : EntityControl
         {
             if (decisionLocked <= 0)
             {
+                //Remove once working
                 roll = Random.Range(0f, 100f);
+                //roll = 95.1f;
             }
-            
             if (roll <= 70)
             {
                 if ((target.position - rb.position).magnitude < meleeRange)
@@ -117,9 +121,19 @@ public class BossControl : EntityControl
                 if (verbose) Debug.Log("Trying to perform ranged attack");
                 if (decisionLocked <= 0) decisionLocked = 1f;
             }
-            else
+            else //if roll > 90
             {
                 if (verbose) Debug.Log("Trying to perform wave attack");
+                if (Boss.currentStamina > 10)
+                {
+                    Boss.currentStamina = Boss.currentStamina - 10;
+                    WaveAttack();
+                }
+                else
+                {
+                    ;
+                    //Debug.Log("Not enough stamina for wave attack");
+                }
                 if (decisionLocked <= 0) decisionLocked = 0.5f;
             }
 
@@ -142,6 +156,14 @@ public class BossControl : EntityControl
         comboAttack.comboAttack();
         canAct = false;
         Debug.Log("Boss Combo Attack");
+    }
+
+    void WaveAttack()
+    {
+        cooldown = (waveAttack.cooldown);
+        waveAttack.waveAttack();
+        canAct = false;
+        //Debug.Log("Boss Wave Attack");
     }
 
     public void invulnOnHit()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Trim bullet
 public class Wave : MonoBehaviour
 {
     public float speed = 10f;
@@ -23,7 +24,7 @@ public class Wave : MonoBehaviour
         rb.velocity = new Vector2(facing.position.x, facing.position.y) * speed;
     }
 
-    void onCollisionEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
         Debug.Log(hitInfo.name);
         Debug.Log("Wave collision");

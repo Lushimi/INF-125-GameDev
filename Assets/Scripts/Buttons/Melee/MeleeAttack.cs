@@ -5,7 +5,7 @@ using System;
 
 public class MeleeAttack : MonoBehaviour
 {
-    public float cooldown = 0.25f;
+
     private Vector3 movementVector => transform.parent.GetComponent<PlayerControl>().movementVector;
     public Transform attackPoint => transform.parent.GetComponent<PlayerControl>().MeleeAttackPoint;
     public Animator animator => transform.parent.GetComponent<PlayerControl>().animator;
@@ -14,7 +14,7 @@ public class MeleeAttack : MonoBehaviour
 
     public int attackDamage = 40;
     public float attackRange = 0.5f;
-
+    public float cooldown = 0.25f;
     public int meleeAttackType;
 
     public void Awake()
@@ -38,7 +38,7 @@ public class MeleeAttack : MonoBehaviour
             enemy.GetComponent<BossData>().TakeDamage(attackDamage, transform.parent.gameObject);
         }
 
-        animator.SetBool("isAttacking", true);
+        animator.SetBool("isMeleeAttacking", true);
 
     }
 

@@ -27,7 +27,6 @@ public class ComboAttack : MonoBehaviour
     //Command
     public void comboAttack()
     {
-        animator.SetBool("isAttacking", true);
         StartCoroutine(IComboAttack());
     }
 

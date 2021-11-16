@@ -27,6 +27,7 @@ public abstract class EntityData : MonoBehaviour
     internal GameEvent StaminaChanged;
 
     internal bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
+    public Animator animator => gameObject.GetComponent<EntityControl>().animator;
 
     abstract public void Reset();
 
@@ -71,8 +72,6 @@ public abstract class EntityData : MonoBehaviour
 
         // destroy enemy
         Destroy(gameObject);
-
-        // Die Animation
     }
 
     public virtual void StaminaRegen()

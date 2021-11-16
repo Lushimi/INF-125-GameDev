@@ -144,7 +144,8 @@ public class PlayerControl : EntityControl
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool("isMeleeAttacking", false);
+                animator.SetBool("isRangedAttacking", false);
                 canAct = true;
             }
         }
@@ -199,6 +200,7 @@ public class PlayerControl : EntityControl
         cooldown = meleeAttack.cooldown;
         meleeAttack.attack();
         canAct = false;
+        animator.SetFloat("Speed", 0);
         Debug.Log("MeleeAttack");
     }
 
@@ -206,7 +208,10 @@ public class PlayerControl : EntityControl
     // Player Ranged Attack
     void RangedAttack()
     {
+        cooldown = rangedAttack.cooldown;
         rangedAttack.attack();
+        canAct = false;
+        animator.SetFloat("Speed", 0);
         Debug.Log("RangedAttack");
     }
 

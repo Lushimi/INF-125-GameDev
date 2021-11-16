@@ -6,10 +6,12 @@ using UnityEngine;
 public class RangedAttackData
 {
     public int rangedAttackType;
+    public float cooldown;
 
     public RangedAttackData(RangedAttack rangedAttack)
     {
         rangedAttackType = rangedAttack.rangedAttackType;
+        cooldown = rangedAttack.cooldown;
     }
 
 }

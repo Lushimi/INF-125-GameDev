@@ -5,17 +5,18 @@ using UnityEngine;
 [System.Serializable]
 public class MeleeAttackData
 {
+    public int meleeAttackType;
     public float cooldown;
     public int attackDamage;
     public float attackRange;
 
-    public int meleeAttackType;
 
     public MeleeAttackData(MeleeAttack meleeAttack)
     {
+        meleeAttackType = meleeAttack.meleeAttackType;
         cooldown = meleeAttack.cooldown;
         attackDamage = meleeAttack.attackDamage;
         attackRange = meleeAttack.attackRange;
-        meleeAttackType = meleeAttack.meleeAttackType;
+
     }
 }

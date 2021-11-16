@@ -6953,7 +6953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -500}
+  m_AnchoredPosition: {x: -674.6, y: 435.9}
   m_SizeDelta: {x: 525, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256957560
@@ -7287,8 +7287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 465}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -750, y: -468}
+  m_SizeDelta: {x: 160.91, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414175376
 MonoBehaviour:
@@ -7331,7 +7331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1414175378}
-  Entity: {fileID: 0}
+  Entity: {fileID: 2046163528}
 --- !u!114 &1414175378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8481,8 +8481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 450}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -750, y: -492.5}
+  m_SizeDelta: {x: 160.91, y: 23.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913220215
 MonoBehaviour:
@@ -8525,7 +8525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1913220217}
-  Entity: {fileID: 0}
+  Entity: {fileID: 2046163528}
 --- !u!114 &1913220217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8675,6 +8675,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1137835596353710393, guid: a22d488039a9669478e8fc615c1caead, type: 3}
   m_PrefabInstance: {fileID: 2046163523}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046163528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2711965455732394999, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+  m_PrefabInstance: {fileID: 2046163523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046163525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071b8cb4baa8a8946a66101737b66546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &2046163537 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3556059926477084371, guid: a22d488039a9669478e8fc615c1caead, type: 3}

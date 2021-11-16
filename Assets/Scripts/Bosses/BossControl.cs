@@ -9,6 +9,8 @@ public class BossControl : EntityControl
     [SerializeField]
     internal Rigidbody2D target;
     [SerializeField]
+    internal BossMeleeAttack meleeAttack;
+    [SerializeField]
     internal ComboAttack comboAttack;
     [SerializeField]
     internal WaveAttack waveAttack;
@@ -23,6 +25,10 @@ public class BossControl : EntityControl
     public float waveRange = 9f; //random
     public float invincibiltyTimeOnHit;
 
+    public GameObject facingObject => transform.Find("Facing").gameObject;
+    public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
+    public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +42,18 @@ public class BossControl : EntityControl
     // Update is called once per frame
     void Update()
     {
+
+        if (Boss.currentHealth <= 0)
+        {
+            isInvulnerable = true;
+            canAct = false;
+            animator.SetBool("isDead", true);
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Speed", 0);
+            enabled = false;
+        }
+
         //Stamina Regen
         Boss.StaminaRegen();
         /*
@@ -89,14 +107,14 @@ public class BossControl : EntityControl
             {
                 if ((target.position - rb.position).magnitude < meleeRange)
                 {
-                    if (Boss.currentStamina > 50)
+                    if (Boss.currentStamina > 500)
                     {
                         Boss.currentStamina = Boss.currentStamina - 50;
                         ComboAttack();
                     }
                     else
                     {
-                        if (verbose) Debug.Log("Trying to perform melee attack");
+                        MeleeAttack();
                     }
 
 
@@ -145,14 +163,24 @@ public class BossControl : EntityControl
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool("isMeleeAttacking", false);
                 canAct = true;
             }
         }
     }
+
+    void MeleeAttack()
+    {
+        cooldown = meleeAttack.cooldown;
+        meleeAttack.attack();
+        canAct = false;
+        Debug.Log("Boss Melee Attack");
+    }
+
+
     void ComboAttack()
     {
-        cooldown = (comboAttack.cooldown);
+        cooldown = comboAttack.cooldown;
         comboAttack.comboAttack();
         canAct = false;
         Debug.Log("Boss Combo Attack");
@@ -160,10 +188,10 @@ public class BossControl : EntityControl
 
     void WaveAttack()
     {
-        cooldown = (waveAttack.cooldown);
+        cooldown = waveAttack.cooldown;
         waveAttack.waveAttack();
         canAct = false;
-        //Debug.Log("Boss Wave Attack");
+       Debug.Log("Boss Wave Attack");
     }
 
     public void invulnOnHit()

@@ -11,7 +11,9 @@ public class PlayerData : EntityData
     public override void Reset()
     {
         currentHealth = maxHP;
+        HealthChanged.Raise();
         currentStamina = maxStamina;
+        StaminaChanged.Raise();
         speed = 6f;
         staminaPerSecond = 17f;
 
@@ -40,6 +42,16 @@ public class PlayerData : EntityData
         //move player to newly loaded scene
         SceneManager.MoveGameObjectToScene(Player, SceneManager.GetSceneByName(RespawnScene));
         // Unload the previous Scene
-        SceneManager.UnloadSceneAsync(currentScene);
+        asyncLoad = SceneManager.UnloadSceneAsync(currentScene);
+
+        //wait till the previous scene is unloaded
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // raise game event
+        SceneChanged.Raise();
+        Reset();
     }
 }

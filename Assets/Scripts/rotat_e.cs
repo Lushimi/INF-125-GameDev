@@ -32,4 +32,11 @@ public class rotat_e : MonoBehaviour
         }
         
     }
+    public void FindPlayer()
+    {
+        source = GameObject.Find("Player").transform;
+        facing = source.Find("Facing");
+        cam = Camera.main;
+
+    }
 }

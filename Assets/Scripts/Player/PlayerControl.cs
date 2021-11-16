@@ -49,27 +49,27 @@ public class PlayerControl : EntityControl
     {
         Player.StaminaRegen();
         //sets player orientation = to mouse position
-            if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
+        if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
+        {
+            orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
+            Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
+            Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
+
+            //update melee/ranged attack points
+            try
             {
-                orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
-                Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
-                Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
-
-                //update melee/ranged attack points
-                try
-                {
-                    MeleeAttackPoint.position = rb.position + meleeAttack.attackRange * facing;
-                    RangedAttackPoint.position = rb.position + 1f * facing;
-                }
-                catch (Exception e)
-                {
-                   // Debug.LogError(e);
-                }
-
-                //set the facing child object to facing
-                facingObject.transform.position = facing;
-
+                MeleeAttackPoint.position = rb.position + meleeAttack.attackRange * facing;
+                RangedAttackPoint.position = rb.position + 1f * facing;
             }
+            catch (Exception e)
+            {
+                // Debug.LogError(e);
+            }
+
+            //set the facing child object to facing
+            facingObject.transform.position = facing;
+
+        }
         if (canAct)
         {
 
@@ -156,6 +156,16 @@ public class PlayerControl : EntityControl
             }
         }
     
+    }
+
+    public void FindCamera() 
+    {
+        cam = Camera.main;
+    }
+
+    public void MoveToRespawnPoint()
+    {
+        transform.position = GameObject.Find("Respawn Point").transform.position;
     }
 
     public void movePlayer(Vector3 moveVector)

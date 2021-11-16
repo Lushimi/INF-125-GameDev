@@ -24,4 +24,9 @@ public class CameraController : MonoBehaviour
             gameObject.GetComponent<Transform>().position = new Vector3((location.normalized * leashRange).x, (location.normalized * leashRange).y,-10);
         }
     }
+
+    public void FindPlayer()
+    {
+        toFollow = GameObject.Find("Player").transform;
+    }
 }

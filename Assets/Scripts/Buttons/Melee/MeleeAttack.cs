@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-[SerializeField]
+
 
 
 public class MeleeAttack : MonoBehaviour
@@ -21,9 +21,6 @@ public class MeleeAttack : MonoBehaviour
 
     [SerializeField]
     internal GameEvent AttackSwing;
-
-    public float cooldown = 0.25f;
-    public int meleeAttackType;
 
 
     public void Awake()

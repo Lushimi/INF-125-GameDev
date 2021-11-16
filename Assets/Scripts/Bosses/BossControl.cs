@@ -207,14 +207,6 @@ public class BossControl : EntityControl
        Debug.Log("Boss Wave Attack");
     }
 
-    void WaveAttack()
-    {
-        cooldown = waveAttack.cooldown;
-        waveAttack.waveAttack();
-        canAct = false;
-       Debug.Log("Boss Wave Attack");
-    }
-
     public void invulnOnHit()
     {
         StartCoroutine(ActivateInvincibility(invincibiltyTimeOnHit));

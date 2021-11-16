@@ -22327,56 +22327,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &168966221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+--- !u!114 &168966222 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8849157948837749563, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
   m_PrefabInstance: {fileID: 900070666}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &168966222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168966221}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}
---- !u!114 &168966227 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7710932909215552944, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-  m_PrefabInstance: {fileID: 900070666}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168966221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d4b1afd63c4dde47a9c080702224d4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &168966228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-  m_PrefabInstance: {fileID: 900070666}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168966221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4d56afc52cbdaf458120302f1af9129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &168966230 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1228116736, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-  m_PrefabInstance: {fileID: 900070666}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &168966233 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 6117880652488786894, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-  m_PrefabInstance: {fileID: 900070666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &196586812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446629925, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
@@ -23075,42 +23036,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: Death
-      value: 
-      objectReference: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
-    - target: {fileID: -3245912758373198599, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 168966233}
-    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 168966230}
-    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: AttackSwing
-      value: 
-      objectReference: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
-    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: attackDamage
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185117119, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: ComboAttackSwing
-      value: 
-      objectReference: {fileID: 11400000, guid: 1f47befd85007bf47a1ee733289ee222, type: 2}
     - target: {fileID: 1695161211, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2046163539}
-    - target: {fileID: 1695161214, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: cam
       value: 
@@ -23120,53 +23049,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2046163537}
     - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: cooldown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: waveAttack
-      value: 
-      objectReference: {fileID: 168966227}
-    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: meleeAttack
-      value: 
-      objectReference: {fileID: 168966228}
-    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: rangedAttack
       value: 
       objectReference: {fileID: 168966222}
     - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 168966233}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 168966230}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: cooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: AttackSwing
-      value: 
-      objectReference: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 196586812}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: attackDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: enemyLayers.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7710932909215552944, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: wavePrefab
-      value: 
-      objectReference: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
     - target: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -23174,14 +23063,6 @@ PrefabInstance:
     - target: {fileID: 8989925771136507691, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8989925771136507691, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8989925771136507691, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8989925771136507691, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23230,7 +23111,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
   m_PrefabInstance: {fileID: 900070666}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168966221}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad46929c1b441b24482a0e087ef8fb00, type: 3}

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 1695161211}
   - component: {fileID: 1695161212}
   - component: {fileID: 1695161213}
+  - component: {fileID: 8849157948837749563}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -127,7 +128,7 @@ Transform:
   m_GameObject: {fileID: 7876088130285233315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 446629925}
   - {fileID: 1356734734}
@@ -223,7 +224,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.5
 --- !u!95 &1228116736
 Animator:
   serializedVersion: 3
@@ -264,11 +265,13 @@ MonoBehaviour:
   orientationVector: {x: 0, y: 0, z: 0}
   Boss: {fileID: -3673268391658415719}
   target: {fileID: 0}
-  meleeAttack: {fileID: 0}
+  meleeAttack: {fileID: 6145448066510244745}
   comboAttack: {fileID: 1185117119}
-  waveAttack: {fileID: 0}
+  rangedAttack: {fileID: 0}
+  waveAttack: {fileID: 7710932909215552944}
   cam: {fileID: 0}
   verbose: 0
+  movement_override: 0
   decisionLocked: 0
   meleeRange: 1.5
   roll: 0
@@ -296,6 +299,7 @@ MonoBehaviour:
   knockbackScale: 1
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
+  Death: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
 --- !u!114 &6145448066510244745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,13 +312,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d56afc52cbdaf458120302f1af9129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1228116736}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
-  attackDamage: 40
-  attackRange: 0.5
-  cooldown: 0.25
-  meleeAttackType: 0
+    m_Bits: 64
+  attackDamage: 10
+  attackRangeNormal: 1.5
+  finalAttackRange: 2.5
+  rb: {fileID: 6117880652488786894}
+  AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
+  cooldown: 0.5
 --- !u!114 &7710932909215552944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,10 +334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4b1afd63c4dde47a9c080702224d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavePoint: {fileID: 0}
-  facing: {fileID: 0}
-  wavePrefab: {fileID: 0}
+  wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
   startup: 0.1
+  cooldown: 0.5
 --- !u!114 &1185117119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,22 +349,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5112f33fd673bf8489b1b3497db45834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  attackPoint: {fileID: 446629925}
+  animator: {fileID: 1228116736}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackDamage: 5
+  attackDamage: 7
   attackRangeNormal: 1.5
   finalAttackRange: 2.5
-  rb: {fileID: 0}
+  rb: {fileID: 6117880652488786894}
   startup: 0
   firstmovelag: 1
+  firstmovetracking: 0.2
   secondmovelag: 2
+  secondmovetracking: 0.4
+  finalattacklag: 2
+  movedistance: 1
   firstmovex: 1
   firstmovey: 0
   secondmovex: -1
   secondmovey: 0
+  AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
+  ComboAttackSwing: {fileID: 11400000, guid: 1f47befd85007bf47a1ee733289ee222, type: 2}
 --- !u!114 &1695161211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,3 +448,16 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &8849157948837749563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}

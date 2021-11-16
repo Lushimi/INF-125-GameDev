@@ -30,38 +30,25 @@ public class PlayerControl : EntityControl
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
+    public int bossesDefeated = 0;
 
     private void Awake()
     {
         Player.Reset();
-        Debug.Log(MeleeAttackPoint);
+        //just so we don't have to press L for errors to go away
+        ChangeLoadout();
+        dodgeMove = dodgeMove == null ? loadout.DodgeList[0] : dodgeMove;
+        meleeAttack = meleeAttack == null ? loadout.MeleeList[0] : meleeAttack;
+        rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
+        specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
+        parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
     }
 
     // Update is called once per frame
     void Update()
     {
         Player.StaminaRegen();
-
-        if (canAct)
-        {
-
-            //Movement control
-            movementVector.x = Input.GetAxisRaw("Horizontal");
-            movementVector.y = Input.GetAxisRaw("Vertical");
-            movementVector.z = 0;
-
-
-            // Flip Sprite render x axis when switching directions
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else if (Input.GetAxis("Horizontal") < 0)
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-            }
-
-            //sets player orientation = to mouse position
+        //sets player orientation = to mouse position
             if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
             {
                 orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
@@ -83,6 +70,26 @@ public class PlayerControl : EntityControl
                 facingObject.transform.position = facing;
 
             }
+        if (canAct)
+        {
+
+            //Movement control
+            movementVector.x = Input.GetAxisRaw("Horizontal");
+            movementVector.y = Input.GetAxisRaw("Vertical");
+            movementVector.z = 0;
+
+
+            // Flip Sprite render x axis when switching directions
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (Input.GetAxis("Horizontal") < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+
+            
 
 
             animator.SetFloat("Horizontal", movementVector.x);
@@ -117,6 +124,14 @@ public class PlayerControl : EntityControl
             {
                 Parry();
             }
+            else if (Input.GetKeyDown(KeyCode.O))
+            {
+                SaveGame();
+            }
+            else if (Input.GetKeyDown(KeyCode.P))
+            {
+                LoadGame();
+            }
             //this "L" button is just for testing the loadout
             else if (Input.GetKeyDown(KeyCode.L))
             {
@@ -135,7 +150,8 @@ public class PlayerControl : EntityControl
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool("isMeleeAttacking", false);
+                animator.SetBool("isRangedAttacking", false);
                 canAct = true;
             }
         }
@@ -162,12 +178,35 @@ public class PlayerControl : EntityControl
         isInvulnerable = false;
     }
 
+    //saves the game for player
+    void SaveGame()
+    {
+        SaveLoad.Save(this);
+        //meleeAttack.attackDamage = 2;
+        Debug.Log("Saved game!");
+    }
+
+    //loads the game for player
+    void LoadGame()
+    {
+        SaveData save = SaveLoad.Load();
+        //loadout = save.loadout;
+        //dodgeMove = save.dodge;
+        meleeAttack.setMeleeAttackData(save.meleeAttack);
+        rangedAttack.setRangedAttackData(save.rangedAttack);
+        specialAttack.setSpecialData(save.specialAttack);
+        parryMove.setParryData(save.parry);
+
+
+    }
+
     // Player Melee Attack
     void MeleeAttack()
     {
         cooldown = meleeAttack.cooldown;
         meleeAttack.attack();
         canAct = false;
+        animator.SetFloat("Speed", 0);
         Debug.Log("MeleeAttack");
     }
 
@@ -175,7 +214,10 @@ public class PlayerControl : EntityControl
     // Player Ranged Attack
     void RangedAttack()
     {
+        cooldown = rangedAttack.cooldown;
         rangedAttack.attack();
+        canAct = false;
+        animator.SetFloat("Speed", 0);
         Debug.Log("RangedAttack");
     }
 

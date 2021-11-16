@@ -12,6 +12,14 @@ public class BossData : EntityData
         speed = bossVariables.speed;
         staminaPerSecond = bossVariables.staminaPerSecond;
         knockbackScale = bossVariables.knockbackScale;
-}
+    }
+
+
+    public override void Die()
+    {
+        Death.Raise();
+        Debug.Log("BigKnight died!");
+    }
+
 
 }

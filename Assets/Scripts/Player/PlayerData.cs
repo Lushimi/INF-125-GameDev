@@ -14,13 +14,14 @@ public class PlayerData : EntityData
         currentStamina = maxStamina;
         speed = 6f;
         staminaPerSecond = 17f;
+
     }
 
     public override void Die()
     {
         Debug.Log("Player died!");
         // Die Animation
-
+        Death.Raise();
         StartCoroutine(LoadAsyncScene());
     }
 

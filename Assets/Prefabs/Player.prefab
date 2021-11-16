@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 1137835596353710404}
   - component: {fileID: 2124123746238584657}
   - component: {fileID: 3556059926477084371}
-  - component: {fileID: -434355223354114603}
+  - component: {fileID: -5335901898362549193}
   - component: {fileID: 2928918565220437074}
   - component: {fileID: 2711965455732394999}
   - component: {fileID: 3131920184545752251}
@@ -174,8 +174,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &-434355223354114603
-BoxCollider2D:
+--- !u!58 &-5335901898362549193
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,18 +188,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!95 &2928918565220437074
 Animator:
   serializedVersion: 3
@@ -270,6 +260,7 @@ MonoBehaviour:
   rangedAttack: {fileID: 0}
   specialAttack: {fileID: 0}
   parryMove: {fileID: 0}
+  bossesDefeated: 0
 --- !u!114 &2046163533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,12 +429,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec35998bf5d13e54fbf1f91cd263f0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.25
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
   attackDamage: 40
   attackRange: 0.5
+  cooldown: 0.25
+  meleeAttackType: 0
 --- !u!114 &8552030842669948890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +451,7 @@ MonoBehaviour:
   startup: 0
   invuln: 0
   endLag: 0
+  parryType: 0
 --- !u!114 &949143243342971814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
+  rangedAttackType: 0
+  cooldown: 5
 --- !u!114 &433063116955879774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
+  specialType: 0
 --- !u!1 &7210680562664126696
 GameObject:
   m_ObjectHideFlags: 0

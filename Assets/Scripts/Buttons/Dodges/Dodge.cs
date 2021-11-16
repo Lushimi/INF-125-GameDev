@@ -9,7 +9,7 @@ public class Dodge : MonoBehaviour
     public float endLag;
     public float cooldown => startup + invuln + endLag;
     public float dodgeSpeedMultiplier;
-    private PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
+    internal PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
     public float Speed => dodgeSpeedMultiplier * PlayerController.Player.speed;
 
     public virtual void PerformDodge() {

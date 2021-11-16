@@ -9,16 +9,28 @@ public class BossControl : EntityControl
     [SerializeField]
     internal Rigidbody2D target;
     [SerializeField]
+    internal BossMeleeAttack meleeAttack;
+    [SerializeField]
     internal ComboAttack comboAttack;
+    [SerializeField]
+    internal BossRangedAttack rangedAttack;
+    [SerializeField]
+    internal WaveAttack waveAttack;
     [SerializeField]
     internal Camera cam;
     //[SerializeField]
     //internal BossAI bossai;
     public bool verbose = false;
+    public bool movement_override = false;
     public float decisionLocked = 0;
-    public float meleeRange = 1f;
+    public float meleeRange = 1.5f;
     public float roll = 0f;
+    public float waveRange = 9f; //random
     public float invincibiltyTimeOnHit;
+
+    public GameObject facingObject => transform.Find("Facing").gameObject;
+    public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
+    public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
 
     // Start is called before the first frame update
@@ -33,6 +45,18 @@ public class BossControl : EntityControl
     // Update is called once per frame
     void Update()
     {
+
+        if (Boss.currentHealth <= 0)
+        {
+            isInvulnerable = true;
+            canAct = false;
+            animator.SetBool("isDead", true);
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Speed", 0);
+            enabled = false;
+        }
+
         //Stamina Regen
         Boss.StaminaRegen();
         /*
@@ -73,26 +97,29 @@ public class BossControl : EntityControl
         facingobj.GetComponent<Transform>().position = facing;
 
         decisionLocked -= Time.deltaTime;
-        gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
+        if(!movement_override) gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
         if (canAct)
         {
             if (decisionLocked <= 0)
             {
+                //Remove once working
                 roll = Random.Range(0f, 100f);
+                //roll = 95.1f;
             }
-            
             if (roll <= 70)
             {
                 if ((target.position - rb.position).magnitude < meleeRange)
                 {
-                    if (Boss.currentStamina > 50)
+                    if (Boss.currentStamina >= 50)
                     {
                         Boss.currentStamina = Boss.currentStamina - 50;
                         ComboAttack();
                     }
                     else
                     {
-                        if (verbose) Debug.Log("Trying to perform melee attack");
+
+                        MeleeAttack();
+
                     }
 
 
@@ -110,16 +137,27 @@ public class BossControl : EntityControl
                     rb.MovePosition(rb.position + new Vector2(movementVector.x, movementVector.y).normalized * Boss.speed * Time.fixedDeltaTime);
                     */
                 }
-                if (decisionLocked <= 0) decisionLocked = 3f;
+                if (decisionLocked <= 0) decisionLocked = comboAttack.cooldown;
             }
             else if (roll <= 90)
             {
-                if (verbose) Debug.Log("Trying to perform ranged attack");
+
+                RangedAttack();
                 if (decisionLocked <= 0) decisionLocked = 1f;
             }
-            else
+            else //if roll > 90
             {
-                if (verbose) Debug.Log("Trying to perform wave attack");
+                
+                if (Boss.currentStamina > 10)
+                {
+                    Boss.currentStamina = Boss.currentStamina - 10;
+                    WaveAttack();
+                }
+                else
+                {
+                    ;
+                    //Debug.Log("Not enough stamina for wave attack");
+                }
                 if (decisionLocked <= 0) decisionLocked = 0.5f;
             }
 
@@ -131,17 +169,42 @@ public class BossControl : EntityControl
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool("isMeleeAttacking", false);
                 canAct = true;
             }
         }
     }
+
+    void MeleeAttack()
+    {
+        cooldown = meleeAttack.cooldown;
+        meleeAttack.attack();
+        canAct = false;
+        Debug.Log("Boss Melee Attack");
+    }
+
+
     void ComboAttack()
     {
-        cooldown = (comboAttack.cooldown);
+        cooldown = comboAttack.cooldown;
         comboAttack.comboAttack();
         canAct = false;
-        Debug.Log("Boss Combo Attack");
+        //Debug.Log("Boss Combo Attack");
+    }
+
+    void RangedAttack()
+    {
+        cooldown = (0.30f);
+        rangedAttack.attack();
+        canAct = false;
+    }
+
+    void WaveAttack()
+    {
+        cooldown = waveAttack.cooldown;
+        waveAttack.waveAttack();
+        canAct = false;
+       Debug.Log("Boss Wave Attack");
     }
 
     public void invulnOnHit()

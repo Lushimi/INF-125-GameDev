@@ -25,8 +25,11 @@ public abstract class EntityData : MonoBehaviour
     internal GameEvent HealthChanged;
     [SerializeField]
     internal GameEvent StaminaChanged;
+    [SerializeField]
+    internal GameEvent Death;
 
     internal bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
+    public Animator animator => gameObject.GetComponent<EntityControl>().animator;
 
     abstract public void Reset();
 
@@ -64,15 +67,15 @@ public abstract class EntityData : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("Enemy died!");
+        Death.Raise();
         // Die Animation
 
         // disable enemy
         gameObject.SetActive(false);
 
+
         // destroy enemy
         Destroy(gameObject);
-
-        // Die Animation
     }
 
     public virtual void StaminaRegen()

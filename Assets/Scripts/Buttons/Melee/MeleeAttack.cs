@@ -16,6 +16,8 @@ public class MeleeAttack : MonoBehaviour
 
     public int attackDamage = 40;
     public float attackRange = 0.5f;
+    public float cooldown = 0.25f;
+    public int meleeAttackType;
 
     [SerializeField]
     internal GameEvent AttackSwing;

@@ -28,5 +28,3 @@ public class WaveAttack : MonoBehaviour
         //Destroy(gameObject);
     }
 }
-
-

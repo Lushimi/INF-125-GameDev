@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Bosses/BossBullet.cs.meta
 guid: 2cebfbc4b69c0d34a9d0f0133d67450e
+=======
+guid: 6d4b1afd63c4dde47a9c080702224d4b
+>>>>>>> dfbc71127c231a008d276d6f4bcaad6b4a5293fe:Assets/Scripts/Bosses/WaveAttack.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

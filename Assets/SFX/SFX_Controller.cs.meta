@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/SFX/SFX_Controller.cs.meta
 guid: 5dee4ff7559f9e940a975a7ba374bf0a
+=======
+guid: a4d56afc52cbdaf458120302f1af9129
+>>>>>>> dfbc71127c231a008d276d6f4bcaad6b4a5293fe:Assets/Scripts/Bosses/BossMeleeAttack.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

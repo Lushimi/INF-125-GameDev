@@ -147,7 +147,7 @@ public class BossControl : EntityControl
             }
             else //if roll > 90
             {
-                
+                if (verbose) Debug.Log("Trying to perform wave attack");
                 if (Boss.currentStamina > 10)
                 {
                     Boss.currentStamina = Boss.currentStamina - 10;
@@ -197,6 +197,14 @@ public class BossControl : EntityControl
         cooldown = (0.30f);
         rangedAttack.attack();
         canAct = false;
+    }
+
+    void WaveAttack()
+    {
+        cooldown = waveAttack.cooldown;
+        waveAttack.waveAttack();
+        canAct = false;
+       Debug.Log("Boss Wave Attack");
     }
 
     void WaveAttack()

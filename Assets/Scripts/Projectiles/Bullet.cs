@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         // Changes rigidbody velocity
         rb.velocity = new Vector2(facing.position.x,facing.position.y) * speed;
 
-        
+
         // Flip bullet sprite render x axis when switching directions - horizontally
         if (facing.position.x > 0)
         {
@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
             // deal damage to enemy
             enemy.TakeDamage(damage);
         }
-        
+
         // destroy bullet
         Destroy(gameObject);
     }
@@ -52,5 +52,3 @@ public class Bullet : MonoBehaviour
 
 
 }
-
-

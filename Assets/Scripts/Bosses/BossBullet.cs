@@ -22,6 +22,16 @@ public class BossBullet : MonoBehaviour
         // Changes rigidbody velocity
         rb.velocity = new Vector2(facing.position.x,facing.position.y) * speed;
 
+        
+        // Flip bullet sprite render x axis when switching directions - horizontally
+        if (facing.position.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (facing.position.x < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)

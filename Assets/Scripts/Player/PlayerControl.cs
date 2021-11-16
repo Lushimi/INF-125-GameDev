@@ -36,7 +36,6 @@ public class PlayerControl : EntityControl
     {
         Player.Reset();
         //just so we don't have to press L for errors to go away
-        ChangeLoadout();
         dodgeMove = dodgeMove == null ? loadout.DodgeList[0] : dodgeMove;
         meleeAttack = meleeAttack == null ? loadout.MeleeList[0] : meleeAttack;
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
@@ -136,11 +135,6 @@ public class PlayerControl : EntityControl
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 ChangeLoadout();
-                dodgeMove = dodgeMove == null ? loadout.DodgeList[0] : dodgeMove;
-                meleeAttack = meleeAttack == null ? loadout.MeleeList[0] : meleeAttack;
-                rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
-                specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
-                parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
             }
 
         }
@@ -192,7 +186,6 @@ public class PlayerControl : EntityControl
     void SaveGame()
     {
         SaveLoad.Save(this);
-        //meleeAttack.attackDamage = 2;
         Debug.Log("Saved game!");
     }
 
@@ -200,14 +193,11 @@ public class PlayerControl : EntityControl
     void LoadGame()
     {
         SaveData save = SaveLoad.Load();
-        //loadout = save.loadout;
-        //dodgeMove = save.dodge;
-        meleeAttack.setMeleeAttackData(save.meleeAttack);
-        rangedAttack.setRangedAttackData(save.rangedAttack);
-        specialAttack.setSpecialData(save.specialAttack);
-        parryMove.setParryData(save.parry);
-
-
+        dodgeMove = loadout.DodgeList[save.dodge];
+        meleeAttack = loadout.MeleeList[save.meleeAttack];
+        rangedAttack = loadout.RangedList[save.rangedAttack];
+        specialAttack = loadout.SpecialList[save.specialAttack];
+        parryMove = loadout.ParryList[save.parry];
     }
 
     // Player Melee Attack
@@ -277,7 +267,8 @@ public class PlayerControl : EntityControl
 
     void ChangeLoadout()
     {
-        loadout.checkList();
+        //rn just testing changing the dodge on command
+        dodgeMove = loadout.DodgeList[loadout.checkList()];
     }
 
 }

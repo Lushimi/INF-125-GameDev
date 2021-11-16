@@ -7,13 +7,11 @@ using UnityEngine;
 public class SaveData
 {
 
-    //public LoadoutManager loadout;
+    public int dodge;
+    public int meleeAttack;
+    public int rangedAttack;
+    public int specialAttack;
+    public int parry;
 
-    //public DodgeData dodge;
-    public MeleeAttackData meleeAttack;
-    public RangedAttackData rangedAttack;
-    public SpecialFireballData specialAttack;
-    public ParryData parry;
-
-    public int bossesDefeated;
+    public int[] bossesDefeated;
 }

@@ -20,12 +20,11 @@ public class SaveLoad
 
         SaveData saveData = new SaveData();
 
-        //saveData.loadout = player.loadout;
-        //saveData.dodge = player.dodgeMove;
-        saveData.meleeAttack = new MeleeAttackData(player.meleeAttack);
-        saveData.rangedAttack = new RangedAttackData(player.rangedAttack);
-        saveData.specialAttack = new SpecialFireballData(player.specialAttack);
-        saveData.parry = new ParryData(player.parryMove);
+        saveData.dodge = player.loadout.DodgeList.IndexOf(player.dodgeMove);
+        saveData.meleeAttack = player.loadout.MeleeList.IndexOf(player.meleeAttack);
+        saveData.rangedAttack = player.loadout.RangedList.IndexOf(player.rangedAttack);
+        saveData.specialAttack = player.loadout.SpecialList.IndexOf(player.specialAttack);
+        saveData.parry = player.loadout.ParryList.IndexOf(player.parryMove);
 
         //serialize to xml
         DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));

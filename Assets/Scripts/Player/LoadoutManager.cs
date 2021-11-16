@@ -11,17 +11,17 @@ public class LoadoutManager : MonoBehaviour
     public List<SpecialFireball> SpecialList;
     public List<Parry> ParryList;
 
-    public void checkList()
+    public int checkList()
     {
-        Dodge[] dodges = gameObject.GetComponents<Dodge>();
-        foreach (var dodge in dodges)
+        foreach (var dodge in DodgeList)
         {            
             Debug.Log(dodge.ToString());
-            if (dodge is Dodge_Roll)
+            if (dodge is Dodge_Dash)
             {
-                DodgeList.Add(dodge);
+                return DodgeList.IndexOf(dodge);
             }
         }
+        return 0;
     }
 
 }

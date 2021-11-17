@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5740908689578510961}
   - component: {fileID: 6625328496036617436}
   - component: {fileID: 4018131720744404297}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4819,7 +4819,7 @@ GameObject:
   - component: {fileID: -1416980408677279354}
   - component: {fileID: 56172534283247041}
   - component: {fileID: 4704053856971520610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpecialFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

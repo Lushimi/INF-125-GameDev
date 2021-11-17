@@ -19,15 +19,11 @@ public class Fireball : MonoBehaviour
         // Changes rigidbody velocity
         rb.velocity = new Vector2(facing.position.x, facing.position.y) * speed;
 
-        // Flip fireball sprite render x axis when switching directions - horizontally
-        if (facing.position.x > 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (facing.position.x < 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
+
+        //basically copypasted from rotat_e
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * 90;
+        float angle = Mathf.Atan2(facing.position.y, facing.position.x) * Mathf.Rad2Deg;
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * angle;
 
     }
 

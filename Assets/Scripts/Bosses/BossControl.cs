@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossControl : EntityControl
@@ -14,6 +13,8 @@ public class BossControl : EntityControl
     internal ComboAttack comboAttack;
     [SerializeField]
     internal BossRangedAttack rangedAttack;
+    [SerializeField]
+    internal BossCharge chargeAttack;
     [SerializeField]
     internal WaveAttack waveAttack;
     [SerializeField]
@@ -104,9 +105,14 @@ public class BossControl : EntityControl
             {
                 //Remove once working
                 roll = Random.Range(0f, 100f);
-                //roll = 95.1f;
+                roll = 20;
+                Debug.Log(roll);
             }
-            if (roll <= 70)
+            if (roll <= 50)
+            {
+                ChargeAttack();
+            }
+            else if (roll <= 70)
             {
                 if ((target.position - rb.position).magnitude < meleeRange)
                 {
@@ -183,10 +189,17 @@ public class BossControl : EntityControl
         Debug.Log("Boss Melee Attack");
     }
 
+    void ChargeAttack()
+    {
+        cooldown = chargeAttack.cooldown;
+        Boss.ReduceStamina(chargeAttack.staminaCost);
+        chargeAttack.attack();
+        canAct = false;
+        Debug.Log("Boss Charge Attack");
+    }
 
     void ComboAttack()
     {
-        cooldown = comboAttack.cooldown;
         comboAttack.comboAttack();
         canAct = false;
         //Debug.Log("Boss Combo Attack");

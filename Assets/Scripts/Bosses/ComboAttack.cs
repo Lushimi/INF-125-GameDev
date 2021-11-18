@@ -32,14 +32,15 @@ public class ComboAttack : MonoBehaviour
     public float secondmovex = -1f;
     public float secondmovey = 0;
 
+    [Header("Game Events")]
     [SerializeField]
     internal GameEvent AttackSwing;
     [SerializeField]
     internal GameEvent ComboAttackSwing;
-
-    [Header("AudioSources")]
-    public AudioSource shine;
-    public AudioSource slam;
+    [SerializeField]
+    internal GameEvent ShiningSFX;
+    [SerializeField]
+    internal GameEvent SlamSFX;
 
     //Command
     public void comboAttack()
@@ -124,12 +125,12 @@ public class ComboAttack : MonoBehaviour
 
     public void PlayShineSFX()
     {
-        shine.Play();
+        ShiningSFX.Raise();
     }
 
     public void PlaySlamSFX()
     {
-        slam.Play();
+        SlamSFX.Raise();
     }
 
     public bool isDead()

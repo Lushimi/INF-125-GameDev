@@ -1497,6 +1497,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1467552551612215687, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467552552098783510, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467552552720745880, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1467552552846705824, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1544,6 +1556,22 @@ PrefabInstance:
     - target: {fileID: 1467552552846705848, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
       propertyPath: m_Name
       value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104404403587429315, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055156212525578613, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541187876009197763, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241299521184836709, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
@@ -1916,6 +1944,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 423123589990507752, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 423123590634507555, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 423123590665843491, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
       propertyPath: m_Name
       value: BigKnightArena

@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class PlayerData : EntityData
 {
+    public GameEvent DodgeSFX;
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
-    [Header("Audio")]
-    public AudioSource dodgeSFX;
+
+
     public override void Reset()
     {
         currentHealth = maxHP;
@@ -41,7 +42,7 @@ public class PlayerData : EntityData
 
     private void DodgedDamage()
     {
-        dodgeSFX.Play();
+        DodgeSFX.Raise();
     }
 
     public override void Die()

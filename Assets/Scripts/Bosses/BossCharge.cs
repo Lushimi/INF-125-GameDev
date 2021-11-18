@@ -10,7 +10,6 @@ public class BossCharge : MonoBehaviour
 
     public int attackDamage = 10;
     public float attackRangeNormal = 1.5f;
-    public float finalAttackRange = 2.5f;
     public Rigidbody2D rb;
     [SerializeField]
     internal GameEvent AttackSwing;
@@ -30,7 +29,8 @@ public class BossCharge : MonoBehaviour
     {
         //1
         animator.SetBool("isCharging", true);
-        //this waits till the animation finishes, from this answer: https://answers.unity.com/questions/1208395/animator-wait-until-animation-finishes.html    
+        //next function is called through unity animation events
+        //previously i used this to wait for the animation to finish: https://answers.unity.com/questions/1208395/animator-wait-until-animation-finishes.html    
 
     }
 
@@ -50,7 +50,7 @@ public class BossCharge : MonoBehaviour
         while ( Vector3.Distance(transform.position, playerPos) > 0.5)
         {
             yield return null;
-            float step = Boss.Boss.speed * Time.deltaTime; //boss boss lmao (it work tho)
+            float step = Boss.Boss.speed * 2 *Time.deltaTime; //boss boss lmao (it work tho)
             transform.position = Vector3.MoveTowards(transform.position, playerPos, step);
             timeout -= Time.deltaTime;
             Debug.Log(timeout);

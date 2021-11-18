@@ -19,6 +19,7 @@ public abstract class EntityData : MonoBehaviour
     public float currentHealth = 0;
     public float staminaPerSecond;
     public float knockbackScale = 100f;
+    public bool isDead = false;
 
     [Header("Game Events")]
     [SerializeField]
@@ -30,14 +31,15 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent SceneChanged;
 
-    internal bool isInvulnerable => gameObject.GetComponent<EntityControl>().isInvulnerable;
-    public Animator animator => gameObject.GetComponent<EntityControl>().animator;
+    internal EntityControl entityControl => gameObject.GetComponent<EntityControl>();
+    internal bool isInvulnerable => entityControl.isInvulnerable;
+    internal Animator animator => entityControl.animator;
 
     abstract public void Reset();
 
     public virtual void TakeDamage(int damage)
     {
-        if (!isInvulnerable)
+        if (!isInvulnerable && !isDead)
         {
             currentHealth -= damage;
             HealthChanged.Raise();
@@ -45,12 +47,13 @@ public abstract class EntityData : MonoBehaviour
             {
                 Die();
             }
+            entityControl.invulnOnHit();
         }
     }
 
     public virtual void TakeDamage(int damage, GameObject attacker)
     {
-        if (!isInvulnerable)
+        if (!isInvulnerable && !isDead)
         {
             Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             currentHealth -= damage;
@@ -63,11 +66,13 @@ public abstract class EntityData : MonoBehaviour
             {
                 Die();
             }
+            entityControl.invulnOnHit();
         }
     }
 
     public virtual void Die()
     {
+        isDead = true;
         Debug.Log("Enemy died!");
         Death.Raise();
         // Die Animation

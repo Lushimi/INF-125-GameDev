@@ -10,7 +10,6 @@ public class PlayerControl : EntityControl
     internal PlayerData Player;
     [SerializeField]
     internal Camera cam;
-    public float invincibiltyTimeOnHit;
 
     [Header("Loadout")]
     [SerializeField]
@@ -22,7 +21,7 @@ public class PlayerControl : EntityControl
     [SerializeField]
     internal RangedAttack rangedAttack;
     [SerializeField]
-    internal SpecialFireball specialAttack;
+    internal Special specialAttack;
     [SerializeField]
     internal Parry parryMove;
 
@@ -30,7 +29,12 @@ public class PlayerControl : EntityControl
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
-    public int bossesDefeated = 0;
+    public int[] bossesDefeated = new int[] {0};
+
+    public int bossID => GameObject.Find("Boss").GetComponent<BossData>().bossID;
+
+    [Header("Game Events")]
+    public GameEvent MeleeAttackEvent;
 
     private void Awake()
     {
@@ -167,19 +171,9 @@ public class PlayerControl : EntityControl
         transform.position += moveVector;
     }
 
-    public void invulnOnHit()
+    public void bossDied() 
     {
-        StartCoroutine(ActivateInvincibility(invincibiltyTimeOnHit));
-    }
-
-    public IEnumerator ActivateInvincibility(float invulnTime)
-    {
-        isInvulnerable = true;
-        for (float i = 0; i < invulnTime; i += (invulnTime/75) )
-        {
-            yield return new WaitForSeconds(invulnTime/75);
-        }
-        isInvulnerable = false;
+        bossesDefeated.SetValue(1, bossID);
     }
 
     //saves the game for player
@@ -198,6 +192,7 @@ public class PlayerControl : EntityControl
         rangedAttack = loadout.RangedList[save.rangedAttack];
         specialAttack = loadout.SpecialList[save.specialAttack];
         parryMove = loadout.ParryList[save.parry];
+        bossesDefeated = save.bossesDefeated;
     }
 
     // Player Melee Attack
@@ -205,6 +200,7 @@ public class PlayerControl : EntityControl
     {
         cooldown = meleeAttack.cooldown;
         meleeAttack.attack();
+        MeleeAttackEvent.Raise();
         canAct = false;
         animator.SetFloat("Speed", 0);
         Debug.Log("MeleeAttack");
@@ -214,6 +210,7 @@ public class PlayerControl : EntityControl
     // Player Ranged Attack
     void RangedAttack()
     {
+        Player.ReduceStamina(rangedAttack.staminaCost);
         cooldown = rangedAttack.cooldown;
         rangedAttack.attack();
         canAct = false;
@@ -248,15 +245,18 @@ public class PlayerControl : EntityControl
     //Player Special
     void Special()
     {
-        //Special animation occurs
-        //Special ability appears and does action
+        cooldown = specialAttack.cooldown;
+        Player.ReduceStamina(specialAttack.staminaCost);
+        animator.SetFloat("Speed", 0);
         specialAttack.special();
+        canAct = false;
         Debug.Log("Special");
     }
 
     //Player Parry
     void Parry()
     {
+        Player.ReduceStamina(parryMove.staminaCost);
         //Parry animation occurs
         //Frame of invulnerability with ending lag
         cooldown = (parryMove.cooldown);

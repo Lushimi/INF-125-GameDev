@@ -25,6 +25,7 @@ public class SaveLoad
         saveData.rangedAttack = player.loadout.RangedList.IndexOf(player.rangedAttack);
         saveData.specialAttack = player.loadout.SpecialList.IndexOf(player.specialAttack);
         saveData.parry = player.loadout.ParryList.IndexOf(player.parryMove);
+        saveData.bossesDefeated = player.bossesDefeated;
 
         //serialize to xml
         DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));

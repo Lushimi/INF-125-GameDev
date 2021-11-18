@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class BossData : EntityData
 {
-
+    public int bossID;
     public override void Reset()
     {
         currentHealth = bossVariables.maxHP;
@@ -18,7 +18,7 @@ public class BossData : EntityData
     public override void Die()
     {
         Death.Raise();
-        Debug.Log("BigKnight died!");
+        Debug.Log("Boss " + bossID + " died!");
     }
 
 

@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class BossControl : EntityControl
 {
+
+    [Header("Boss")]
     [SerializeField]
     internal BossData Boss;
     [SerializeField]
     internal Rigidbody2D target;
+    [SerializeField]
+    internal Camera cam;
+
+    [Header("Moves")]
     [SerializeField]
     internal BossMeleeAttack meleeAttack;
     [SerializeField]
@@ -17,17 +23,16 @@ public class BossControl : EntityControl
     internal BossCharge chargeAttack;
     [SerializeField]
     internal WaveAttack waveAttack;
-    [SerializeField]
-    internal Camera cam;
+
+    [Header("Boss Decision Making")]
     //[SerializeField]
     //internal BossAI bossai;
     public bool verbose = false;
     public bool movement_override = false;
     public float decisionLocked = 0;
-    public float meleeRange = 1.5f;
     public float roll = 0f;
+    public float meleeRange = 1.5f;
     public float waveRange = 9f; //random
-    public float invincibiltyTimeOnHit;
 
     public GameObject facingObject => transform.Find("Facing").gameObject;
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
@@ -219,21 +224,4 @@ public class BossControl : EntityControl
        Debug.Log("Boss Wave Attack");
     }
 
-    public void invulnOnHit()
-    {
-        StartCoroutine(ActivateInvincibility(invincibiltyTimeOnHit));
-    }
-
-    //this also stuns the mob by putting the canAct to false
-    public IEnumerator ActivateInvincibility(float invulnTime)
-    {
-        isInvulnerable = true;
-        canAct = false;
-        for (float i = 0; i < invulnTime; i += (invulnTime / 75))
-        {
-            yield return new WaitForSeconds(invulnTime / 75);
-        }
-        canAct = true;
-        isInvulnerable = false;
-    }
 }

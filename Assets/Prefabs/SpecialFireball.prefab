@@ -4943,6 +4943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
-  speed: 1
+  speed: 3
   rb: {fileID: 56172534283247041}
   facing: {fileID: 0}

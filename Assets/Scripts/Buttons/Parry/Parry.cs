@@ -10,7 +10,7 @@ public class Parry : MonoBehaviour
     public float cooldown => startup + invuln + endLag;
     private PlayerControl PlayerController => transform.parent.gameObject.GetComponent<PlayerControl>();
 
-    public int parryType;
+    internal float staminaCost;
 
     public virtual void parry()
     {
@@ -44,15 +44,6 @@ public class Parry : MonoBehaviour
         }
 
         PlayerController.isInvulnerable = false;
-    }
-
-    public void setParryData(ParryData parryData)
-    {
-        startup = parryData.startup;
-        invuln = parryData.invuln;
-        endLag = parryData.endLag;
-
-        parryType = parryData.parryType;
     }
 
 }

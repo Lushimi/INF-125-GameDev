@@ -62,6 +62,7 @@ public class BossCharge : MonoBehaviour
 
     public void hit()
     {
+        animator.SetBool("isChargeAttacking", false);
         //3
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
@@ -70,7 +71,6 @@ public class BossCharge : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
-            animator.SetBool("isChargeAttacking", false);
             AttackSwing.Raise();
             Debug.Log("Player damaged by charge attack!");
         }

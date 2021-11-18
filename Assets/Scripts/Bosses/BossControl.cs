@@ -105,7 +105,6 @@ public class BossControl : EntityControl
             {
                 //Remove once working
                 roll = Random.Range(0f, 100f);
-                roll = 20;
                 Debug.Log(roll);
             }
             if (roll <= 50)

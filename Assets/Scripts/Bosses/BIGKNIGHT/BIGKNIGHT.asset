@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2684263948a54f248a0b9d15c0ba0cea, type: 3}
   m_Name: BIGKNIGHT
   m_EditorClassIdentifier: 
-  speed: 2.5
-  maxStamina: 200
+  speed: 3.5
+  maxStamina: 1000
   maxHP: 700
   staminaPerSecond: 25
   knockbackScale: 65

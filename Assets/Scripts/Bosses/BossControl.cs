@@ -191,6 +191,18 @@ public class BossControl : EntityControl
     {
         cooldownOverride = true;
     }
+
+    public void ResetAllBossAnimBools()
+    {
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            if (parameter.type is AnimatorControllerParameterType.Bool)
+            {
+                animator.SetBool(parameter.name, false);
+            }
+        }
+        disableCooldown();
+    }
     void MeleeAttack()
     {
         cooldown = 999;

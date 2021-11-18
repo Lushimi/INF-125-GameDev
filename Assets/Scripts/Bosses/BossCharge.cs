@@ -37,8 +37,8 @@ public class BossCharge : MonoBehaviour
     public void finishedCharging() 
     {
         //2
-        animator.SetBool("isCharging", false);
         animator.SetBool("isChargeAttacking", true);
+        animator.SetBool("isCharging", false);
         StartCoroutine(chargeAttacking());
     }
 
@@ -50,31 +50,32 @@ public class BossCharge : MonoBehaviour
         while ( Vector3.Distance(transform.position, playerPos) > 0.5)
         {
             yield return null;
-            float step = Boss.Boss.speed * 2 *Time.deltaTime; //boss boss lmao (it work tho)
+            float step = Boss.Boss.speed * 3 *Time.deltaTime; //boss boss lmao (it work tho)
             transform.position = Vector3.MoveTowards(transform.position, playerPos, step);
             timeout -= Time.deltaTime;
-            Debug.Log(timeout);
             if (timeout <= 0) break;
         }
 
-        hit();
+        animator.SetBool("isChargeAttacking", false);
+        animator.SetBool("isChargeAttackHitting", true);
     }
 
     public void hit()
     {
-        animator.SetBool("isChargeAttacking", false);
+        
         //3
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
-
+        AttackSwing.Raise();
         // Damage enemies (loop over all enemies in collider array)
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
-            AttackSwing.Raise();
             Debug.Log("Player damaged by charge attack!");
         }
+        animator.SetBool("isChargeAttackHitting", false);
     }
+
 
     // 1. charge up + do charging up anim 
     // 2. run in a direction after charging + loop charging animation 

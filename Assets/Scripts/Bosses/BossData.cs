@@ -17,6 +17,7 @@ public class BossData : EntityData
 
     public override void Die()
     {
+        isDead = true;
         Death.Raise();
         Debug.Log("Boss " + bossID + " died!");
     }

@@ -33,6 +33,7 @@ public class BossControl : EntityControl
     public float roll = 0f;
     public float meleeRange = 1.5f;
     public float waveRange = 9f; //random
+    public bool cooldownOverride = false;
 
     public GameObject facingObject => transform.Find("Facing").gameObject;
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
@@ -52,7 +53,7 @@ public class BossControl : EntityControl
     void Update()
     {
 
-        if (Boss.currentHealth <= 0)
+        if (Boss.isDead)
         {
             isInvulnerable = true;
             canAct = false;
@@ -110,9 +111,9 @@ public class BossControl : EntityControl
             {
                 //Remove once working
                 roll = Random.Range(0f, 100f);
-                Debug.Log(roll);
+                Debug.Log("Boss " + Boss.bossID + " rolled a 1d100: " + roll);
             }
-            if (roll <= 50)
+            if (roll <= 40)
             {
                 ChargeAttack();
             }
@@ -177,25 +178,30 @@ public class BossControl : EntityControl
         {
             // prevents Boss from attacking consecutively without cooldown
             cooldown -= Time.deltaTime;
-            if (cooldown <= 0)
+            if (cooldown <= 0 || cooldownOverride)
             {
+                cooldownOverride = false;
                 animator.SetBool("isMeleeAttacking", false);
                 canAct = true;
             }
         }
     }
 
+    public void disableCooldown() 
+    {
+        cooldownOverride = true;
+    }
     void MeleeAttack()
     {
-        cooldown = meleeAttack.cooldown;
-        meleeAttack.attack();
+        cooldown = 999;
+        animator.SetBool("isMeleeAttacking", true);
         canAct = false;
         Debug.Log("Boss Melee Attack");
     }
 
     void ChargeAttack()
     {
-        cooldown = chargeAttack.cooldown;
+        cooldown = 999;
         Boss.ReduceStamina(chargeAttack.staminaCost);
         chargeAttack.attack();
         canAct = false;
@@ -204,9 +210,10 @@ public class BossControl : EntityControl
 
     void ComboAttack()
     {
+        cooldown = 999;
         comboAttack.comboAttack();
         canAct = false;
-        //Debug.Log("Boss Combo Attack");
+        Debug.Log("Boss Combo Attack");
     }
 
     void RangedAttack()

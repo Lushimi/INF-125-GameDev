@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8153121279779152434}
   - component: {fileID: 8153121279779152433}
   - component: {fileID: -6880813739292192908}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91333114e117eab4bb5a6c49956c6a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 5
   rb: {fileID: 8153121279779152434}
   damage: 30
   facing: {fileID: 0}

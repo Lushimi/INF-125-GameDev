@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossBullet : MonoBehaviour
 {
 
-    public float speed = 10f;
-    public int damage = 1;
+    public float speed;
+    public int damage;
     public Rigidbody2D rb;
     public Transform facing;
 
@@ -43,9 +43,11 @@ public class BossBullet : MonoBehaviour
         {
             // deal damage to enemy
             enemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
         
         // destroy bullet
+        if(!(hitInfo.GetComponent<EntityData>() is BossData))
         Destroy(gameObject);
     }
 

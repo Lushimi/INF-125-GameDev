@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerControl : EntityControl
 {
@@ -29,7 +30,7 @@ public class PlayerControl : EntityControl
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
-    public int[] bossesDefeated = new int[] {0};
+    public List<int> bossesDefeated = new List<int>(new int[5]);
 
     public int bossID => GameObject.Find("Boss").GetComponent<BossData>().bossID;
 
@@ -173,7 +174,7 @@ public class PlayerControl : EntityControl
 
     public void bossDied() 
     {
-        bossesDefeated.SetValue(1, bossID);
+        bossesDefeated[bossID] = 1;
     }
 
     //saves the game for player
@@ -192,7 +193,12 @@ public class PlayerControl : EntityControl
         rangedAttack = loadout.RangedList[save.rangedAttack];
         specialAttack = loadout.SpecialList[save.specialAttack];
         parryMove = loadout.ParryList[save.parry];
-        bossesDefeated = save.bossesDefeated;
+        int i = 0;
+        foreach (int boss in bossesDefeated) 
+        {
+            bossesDefeated[i] = boss;
+            i++;
+        } 
     }
 
     // Player Melee Attack

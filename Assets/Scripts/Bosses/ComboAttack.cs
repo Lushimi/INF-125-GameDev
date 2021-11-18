@@ -37,6 +37,10 @@ public class ComboAttack : MonoBehaviour
     [SerializeField]
     internal GameEvent ComboAttackSwing;
 
+    [Header("AudioSources")]
+    public AudioSource shine;
+    public AudioSource slam;
+
     //Command
     public void comboAttack()
     {
@@ -46,25 +50,41 @@ public class ComboAttack : MonoBehaviour
     //Coroutine
     public IEnumerator IComboAttack()
     {
-        yield return new WaitForSeconds(startup);
-        if(!isDead()) attack();
-        yield return new WaitForSeconds(firstmovelag);
-        animator.SetBool("isMeleeAttacking", false);
-        StartCoroutine(MoveTowardsPlayer(firstmovetracking,1));
-        yield return new WaitForSeconds(secondmovelag);
-        animator.SetBool("isMeleeAttacking", false);
-        StartCoroutine(MoveTowardsPlayer(secondmovetracking,2));
-        yield return new WaitForSeconds(finalattacklag);
-        animator.SetBool("isMeleeAttacking", false);
+        if (!isDead()) 
+        {
+            yield return new WaitForSeconds(startup);
+            animator.SetBool("comboP1", true);
+        }
     }
 
-    public void attack()
+    public void secondAttack()
+    {
+        animator.SetBool("comboP1", false);
+        animator.SetBool("comboP2", true);
+
+        StartCoroutine(MoveTowardsPlayer(firstmovetracking));
+    }
+
+    public void thirdAttack()
+    {
+        animator.SetBool("comboP2", false);
+        animator.SetBool("comboP3", true);
+
+        StartCoroutine(MoveTowardsPlayer(secondmovetracking));
+    }
+
+    public void finishAttack()
+    {
+
+        animator.SetBool("comboP3", false);
+    }
+
+    public void Boss_Combo_Attack()
     {
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
         AttackSwing.Raise();
-        animator.SetBool("isMeleeAttacking", true);
         // Damage enemies (loop over all enemies in collider array)
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -72,25 +92,6 @@ public class ComboAttack : MonoBehaviour
             Debug.Log("Player damaged by combo attack!");
         }
         
-    }
-
-    //Final Combo Attack
-    public void attackFinal()
-    {
-
-        // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, finalAttackRange, enemyLayers);
-        ComboAttackSwing.Raise();
-        animator.SetBool("isMeleeAttacking", true);
-        // Damage enemies (loop over all enemies in collider array)
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
-            Debug.Log("Player damaged by combo attack!");
-        }
-        
-
-
     }
 
     //Movement
@@ -106,7 +107,7 @@ public class ComboAttack : MonoBehaviour
     }
 
     //Movement
-    public IEnumerator MoveTowardsPlayer(float tracking_time, int attackType)
+    public IEnumerator MoveTowardsPlayer(float tracking_time)
     {
         if(!isDead())
         {
@@ -118,9 +119,17 @@ public class ComboAttack : MonoBehaviour
             gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
             gameObject.GetComponent<Pathfinding.AIPath>().maxSpeed = oldSpeed;
             gameObject.GetComponent<BossControl>().movement_override = false;
-            if (attackType == 1) attack();
-            else if (attackType == 2) attackFinal();
         }
+    }
+
+    public void PlayShineSFX()
+    {
+        shine.Play();
+    }
+
+    public void PlaySlamSFX()
+    {
+        slam.Play();
     }
 
     public bool isDead()

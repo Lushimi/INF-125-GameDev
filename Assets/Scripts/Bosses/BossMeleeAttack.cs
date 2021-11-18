@@ -17,7 +17,7 @@ public class BossMeleeAttack : MonoBehaviour
 
     public float cooldown = 0.3f;
 
-    public void attack()
+    public void Boss_Melee_Attack()
     {
         AttackSwing.Raise();
 
@@ -30,8 +30,6 @@ public class BossMeleeAttack : MonoBehaviour
             enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
             Debug.Log("Player damaged by melee attack!");
         }
-
-        animator.SetBool("isMeleeAttacking", true);
     }
 
 

@@ -76,13 +76,6 @@ public abstract class EntityData : MonoBehaviour
         Debug.Log("Enemy died!");
         Death.Raise();
         // Die Animation
-
-        // disable enemy
-        gameObject.SetActive(false);
-
-
-        // destroy enemy
-        Destroy(gameObject);
     }
 
     public virtual void StaminaRegen()

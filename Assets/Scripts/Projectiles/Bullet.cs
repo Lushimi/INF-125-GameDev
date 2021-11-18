@@ -40,7 +40,8 @@ public class Bullet : MonoBehaviour
         }
 
         // destroy bullet
-        Destroy(gameObject);
+        if (!(hitInfo.gameObject.layer == (LayerMask)11) && !(hitInfo.gameObject.layer == (LayerMask)10))
+            Destroy(gameObject);
     }
 
 

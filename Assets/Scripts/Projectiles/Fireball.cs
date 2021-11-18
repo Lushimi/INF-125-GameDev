@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
     public int damage = 30;
     public float speed = 10f;
+    public float liveTime = 5f;
     public Rigidbody2D rb;
     public Transform facing;
 
@@ -24,8 +26,16 @@ public class Fireball : MonoBehaviour
         gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * 90;
         float angle = Mathf.Atan2(facing.position.y, facing.position.x) * Mathf.Rad2Deg;
         gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * angle;
-
+        StartCoroutine(destroyTimer());
     }
+
+
+    private IEnumerator destroyTimer()
+    { 
+        yield return new WaitForSecondsRealtime(liveTime);
+        Destroy(gameObject);
+    }
+
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -36,9 +46,15 @@ public class Fireball : MonoBehaviour
         {
             // deal damage to enemy
             enemy.TakeDamage(damage);
+            // destroy fireball
+            Destroy(gameObject);
         }
 
-        // destroy fireball
-        Destroy(gameObject);
+        Debug.Log(hitInfo.gameObject.layer);
+        if (!(hitInfo.gameObject.layer == (LayerMask)11) && !(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)10))
+        {
+            if (!(hitInfo.GetComponent<EntityData>() is PlayerData))
+                Destroy(gameObject);
+        }
     }
 }

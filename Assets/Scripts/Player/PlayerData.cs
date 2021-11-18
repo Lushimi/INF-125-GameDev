@@ -8,6 +8,8 @@ public class PlayerData : EntityData
 {
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
+    [Header("Audio")]
+    public AudioSource dodgeSFX;
     public override void Reset()
     {
         currentHealth = maxHP;
@@ -17,6 +19,29 @@ public class PlayerData : EntityData
         speed = 6f;
         staminaPerSecond = 17f;
 
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        if (isInvulnerable)
+        {
+            DodgedDamage();
+        }
+        base.TakeDamage(damage);
+    }
+
+    public override void TakeDamage(int damage, GameObject attacker)
+    {
+        if (isInvulnerable)
+        {
+            DodgedDamage();
+        }
+        base.TakeDamage(damage, attacker);
+    }
+
+    private void DodgedDamage()
+    {
+        dodgeSFX.Play();
     }
 
     public override void Die()

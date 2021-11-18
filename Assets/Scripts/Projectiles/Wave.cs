@@ -5,9 +5,9 @@ using UnityEngine;
 //Trim bullet
 public class Wave : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed;
     public Rigidbody2D rb;
-    public int damage = 10;
+    public int damage;
     public Transform facing;
     
 
@@ -26,8 +26,6 @@ public class Wave : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.name);
-        Debug.Log("Wave collision");
         // Get info for the enemies we hit
 
         //Add a case for colliding into world (trees, boundaries)
@@ -40,7 +38,8 @@ public class Wave : MonoBehaviour
         }
 
         // destroy bullet
-        Destroy(gameObject);
+        if (!(hitInfo.GetComponent<EntityData>() is BossData))
+            Destroy(gameObject);
     }
 
 }

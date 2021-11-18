@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BigKnight_Attack
+  m_Name: BigKnight_Combo_2
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,19 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
+      value: {fileID: 21300000, guid: aa460d1c64d882c438d3ac2e69a64169, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
-    - time: 0.6666667
-      value: {fileID: 21300000, guid: 087e0efff4c167d4480448926749f297, type: 3}
-    - time: 0.75
-      value: {fileID: 21300000, guid: 087e0efff4c167d4480448926749f297, type: 3}
-    - time: 0.8333333
-      value: {fileID: 21300000, guid: 4575af4cd5c421647af25fc06586a69c, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 4575af4cd5c421647af25fc06586a69c, type: 3}
+      value: {fileID: 21300000, guid: b855b0066f97c2842a0398ae3f1495fe, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: e7b71c7f96d317e40a7915fc6b8c1bf7, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: b21860bcfcaed3142a47cd6ea2801df8, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,24 +46,21 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
-    - {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
-    - {fileID: 21300000, guid: 446b07b39f97f7e4eb147097824ed31e, type: 3}
-    - {fileID: 21300000, guid: 087e0efff4c167d4480448926749f297, type: 3}
-    - {fileID: 21300000, guid: 087e0efff4c167d4480448926749f297, type: 3}
-    - {fileID: 21300000, guid: 4575af4cd5c421647af25fc06586a69c, type: 3}
-    - {fileID: 21300000, guid: 4575af4cd5c421647af25fc06586a69c, type: 3}
+    - {fileID: 21300000, guid: aa460d1c64d882c438d3ac2e69a64169, type: 3}
+    - {fileID: 21300000, guid: b855b0066f97c2842a0398ae3f1495fe, type: 3}
+    - {fileID: 21300000, guid: e7b71c7f96d317e40a7915fc6b8c1bf7, type: 3}
+    - {fileID: 21300000, guid: b21860bcfcaed3142a47cd6ea2801df8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0833334
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -84,15 +75,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1
-    functionName: disableCooldown
+  - time: 0.41666666
+    functionName: Boss_Combo_Attack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: Boss_Melee_Attack
+  - time: 0.41666666
+    functionName: thirdAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

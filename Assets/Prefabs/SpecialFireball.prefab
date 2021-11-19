@@ -4943,7 +4943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  speed: 0.5
+  speed: 1
   liveTime: 2
   rb: {fileID: 56172534283247041}
   facing: {fileID: 0}

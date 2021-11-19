@@ -275,7 +275,6 @@ public class PlayerControl : EntityControl
     {
         //Assist animation occurs
         //Assisting character joins screen
-        //leave this for later
         Debug.Log("Assist");
     }
 

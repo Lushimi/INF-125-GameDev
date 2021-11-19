@@ -10,8 +10,8 @@ public class BossMeleeAttack : MonoBehaviour
 
     public int attackDamage = 5;
     public float attackRangeNormal = 1.5f;
-    public float finalAttackRange = 2.5f;
     public Rigidbody2D rb;
+   
     [SerializeField]
     internal GameEvent AttackSwing;
 

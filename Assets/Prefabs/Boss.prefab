@@ -107,12 +107,12 @@ GameObject:
   - component: {fileID: -3673268391658415719}
   - component: {fileID: 4760656221710792641}
   - component: {fileID: 6145448066510244745}
+  - component: {fileID: 8849157948837749563}
   - component: {fileID: 7710932909215552944}
   - component: {fileID: 1185117119}
   - component: {fileID: 1695161211}
   - component: {fileID: 1695161212}
   - component: {fileID: 1695161213}
-  - component: {fileID: 8849157948837749563}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -301,6 +301,8 @@ MonoBehaviour:
   staminaPerSecond: 0
   knockbackScale: 1
   isDead: 0
+  isDamaged: 0
+  damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
   Death: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
@@ -347,10 +349,22 @@ MonoBehaviour:
     m_Bits: 64
   attackDamage: 12
   attackRangeNormal: 1.5
-  finalAttackRange: 2.5
   rb: {fileID: 6117880652488786894}
   AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
   cooldown: 0.5
+--- !u!114 &8849157948837749563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}
 --- !u!114 &7710932909215552944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,16 +493,3 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &8849157948837749563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}

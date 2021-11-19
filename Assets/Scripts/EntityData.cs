@@ -41,19 +41,8 @@ public abstract class EntityData : MonoBehaviour
     internal Animator animator => entityControl.animator;
 
     abstract public void Reset();
-    
-    void Update()
-    {
-        if (isDamaged)
-        {
-            damageScreen.color = new Color(255f, 0f, 0f, 0.5f);
-        }
-        else
-        {
-            damageScreen.color = Color.Lerp(damageScreen.color, Color.clear, 5f * Time.deltaTime);
-        }
-        isDamaged = false;
-    }
+
+    abstract public void Update();
     
     public virtual void TakeDamage(int damage)
     {

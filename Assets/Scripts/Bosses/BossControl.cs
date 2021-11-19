@@ -240,7 +240,7 @@ public class BossControl : EntityControl
         cooldown = waveAttack.cooldown;
         waveAttack.waveAttack();
         canAct = false;
-       Debug.Log("Boss Wave Attack");
+        Debug.Log("Boss Wave Attack");
     }
 
 }

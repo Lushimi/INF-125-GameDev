@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class EntityData : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public abstract class EntityData : MonoBehaviour
     public float staminaPerSecond;
     public float knockbackScale = 100f;
     public bool isDead = false;
+    public bool isDamaged = false;
+    public Image damageScreen;
 
     [Header("Game Events")]
     [SerializeField]
@@ -31,16 +34,32 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent SceneChanged;
 
+  
+
     internal EntityControl entityControl => gameObject.GetComponent<EntityControl>();
     internal bool isInvulnerable => entityControl.isInvulnerable;
     internal Animator animator => entityControl.animator;
 
     abstract public void Reset();
-
+    
+    void Update()
+    {
+        if (isDamaged)
+        {
+            damageScreen.color = new Color(255f, 0f, 0f, 0.5f);
+        }
+        else
+        {
+            damageScreen.color = Color.Lerp(damageScreen.color, Color.clear, 5f * Time.deltaTime);
+        }
+        isDamaged = false;
+    }
+    
     public virtual void TakeDamage(int damage)
     {
         if (!isInvulnerable && !isDead)
         {
+            isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
             if (currentHealth <= 0)
@@ -55,12 +74,12 @@ public abstract class EntityData : MonoBehaviour
     {
         if (!isInvulnerable && !isDead)
         {
+            isDamaged = true;
             Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             currentHealth -= damage;
             HealthChanged.Raise();
             Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
             myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
-            // Play hurt animation
 
             if (currentHealth <= 0)
             {
@@ -75,7 +94,6 @@ public abstract class EntityData : MonoBehaviour
         isDead = true;
         Debug.Log("Enemy died!");
         Death.Raise();
-        // Die Animation
     }
 
     public virtual void StaminaRegen()

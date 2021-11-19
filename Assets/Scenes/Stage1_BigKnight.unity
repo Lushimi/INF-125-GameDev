@@ -807,11 +807,15 @@ PrefabInstance:
       objectReference: {fileID: 196586812}
     - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: attackDamage
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: attackRangeNormal
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710932909215552944, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: startup
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: m_Name
@@ -1864,7 +1868,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358253236106991667, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attackDamage
-      value: 50
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381452164691751340, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: cooldown
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381452164691751340, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: staminaCost
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8538629211859943348, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: AttackSwing

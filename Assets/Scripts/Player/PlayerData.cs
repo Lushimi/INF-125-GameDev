@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class PlayerData : EntityData
 {
     public GameEvent DodgeSFX;
+
+    [Header("Specific For Player")]
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class RangedAttack : MonoBehaviour
+public class RangedAttack : Button
 {
     public float staminaCost;
     public float cooldown;

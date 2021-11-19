@@ -277,7 +277,7 @@ MonoBehaviour:
   movement_override: 0
   decisionLocked: 0
   roll: 0
-  meleeRange: 1.5
+  meleeRange: 2
   waveRange: 9
   cooldownOverride: 0
 --- !u!114 &-3673268391658415719
@@ -351,7 +351,7 @@ MonoBehaviour:
   attackRangeNormal: 1.5
   rb: {fileID: 6117880652488786894}
   AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
-  cooldown: 0.5
+  cooldown: 0.25
 --- !u!114 &8849157948837749563
 MonoBehaviour:
   m_ObjectHideFlags: 0

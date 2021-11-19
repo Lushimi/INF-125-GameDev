@@ -100,6 +100,7 @@ Transform:
   - {fileID: 4690043353919670491}
   - {fileID: 26899016}
   - {fileID: 6026935110631631539}
+  - {fileID: 2395730760530090104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,6 +233,8 @@ MonoBehaviour:
   staminaPerSecond: 15
   knockbackScale: 50
   isDead: 0
+  isDamaged: 0
+  damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
   StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
   Death: {fileID: 11400000, guid: 21c1dfd536a6f524e834c82b78abde5d, type: 2}
@@ -266,8 +269,14 @@ MonoBehaviour:
   rangedAttack: {fileID: 0}
   specialAttack: {fileID: 0}
   parryMove: {fileID: 0}
-  bossesDefeated: 
   MeleeAttackEvent: {fileID: 11400000, guid: ab6f9598da6a3644097e5043d94de3b9, type: 2}
+  bossesDefeated: 00000000
+  dodgeUnlocked: 00000000000000000000000000000000
+  meleeUnlocked: 0000000000000000
+  rangedUnlocked: 00000000
+  specialUnlocked: 00000000
+  parryUnlocked: 00000000
+  assistUnlocked: 
 --- !u!114 &2046163533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +388,7 @@ GameObject:
   - component: {fileID: 5518740092820463432}
   - component: {fileID: 4295279909710053242}
   - component: {fileID: 8552030842669948890}
+  - component: {fileID: 4581394794437067730}
   - component: {fileID: 3358253236106991667}
   - component: {fileID: 7696468475276610444}
   - component: {fileID: 4381452164691751340}
@@ -422,6 +432,7 @@ MonoBehaviour:
   - {fileID: 8216311099516950555}
   MeleeList:
   - {fileID: 3358253236106991667}
+  - {fileID: 4581394794437067730}
   RangedList:
   - {fileID: 7696468475276610444}
   SpecialList:
@@ -511,6 +522,24 @@ MonoBehaviour:
   startup: 0
   invuln: 0
   endLag: 0
+--- !u!114 &4581394794437067730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052129423359454678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e52fd74abc09bf4f93160c4337e6f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 45
+  attackRange: 0.6
+  cooldown: 0.75
 --- !u!114 &3358253236106991667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +555,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackDamage: 35
+  attackDamage: 30
   attackRange: 0.4
   cooldown: 0.45
 --- !u!114 &7696468475276610444
@@ -542,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 0
-  cooldown: 0.175
+  cooldown: 0.2
   bulletPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
 --- !u!114 &4381452164691751340
 MonoBehaviour:
@@ -556,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c419ab4788e28a4a923f4d7b9e34640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: 0
-  cooldown: 0.59
+  staminaCost: 30
+  cooldown: 0.7
   fireballPrefab: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
 --- !u!1 &7210680562664126696
 GameObject:
@@ -589,3 +618,78 @@ Transform:
   m_Father: {fileID: 1137835596353710404}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8444127114517869601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2395730760530090104}
+  - component: {fileID: 8610748435081384230}
+  - component: {fileID: 2369185909069941492}
+  m_Layer: 5
+  m_Name: Blood Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2395730760530090104
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444127114517869601}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1137835596353710404}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 959.99994, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8610748435081384230
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444127114517869601}
+  m_CullTransparentMesh: 1
+--- !u!114 &2369185909069941492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444127114517869601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 77c15022c16071a4f9a94f9c0f5773e2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

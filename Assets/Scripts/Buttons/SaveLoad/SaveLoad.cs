@@ -25,7 +25,15 @@ public class SaveLoad
         saveData.rangedAttack = player.loadout.RangedList.IndexOf(player.rangedAttack);
         saveData.specialAttack = player.loadout.SpecialList.IndexOf(player.specialAttack);
         saveData.parry = player.loadout.ParryList.IndexOf(player.parryMove);
-        saveData.bossesDefeated = player.bossesDefeated.ToArray();
+        //saveData.assist = player.loadout.AssistList.IndexOf(player.assistMove);
+        //player progression variables
+        saveData.bossesDefeated = player.bossesDefeated;
+        saveData.dodgeUnlocked = player.dodgeUnlocked;
+        saveData.meleeUnlocked = player.meleeUnlocked;
+        saveData.rangedUnlocked = player.rangedUnlocked;
+        saveData.specialUnlocked = player.specialUnlocked;
+        saveData.parryUnlocked = player.parryUnlocked;
+        saveData.assistUnlocked = player.assistUnlocked;
 
         //serialize to xml
         DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));

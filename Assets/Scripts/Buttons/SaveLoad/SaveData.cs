@@ -12,6 +12,13 @@ public class SaveData
     public int rangedAttack;
     public int specialAttack;
     public int parry;
+    public int assist;
 
     public int[] bossesDefeated;
+    public int[] dodgeUnlocked;
+    public int[] meleeUnlocked;
+    public int[] rangedUnlocked;
+    public int[] specialUnlocked;
+    public int[] parryUnlocked;
+    public int[] assistUnlocked;
 }

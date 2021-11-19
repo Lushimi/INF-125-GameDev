@@ -5,7 +5,7 @@ using System;
 
 
 
-public class MeleeAttack : MonoBehaviour
+public class MeleeAttack : Button
 {
 
     internal Vector3 movementVector => transform.parent.GetComponent<PlayerControl>().movementVector;

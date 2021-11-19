@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Dodge : MonoBehaviour
+public class Dodge : Button
 {
     public float staminaCost;
     public float startup;

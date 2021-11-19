@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2684263948a54f248a0b9d15c0ba0cea, type: 3}
-  m_Name: BIGKNIGHT
+  m_Script: {fileID: 11500000, guid: efccd6bd6500ad846a08fd3fe00bd070, type: 3}
+  m_Name: UnlockDodge
   m_EditorClassIdentifier: 
-  speed: 4
-  maxStamina: 1000
-  maxHP: 700
-  staminaPerSecond: 25
-  knockbackScale: 65
+  listeners: []

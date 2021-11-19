@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parry : MonoBehaviour
+public class Parry : Button
 {
     public float startup;
     public float invuln;

@@ -30,12 +30,21 @@ public class PlayerControl : EntityControl
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
     public Transform RangedAttackPoint => transform.Find("RangedAttackPoint").gameObject.transform;
 
-    public List<int> bossesDefeated = new List<int>(new int[5]);
 
     public int bossID => GameObject.Find("Boss").GetComponent<BossData>().bossID;
 
     [Header("Game Events")]
     public GameEvent MeleeAttackEvent;
+
+    //theres probably a way better way than this idk
+    [Header("Game Progress")]
+    public int[] bossesDefeated = new int[1] { 0 };
+    public int[] dodgeUnlocked = new int[4] { 0, 0, 0, 0 };
+    public int[] meleeUnlocked = new int[2] { 0, 0 };
+    public int[] rangedUnlocked = new int[1] { 0 };
+    public int[] specialUnlocked = new int[1] { 0 };
+    public int[] parryUnlocked = new int[1] { 0 };
+    public int[] assistUnlocked = new int[0] { };
 
     private void Awake()
     {
@@ -46,6 +55,7 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
+        //assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
     }
 
     // Update is called once per frame
@@ -174,9 +184,26 @@ public class PlayerControl : EntityControl
 
     public void bossDied() 
     {
-        bossesDefeated[bossID] = 1;
+        bossesDefeated.SetValue(1, bossID);
     }
 
+    public void UnlockDodge(int id) {dodgeUnlocked.SetValue(1, id);}
+    public void UnlockMelee(int id){meleeUnlocked.SetValue(1, id);}
+    public void UnlockRanged(int id) { rangedUnlocked.SetValue(1, id);}
+    public void UnlockSpecial(int id) { specialUnlocked.SetValue(1, id);}
+    public void UnlockParry(int id) { parryUnlocked.SetValue(1, id);}
+    public void UnlockAssist(int id) { assistUnlocked.SetValue(1, id);}
+
+    public void changeButton(Button button)
+    {
+        if (button is MeleeAttack) meleeAttack = (MeleeAttack)button;
+        if (button is RangedAttack) rangedAttack = (RangedAttack)button;
+        if (button is Special) specialAttack = (Special)button;
+        if (button is Dodge) dodgeMove = (Dodge)button;
+        if (button is Parry) parryMove = (Parry)button;
+        if (button is MeleeAttack) meleeAttack = (MeleeAttack)button;
+        //if (button is Assist) assistMove = (Assist)button;
+    }
     //saves the game for player
     void SaveGame()
     {
@@ -193,12 +220,16 @@ public class PlayerControl : EntityControl
         rangedAttack = loadout.RangedList[save.rangedAttack];
         specialAttack = loadout.SpecialList[save.specialAttack];
         parryMove = loadout.ParryList[save.parry];
-        int i = 0;
-        foreach (int boss in bossesDefeated) 
-        {
-            bossesDefeated[i] = boss;
-            i++;
-        } 
+        //assistMove = loadout.AssistList[save.assist];
+
+        bossesDefeated = save.bossesDefeated;
+        dodgeUnlocked = save.dodgeUnlocked;
+        meleeUnlocked = save.meleeUnlocked;
+        rangedUnlocked = save.rangedUnlocked;
+        specialUnlocked = save.specialUnlocked;
+        parryUnlocked = save.parryUnlocked;
+        assistUnlocked = save.assistUnlocked;
+        Debug.Log("Loaded game!");
     }
 
     // Player Melee Attack
@@ -273,8 +304,30 @@ public class PlayerControl : EntityControl
 
     void ChangeLoadout()
     {
-        //rn just testing changing the dodge on command
-        dodgeMove = loadout.DodgeList[loadout.checkList()];
+        //currently all changes to loadout must be done already knowing what type of button to change, idk if this is too hardcoded or not
+        //possible to change loadout by supplying ID
+        if (dodgeUnlocked[2] == 1)
+        {
+            changeButton(loadout.idToDodge(2));
+            Debug.Log("Loadout Changed: " + loadout.idToDodge(2).ToString() );
+        }
+        else Debug.Log( String.Format( "This dodge {0} is not unlocked!", loadout.idToDodge(2).ToString() ) );
+
+        //possible to check loadout by supplying string
+        string checkForThis = "Dodge_Backflip";
+        if ( dodgeUnlocked[ loadout.DodgeList.IndexOf( loadout.idToDodge(checkForThis) )] == 1 )
+        {
+            changeButton(loadout.idToDodge(checkForThis));
+            Debug.Log("Loadout Changed: " + loadout.idToDodge(checkForThis));
+        }
+        else Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToDodge(checkForThis).ToString()));
+
+        if (meleeUnlocked[1] == 1)
+        {
+            changeButton(loadout.idToMelee(1));
+            Debug.Log("Loadout Changed: " + loadout.idToMelee(1));
+        }
+        else Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToMelee(1).ToString()));
     }
 
 }

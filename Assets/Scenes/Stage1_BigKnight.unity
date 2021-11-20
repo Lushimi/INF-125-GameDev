@@ -782,6 +782,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: HealthReset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3dd7bacf40e9d9e418818df6c027b9c2, type: 2}
+    - target: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: damageScreen
       value: 
       objectReference: {fileID: 2056108240}
@@ -789,10 +793,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2046163539}
-    - target: {fileID: 4760656221710792641, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
-      propertyPath: attackRangeNormal
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: cam
       value: 
@@ -1854,6 +1854,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2711965455732394999, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: HealthReset
+      value: 
+      objectReference: {fileID: 11400000, guid: f966ea0e0c3270848ac7c4b4fdb8df25, type: 2}
     - target: {fileID: 2711965455732394999, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: damageScreen
       value: 

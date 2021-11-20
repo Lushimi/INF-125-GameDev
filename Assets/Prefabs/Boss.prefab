@@ -263,6 +263,7 @@ MonoBehaviour:
   isInvulnerable: 0
   canAct: 0
   invincibiltyTimeOnHit: 0.4
+  isDisabled: 0
   movementVector: {x: 0, y: 0, z: 0}
   orientationVector: {x: 0, y: 0, z: 0}
   Boss: {fileID: -3673268391658415719}
@@ -304,6 +305,7 @@ MonoBehaviour:
   isDamaged: 0
   damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
+  HealthReset: {fileID: 0}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
   Death: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
   SceneChanged: {fileID: 0}
@@ -325,7 +327,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDamage: 17
-  attackRangeNormal: 2
+  attackRangeNormal: 1.2
   rb: {fileID: 6117880652488786894}
   AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
   cooldown: 2.5

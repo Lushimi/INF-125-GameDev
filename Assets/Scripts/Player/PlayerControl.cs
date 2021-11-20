@@ -210,6 +210,8 @@ public class PlayerControl : EntityControl
         //if (button is Assist) assistMove = (Assist)button;
     }
     //saves the game for player
+
+
     void SaveGame()
     {
         SaveLoad.Save(this);

@@ -66,11 +66,12 @@ public abstract class EntityData : MonoBehaviour
         if (!isInvulnerable && !isDead)
         {
             isDamaged = true;
-            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             currentHealth -= damage;
             HealthChanged.Raise();
+            //this is causing issues
+/*            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
-            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
+            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);*/
 
             if (currentHealth <= 0)
             {

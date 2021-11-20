@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaCost: 30
   startup: 0.005
-  invuln: 0.9
+  invuln: 1.3
   endLag: 0.2
   dodgeSpeedMultiplier: 1.5
 --- !u!114 &8552030842669948890

@@ -640,6 +640,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643481462}
   m_CullTransparentMesh: 1
+--- !u!1 &651038115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  m_PrefabInstance: {fileID: 900070666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &651038124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  m_PrefabInstance: {fileID: 900070666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651038115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e156dcf53efecc14f9b7f06fa6ba34bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &651038130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651038115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 651038124}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: OnAttackSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &651038131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651038115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1f47befd85007bf47a1ee733289ee222, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 651038124}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: OnAttackSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &760326319
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +861,14 @@ PrefabInstance:
       propertyPath: damageScreen
       value: 
       objectReference: {fileID: 2056108240}
+    - target: {fileID: 446629925, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.445
+      objectReference: {fileID: 0}
+    - target: {fileID: 446629925, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.207
+      objectReference: {fileID: 0}
     - target: {fileID: 1695161211, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: target
       value: 
@@ -801,6 +881,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2046163537}
+    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: cooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: HitEffect
+      value: 
+      objectReference: {fileID: 5571552291704282468, guid: aa6a926c7442a4e4cbf49ef17d0fb7e7, type: 3}
     - target: {fileID: 6145448066510244745, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: attackPoint
       value: 
@@ -872,7 +960,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
   m_PrefabInstance: {fileID: 900070666}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 651038115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad46929c1b441b24482a0e087ef8fb00, type: 3}
@@ -1915,6 +2003,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071b8cb4baa8a8946a66101737b66546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2046163533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046163525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4d8d3fd36dcccc54ea4832e4ddd49869, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &2046163537 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3556059926477084371, guid: a22d488039a9669478e8fc615c1caead, type: 3}

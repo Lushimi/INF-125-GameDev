@@ -19,7 +19,6 @@ public class BossMeleeAttack : MonoBehaviour
 
     public void Boss_Melee_Attack()
     {
-        AttackSwing.Raise();
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);

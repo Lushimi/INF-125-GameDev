@@ -11,6 +11,8 @@ public class BossControl : EntityControl
     internal Rigidbody2D target;
     [SerializeField]
     internal Camera cam;
+    [SerializeField]
+    internal GameObject HitEffect;
 
     [Header("Moves")]
     [SerializeField]
@@ -47,6 +49,15 @@ public class BossControl : EntityControl
         gameObject.GetComponent<Pathfinding.AIPath>().endReachedDistance = meleeRange;
         gameObject.GetComponent<Pathfinding.AIPath>().slowdownDistance = meleeRange + 0.5f;
         Boss.Reset();
+    }
+
+    public void OnAttackSwing()
+    {
+        Vector3 tempTransform = Vector3.forward * 90; 
+        float angle = Mathf.Atan2(facingObject.transform.position.y, facingObject.transform.position.x) * Mathf.Rad2Deg;
+        tempTransform = Vector3.forward * angle;
+
+        Instantiate(HitEffect, transform.Find("MeleeAttackPoint").position, Quaternion.Euler(tempTransform.x, tempTransform.y, tempTransform.z) );
     }
 
     // Update is called once per frame

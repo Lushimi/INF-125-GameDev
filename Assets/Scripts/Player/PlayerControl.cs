@@ -36,6 +36,8 @@ public class PlayerControl : EntityControl
     [Header("Game Events")]
     public GameEvent MeleeAttackEvent;
 
+    [Header("Debug")]
+    public bool verbose = false;
     //theres probably a way better way than this idk
     [Header("Game Progress")]
     public int[] bossesDefeated = new int[1] { 0 };
@@ -156,12 +158,15 @@ public class PlayerControl : EntityControl
         else
         {
             // prevents Player from attacking consecutively without cooldown
-            cooldown -= Time.deltaTime;
-            if (cooldown <= 0)
+            if(!isDisabled)
             {
-                animator.SetBool("isMeleeAttacking", false);
-                animator.SetBool("isRangedAttacking", false);
-                canAct = true;
+                cooldown -= Time.deltaTime;
+                if (cooldown <= 0)
+                {
+                    animator.SetBool("isMeleeAttacking", false);
+                    animator.SetBool("isRangedAttacking", false);
+                    canAct = true;
+                }
             }
         }
     
@@ -208,7 +213,7 @@ public class PlayerControl : EntityControl
     void SaveGame()
     {
         SaveLoad.Save(this);
-        Debug.Log("Saved game!");
+        if(verbose) Debug.Log("Saved game!");
     }
 
     //loads the game for player
@@ -229,7 +234,7 @@ public class PlayerControl : EntityControl
         specialUnlocked = save.specialUnlocked;
         parryUnlocked = save.parryUnlocked;
         assistUnlocked = save.assistUnlocked;
-        Debug.Log("Loaded game!");
+        if (verbose) Debug.Log("Loaded game!");
     }
 
     // Player Melee Attack
@@ -240,7 +245,7 @@ public class PlayerControl : EntityControl
         MeleeAttackEvent.Raise();
         canAct = false;
         animator.SetFloat("Speed", 0);
-        Debug.Log("MeleeAttack");
+        if (verbose) Debug.Log("MeleeAttack");
     }
 
 
@@ -252,7 +257,7 @@ public class PlayerControl : EntityControl
         rangedAttack.attack();
         canAct = false;
         animator.SetFloat("Speed", 0);
-        Debug.Log("RangedAttack");
+        if (verbose) Debug.Log("RangedAttack");
     }
 
 
@@ -266,7 +271,7 @@ public class PlayerControl : EntityControl
             dodgeMove.PerformDodge();
             Player.ReduceStamina(dodgeMove.staminaCost);
             canAct = false;
-            Debug.Log("Dodge");
+            if (verbose) Debug.Log("Dodge");
         }
     }
 
@@ -276,7 +281,7 @@ public class PlayerControl : EntityControl
         //Assist animation occurs
         //Assisting character joins screen
         //leave this for later
-        Debug.Log("Assist");
+        if (verbose) Debug.Log("Assist");
     }
 
     //Player Special
@@ -287,7 +292,7 @@ public class PlayerControl : EntityControl
         animator.SetFloat("Speed", 0);
         specialAttack.special();
         canAct = false;
-        Debug.Log("Special");
+        if (verbose) Debug.Log("Special");
     }
 
     //Player Parry
@@ -299,7 +304,7 @@ public class PlayerControl : EntityControl
         cooldown = (parryMove.cooldown);
         parryMove.parry();
         canAct = false;
-        Debug.Log("Parry");
+        if (verbose) Debug.Log("Parry");
     }
 
     void ChangeLoadout()
@@ -309,25 +314,25 @@ public class PlayerControl : EntityControl
         if (dodgeUnlocked[2] == 1)
         {
             changeButton(loadout.idToDodge(2));
-            Debug.Log("Loadout Changed: " + loadout.idToDodge(2).ToString() );
+            if (verbose) Debug.Log("Loadout Changed: " + loadout.idToDodge(2).ToString() );
         }
-        else Debug.Log( String.Format( "This dodge {0} is not unlocked!", loadout.idToDodge(2).ToString() ) );
+        else if (verbose) Debug.Log( String.Format( "This dodge {0} is not unlocked!", loadout.idToDodge(2).ToString() ) );
 
         //possible to check loadout by supplying string
         string checkForThis = "Dodge_Backflip";
         if ( dodgeUnlocked[ loadout.DodgeList.IndexOf( loadout.idToDodge(checkForThis) )] == 1 )
         {
             changeButton(loadout.idToDodge(checkForThis));
-            Debug.Log("Loadout Changed: " + loadout.idToDodge(checkForThis));
+            if (verbose) Debug.Log("Loadout Changed: " + loadout.idToDodge(checkForThis));
         }
-        else Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToDodge(checkForThis).ToString()));
+        else if (verbose) Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToDodge(checkForThis).ToString()));
 
         if (meleeUnlocked[1] == 1)
         {
             changeButton(loadout.idToMelee(1));
-            Debug.Log("Loadout Changed: " + loadout.idToMelee(1));
+            if (verbose) Debug.Log("Loadout Changed: " + loadout.idToMelee(1));
         }
-        else Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToMelee(1).ToString()));
+        else if (verbose) Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToMelee(1).ToString()));
     }
 
 }

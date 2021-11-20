@@ -16,8 +16,9 @@ public abstract class EntityControl : MonoBehaviour
     //Flag for checking if on-hit effects should apply
     public bool isInvulnerable = false;
     //flag for checking if player can act
-    public bool canAct = true;
+    public bool canAct = false;
     public float invincibiltyTimeOnHit;
+    public bool isDisabled = false;
 
     [Header("Vectors")]
     public Vector3 movementVector;
@@ -39,5 +40,18 @@ public abstract class EntityControl : MonoBehaviour
         }
         canAct = true;
         isInvulnerable = false;
+    }
+
+    public void Disable()
+    {
+        cooldown = 999;
+        isDisabled = true;
+        canAct = false;
+    }
+
+    public void Enable()
+    {
+        cooldown = 0;
+        isDisabled = false;
     }
 }

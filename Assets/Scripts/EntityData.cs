@@ -28,6 +28,8 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent HealthChanged;
     [SerializeField]
+    internal GameEvent HealthReset;
+    [SerializeField]
     internal GameEvent StaminaChanged;
     [SerializeField]
     internal GameEvent Death;

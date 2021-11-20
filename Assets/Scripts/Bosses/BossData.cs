@@ -22,6 +22,7 @@ public class BossData : EntityData
     public override void Reset()
     {
         currentHealth = bossVariables.maxHP;
+        HealthReset.Raise();
         currentStamina = bossVariables.maxStamina;
         speed = bossVariables.speed;
         staminaPerSecond = bossVariables.staminaPerSecond;

@@ -29,7 +29,7 @@ public class PlayerData : EntityData
     public override void Reset()
     {
         currentHealth = maxHP;
-        HealthChanged.Raise();
+        HealthReset.Raise();
         currentStamina = maxStamina;
         StaminaChanged.Raise();
         speed = 6f;

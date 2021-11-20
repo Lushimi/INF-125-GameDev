@@ -51,8 +51,7 @@ public class BossControl : EntityControl
 
     // Update is called once per frame
     void Update()
-    {
-
+    { 
         if (Boss.isDead)
         {
             isInvulnerable = true;
@@ -176,13 +175,16 @@ public class BossControl : EntityControl
         }
         else
         {
-            // prevents Boss from attacking consecutively without cooldown
-            cooldown -= Time.deltaTime;
-            if (cooldown <= 0 || cooldownOverride)
+            if(!isDisabled)
             {
-                cooldownOverride = false;
-                animator.SetBool("isMeleeAttacking", false);
-                canAct = true;
+                // prevents Boss from attacking consecutively without cooldown
+                cooldown -= Time.deltaTime;
+                if (cooldown <= 0 || cooldownOverride)
+                {
+                    cooldownOverride = false;
+                    animator.SetBool("isMeleeAttacking", false);
+                    canAct = true;
+                }
             }
         }
     }
@@ -208,7 +210,7 @@ public class BossControl : EntityControl
         cooldown = 999;
         animator.SetBool("isMeleeAttacking", true);
         canAct = false;
-        Debug.Log("Boss Melee Attack");
+        if (verbose) Debug.Log("Boss Melee Attack");
     }
 
     void ChargeAttack()
@@ -217,7 +219,7 @@ public class BossControl : EntityControl
         Boss.ReduceStamina(chargeAttack.staminaCost);
         chargeAttack.attack();
         canAct = false;
-        Debug.Log("Boss Charge Attack");
+        if (verbose) Debug.Log("Boss Charge Attack");
     }
 
     void ComboAttack()
@@ -225,7 +227,7 @@ public class BossControl : EntityControl
         cooldown = 999;
         comboAttack.comboAttack();
         canAct = false;
-        Debug.Log("Boss Combo Attack");
+        if (verbose) Debug.Log("Boss Combo Attack");
     }
 
     void RangedAttack()
@@ -240,7 +242,7 @@ public class BossControl : EntityControl
         cooldown = waveAttack.cooldown;
         waveAttack.waveAttack();
         canAct = false;
-        Debug.Log("Boss Wave Attack");
+        if (verbose) Debug.Log("Boss Wave Attack");
     }
 
 }

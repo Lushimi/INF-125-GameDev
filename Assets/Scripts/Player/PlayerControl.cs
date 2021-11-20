@@ -105,7 +105,7 @@ public class PlayerControl : EntityControl
                 GetComponent<SpriteRenderer>().flipX = true;
             }
 
-            
+
 
 
             animator.SetFloat("Horizontal", movementVector.x);
@@ -169,10 +169,10 @@ public class PlayerControl : EntityControl
                 }
             }
         }
-    
+
     }
 
-    public void FindCamera() 
+    public void FindCamera()
     {
         cam = Camera.main;
     }
@@ -187,7 +187,7 @@ public class PlayerControl : EntityControl
         transform.position += moveVector;
     }
 
-    public void bossDied() 
+    public void bossDied()
     {
         bossesDefeated.SetValue(1, bossID);
     }

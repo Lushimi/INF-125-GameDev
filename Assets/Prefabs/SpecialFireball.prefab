@@ -4942,8 +4942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d70e87d6e51664d9c87ecb41f8911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
-  speed: 0.5
+  damage: 50
+  speed: 2
   liveTime: 2
   rb: {fileID: 56172534283247041}
   facing: {fileID: 0}

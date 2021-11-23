@@ -22,7 +22,6 @@ public abstract class EntityData : MonoBehaviour
     public float knockbackScale = 100f;
     public bool isDead = false;
     public bool isDamaged = false;
-    public Image damageScreen;
 
     [Header("Game Events")]
     [SerializeField]

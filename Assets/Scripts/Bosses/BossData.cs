@@ -8,15 +8,6 @@ public class BossData : EntityData
 
     public override void Update()
     {
-        if (isDamaged)
-        {
-            damageScreen.color = new Color(0f, 0f, 255f, 0.5f);
-        }
-        else
-        {
-            damageScreen.color = Color.Lerp(damageScreen.color, Color.clear, 5f * Time.deltaTime);
-        }
-        isDamaged = false;
     }
 
     public override void Reset()

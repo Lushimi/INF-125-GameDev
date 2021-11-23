@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class PlayerData : EntityData
 {
     public GameEvent DodgeSFX;
+    public Image damageScreen;
 
     [Header("Specific For Player")]
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
 
-    public override void Update()
+    public void Update()
     {
         if (isDamaged)
         {
@@ -32,8 +33,8 @@ public class PlayerData : EntityData
         HealthReset.Raise();
         currentStamina = maxStamina;
         StaminaChanged.Raise();
-        speed = 6f;
-        staminaPerSecond = 17f;
+        speed = 5.5f;
+        staminaPerSecond = 30f;
 
     }
 

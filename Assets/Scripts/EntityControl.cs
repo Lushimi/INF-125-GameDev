@@ -32,14 +32,28 @@ public abstract class EntityControl : MonoBehaviour
     //this also stuns the mob by putting the canAct to false
     public IEnumerator ActivateInvincibility(float invulnTime)
     {
+        Debug.Log("GotInvuln?");
         isInvulnerable = true;
-        canAct = false;
-        for (float i = 0; i < invulnTime; i += (invulnTime / 75))
+        if (canAct)
         {
-            yield return new WaitForSeconds(invulnTime / 75);
+            canAct = false;
+            for (float i = 0; i < invulnTime; i += (invulnTime))
+            {
+                yield return new WaitForSeconds(invulnTime);
+                isInvulnerable = false;
+            }
+            canAct = true;
         }
-        canAct = true;
-        isInvulnerable = false;
+        else
+        {
+            for (float i = 0; i < invulnTime; i += (invulnTime))
+            {
+                yield return new WaitForSeconds(invulnTime);
+                isInvulnerable = false;
+            }
+
+        }
+
     }
 
     public void Disable()

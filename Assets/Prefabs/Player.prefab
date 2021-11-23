@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 2046163533}
   - component: {fileID: 4135550178267582630}
   - component: {fileID: 938538261592088580}
+  - component: {fileID: 1523519530699048203}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -183,7 +184,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137835596353710393}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -226,15 +227,16 @@ MonoBehaviour:
   maxHP: {fileID: 11400000, guid: 8747823519c7a6b49bf20d065ea56585, type: 2}
   maxStamina: {fileID: 11400000, guid: f55f296266436024ebf48a2d6241a2af, type: 2}
   bossVariables: {fileID: 0}
-  speed: 5
+  speed: 5.5
   currentStamina: 0
   currentHealth: 0
-  staminaPerSecond: 15
+  staminaPerSecond: 30
   knockbackScale: 50
   isDead: 0
   isDamaged: 0
   damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
+  HealthReset: {fileID: 11400000, guid: f966ea0e0c3270848ac7c4b4fdb8df25, type: 2}
   StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
   Death: {fileID: 11400000, guid: 21c1dfd536a6f524e834c82b78abde5d, type: 2}
   SceneChanged: {fileID: 11400000, guid: 6848981e1a0891440a5509bc1081395e, type: 2}
@@ -258,6 +260,7 @@ MonoBehaviour:
   isInvulnerable: 0
   canAct: 1
   invincibiltyTimeOnHit: 1
+  isDisabled: 0
   movementVector: {x: 0, y: 0, z: 0}
   orientationVector: {x: 0, y: 0, z: 0}
   Player: {fileID: 2711965455732394999}
@@ -269,6 +272,8 @@ MonoBehaviour:
   specialAttack: {fileID: 0}
   parryMove: {fileID: 0}
   MeleeAttackEvent: {fileID: 11400000, guid: ab6f9598da6a3644097e5043d94de3b9, type: 2}
+  verbose: 0
+  ControllerMode: 0
   bossesDefeated: 00000000
   dodgeUnlocked: 00000000000000000000000000000000
   meleeUnlocked: 0000000000000000
@@ -372,6 +377,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!70 &1523519530699048203
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137835596353710393}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05316937, y: -0.071778595}
+  m_Size: {x: 0.585279, y: 0.84580886}
+  m_Direction: 0
 --- !u!1 &7052129423359454678
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,10 +523,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 30
-  startup: 0.005
-  invuln: 1.3
-  endLag: 0.2
-  dodgeSpeedMultiplier: 1.5
+  startup: 0
+  invuln: 0.34
+  endLag: 0.015
+  dodgeSpeedMultiplier: 1.85
 --- !u!114 &8552030842669948890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,9 +575,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackDamage: 30
-  attackRange: 0.4
-  cooldown: 0.45
+  attackDamage: 15
+  attackRange: 0.5
+  cooldown: 0.28
 --- !u!114 &7696468475276610444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c419ab4788e28a4a923f4d7b9e34640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: 30
+  staminaCost: 80
   cooldown: 0.7
   fireballPrefab: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
 --- !u!1 &7210680562664126696

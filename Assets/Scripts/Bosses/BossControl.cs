@@ -193,16 +193,20 @@ public class BossControl : EntityControl
                 if (cooldown <= 0 || cooldownOverride)
                 {
                     cooldownOverride = false;
-                    animator.SetBool("isMeleeAttacking", false);
                     canAct = true;
+                    ResetAllBossAnimBools();
                 }
             }
         }
     }
 
-    public void disableCooldown() 
+    public void disableBossCooldown() 
     {
         cooldownOverride = true;
+    }
+    public void setBossCooldown(float newCD)
+    {
+        cooldown = newCD;
     }
 
     public void ResetAllBossAnimBools()
@@ -214,7 +218,6 @@ public class BossControl : EntityControl
                 animator.SetBool(parameter.name, false);
             }
         }
-        disableCooldown();
     }
     void MeleeAttack()
     {

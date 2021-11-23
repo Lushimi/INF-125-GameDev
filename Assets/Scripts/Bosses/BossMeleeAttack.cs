@@ -9,7 +9,7 @@ public class BossMeleeAttack : MonoBehaviour
     public LayerMask enemyLayers;
 
     public int attackDamage = 5;
-    public float attackRangeNormal = 1.5f;
+    public float attackRangeNormal = 1f;
     public Rigidbody2D rb;
    
     [SerializeField]
@@ -22,7 +22,7 @@ public class BossMeleeAttack : MonoBehaviour
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
-
+        AttackSwing.Raise();
         // Damage enemies (loop over all enemies in collider array)
         foreach (Collider2D enemy in hitEnemies)
         {

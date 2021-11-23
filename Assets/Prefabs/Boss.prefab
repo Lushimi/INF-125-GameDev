@@ -113,6 +113,9 @@ GameObject:
   - component: {fileID: 1695161211}
   - component: {fileID: 1695161212}
   - component: {fileID: 1695161213}
+  - component: {fileID: 3938747563954686468}
+  - component: {fileID: 7560315793711303002}
+  - component: {fileID: 7070568087518662478}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -129,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 7876088130285233315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.95, y: 2.95, z: 1}
   m_Children:
   - {fileID: 446629925}
   - {fileID: 1356734734}
@@ -217,7 +220,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -262,13 +265,14 @@ MonoBehaviour:
   cooldown: 0
   isInvulnerable: 0
   canAct: 0
-  invincibiltyTimeOnHit: 0.4
+  invincibiltyTimeOnHit: 0.25
   isDisabled: 0
   movementVector: {x: 0, y: 0, z: 0}
   orientationVector: {x: 0, y: 0, z: 0}
   Boss: {fileID: -3673268391658415719}
   target: {fileID: 0}
   cam: {fileID: 0}
+  HitEffect: {fileID: 5571552291704282468, guid: aa6a926c7442a4e4cbf49ef17d0fb7e7, type: 3}
   meleeAttack: {fileID: 6145448066510244745}
   comboAttack: {fileID: 1185117119}
   rangedAttack: {fileID: 8849157948837749563}
@@ -305,7 +309,7 @@ MonoBehaviour:
   isDamaged: 0
   damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
-  HealthReset: {fileID: 0}
+  HealthReset: {fileID: 11400000, guid: 3dd7bacf40e9d9e418818df6c027b9c2, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
   Death: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
   SceneChanged: {fileID: 0}
@@ -349,8 +353,8 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackDamage: 12
-  attackRangeNormal: 1.5
+  attackDamage: 10
+  attackRangeNormal: 1
   rb: {fileID: 6117880652488786894}
   AttackSwing: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
   cooldown: 0.25
@@ -380,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
-  startup: 0.1
+  startup: 0.3
   cooldown: 0.5
 --- !u!114 &1185117119
 MonoBehaviour:
@@ -399,8 +403,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDamage: 10
-  attackRangeNormal: 1.5
-  finalAttackRange: 2.5
+  attackRangeNormal: 1
   rb: {fileID: 6117880652488786894}
   startup: 0
   firstmovelag: 1
@@ -495,3 +498,75 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!70 &3938747563954686468
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.028319677, y: -0.13180241}
+  m_Size: {x: 0.56199324, y: 0.7508118}
+  m_Direction: 0
+--- !u!114 &7560315793711303002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 91fecc5cf3ab6754cb07402904cf23c8, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4934154316307395043}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: OnAttackSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7070568087518662478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1f47befd85007bf47a1ee733289ee222, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4934154316307395043}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: OnAttackSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

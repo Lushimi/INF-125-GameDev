@@ -15,7 +15,7 @@ public class Dodge_Roll : Dodge
 
     void Start()
     {
-        Reset();
+
     }
 
 }

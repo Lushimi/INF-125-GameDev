@@ -22,7 +22,6 @@ public abstract class EntityData : MonoBehaviour
     public float knockbackScale = 100f;
     public bool isDead = false;
     public bool isDamaged = false;
-    public Image damageScreen;
 
     [Header("Game Events")]
     [SerializeField]
@@ -43,8 +42,6 @@ public abstract class EntityData : MonoBehaviour
     internal Animator animator => entityControl.animator;
 
     abstract public void Reset();
-
-    abstract public void Update();
     
     public virtual void TakeDamage(int damage)
     {
@@ -68,10 +65,9 @@ public abstract class EntityData : MonoBehaviour
             isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
-            //this is causing issues
-/*            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
+            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
-            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);*/
+            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
 
             if (currentHealth <= 0)
             {
@@ -100,7 +96,7 @@ public abstract class EntityData : MonoBehaviour
         }
         else if (currentStamina < maxStamina)
         {
-            currentStamina += Math.Min(100 - currentStamina, Time.deltaTime * staminaPerSecond);
+            currentStamina += Time.deltaTime * staminaPerSecond;
             StaminaChanged.Raise();
         }
 

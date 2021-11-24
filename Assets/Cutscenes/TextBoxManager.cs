@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
+using TMPro;
 public class TextBoxManager : MonoBehaviour
 {
     [Header("Debug")]
     public bool verbose = false;
 
     public GameObject textBox;
-    public Text textObj;
+    public TextMeshProUGUI textObj;
     public TextAsset textFile;
     public string[] textLines;
     public TextAsset nameFile;
@@ -19,8 +19,8 @@ public class TextBoxManager : MonoBehaviour
     public int currentLine;
     public int endAtLine;
 
-    public float delay = 0.025f;
-    
+    public float delay = 0.1f;
+    public int charsPerDelay = 2;
 
     public GameEvent textAdvanced;
     public GameEvent diasound;
@@ -50,18 +50,39 @@ public class TextBoxManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowText(string fullText)
+    IEnumerator ShowText(string name, string text)
     {
         showingText = true;
         diasound.Raise();
-        string currentText;
-        for(int i=0;i<fullText.Length;i++)
+        
+        if (name.Length>1)
         {
-            textObj.text = textObj.text + fullText[i];
-            yield return new WaitForSeconds(delay);
+            name = name + ": ";
+            string full_line = name + text;
+            textObj.SetText(full_line);
+        } else
+        {
+            textObj.SetText(text);
         }
+
+        int total_length = name.Length + text.Length;
+        textObj.maxVisibleCharacters = name.Length;
+     
+        for (int i = name.Length;  i < total_length; i++)
+        {
+            
+            int visibleCount = i % (total_length + 1);
+            textObj.maxVisibleCharacters = visibleCount;
+            if(i%charsPerDelay==0)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+            
+        }
+        
         diasoundOver.Raise();
         showingText = false;
+       
     }
 
     void Update()
@@ -74,14 +95,8 @@ public class TextBoxManager : MonoBehaviour
         else if(!showingText && lastShownLine!=currentLine)
         {
             lastShownLine = currentLine;
-            if(nameLines[currentLine].Length>1)
-            {
-                textObj.text = nameLines[currentLine]+": ";
-            } else
-            {
-                textObj.text = "";
-            }
-            co = StartCoroutine(ShowText(textLines[currentLine]));
+            nameLines[currentLine]= nameLines[currentLine].Replace("\r", "");
+            co = StartCoroutine(ShowText(nameLines[currentLine],textLines[currentLine]));
            
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -93,10 +108,12 @@ public class TextBoxManager : MonoBehaviour
                 if (nameLines[currentLine].Length > 1)
                 {
                     textObj.text = nameLines[currentLine] + ": " + textLines[currentLine];
+                    textObj.maxVisibleCharacters = 999;
                 }
                 else
                 {
                     textObj.text = textLines[currentLine];
+                    textObj.maxVisibleCharacters = 999;
                 }
                 
                 diasoundOver.Raise();

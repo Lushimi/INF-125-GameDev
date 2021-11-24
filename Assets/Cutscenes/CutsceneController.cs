@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutsceneController : MonoBehaviour
+public abstract class CutsceneController : MonoBehaviour
 {
     public GameEvent cutsceneOver;
     [Header("Debug")]
@@ -21,6 +21,21 @@ public class CutsceneController : MonoBehaviour
         if (verbose) Debug.Log("Disabled all entities.");
     }
 
+    public void knockbackAllAroundObject(GameObject center, float radius, float force)
+    {
+        Collider2D[] hit = Physics2D.OverlapCircleAll(center.transform.position, radius);
+
+        // Damage enemies (loop over all enemies in collider array)
+        foreach (Collider2D target in hit)
+        {
+            var obj = target.gameObject;
+            var rb =(Rigidbody2D)obj.GetComponent(typeof(Rigidbody2D));
+            var direction = (obj.transform.position - center.transform.position).normalized;
+            rb.AddForce(new Vector2(direction.x, direction.y)*force, ForceMode2D.Impulse);
+
+        }
+    }
+
     public void MassEnable()
     {
         var entities = FindObjectsOfType(typeof(EntityControl));
@@ -31,49 +46,47 @@ public class CutsceneController : MonoBehaviour
         if (verbose) Debug.Log("Enabled all entities.");
     }
 
-    void Start()
+    public void DisableUI()
     {
-        MassDisable();
+
     }
 
+    public void EnableUI()
+    {
+
+    }
+
+    public void Start()
+    {
+        MassDisable();
+        DisableUI();
+    }
+
+   
     public void moveEntity(Rigidbody2D ec, Vector2 moveVector)
     {
         ec.MovePosition(ec.position + moveVector);
     }
 
-    void FixedUpdate()
+    //Continuos actions
+    public void FixedUpdate()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (cutsceneState == 3)
-        {
-            float time = 5;
-            Vector2 moveVector = new Vector2(0, 10);
-            float speed = moveVector.magnitude / time;
-
-            var animator = player.GetComponent(typeof(Animator)) as Animator;
-            animator.SetFloat("Horizontal", moveVector.x);
-            animator.SetFloat("Vertical", moveVector.y);
-            animator.SetFloat("Speed", speed);
-
-            if (timePassed < time) {
-                moveEntity((Rigidbody2D)player.GetComponent(typeof(Rigidbody2D)), moveVector.normalized * speed * Time.fixedDeltaTime);
-            }
-            
-            timePassed += Time.fixedDeltaTime;
-        }
+        resolveContinuousState(cutsceneState);
     }
     //Advances cutsceneState and performs actions that don't need to be done frame by frame
     public void playCutscene()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
         
         cutsceneState += 1;
-
-        if (cutsceneState == 7)
-        {
-            MassEnable();
-            cutsceneOver.Raise();
-        }
+        timePassed = 0f;
+        resolveAtomicState(cutsceneState);
         
     }
+
+    public abstract void resolveContinuousState(int sceneState);
+
+
+    public abstract void resolveAtomicState(int sceneState);
+
+
 }

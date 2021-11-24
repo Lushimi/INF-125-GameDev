@@ -1953,6 +1953,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 815057659}
+    - target: {fileID: 3131920184545752251, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: dodgeUnlocked.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3358253236106991667, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attackDamage
       value: 19

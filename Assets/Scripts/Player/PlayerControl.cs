@@ -45,11 +45,11 @@ public class PlayerControl : EntityControl
     //theres probably a way better way than this idk
     [Header("Game Progress")]
     public int[] bossesDefeated = new int[1] { 0 };
-    public int[] dodgeUnlocked = new int[4] { 0, 0, 0, 0 };
-    public int[] meleeUnlocked = new int[2] { 0, 0 };
-    public int[] rangedUnlocked = new int[1] { 0 };
-    public int[] specialUnlocked = new int[1] { 0 };
-    public int[] parryUnlocked = new int[1] { 0 };
+    public int[] dodgeUnlocked = new int[4] { 1, 0, 0, 0 };
+    public int[] meleeUnlocked = new int[2] { 1, 0 };
+    public int[] rangedUnlocked = new int[1] { 1 };
+    public int[] specialUnlocked = new int[1] { 1 };
+    public int[] parryUnlocked = new int[1] { 1 };
     public int[] assistUnlocked = new int[0] { };
 
     private void Awake()

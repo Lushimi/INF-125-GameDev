@@ -25,6 +25,8 @@ public class PlayerControl : EntityControl
     internal Special specialAttack;
     [SerializeField]
     internal Parry parryMove;
+/*TODO    [SerializeField]
+    internal Assist assistMove;*/
 
     public GameObject facingObject => transform.Find("Facing").gameObject;
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
@@ -59,7 +61,7 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
-        //assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
+        //TODO assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
     }
 
     // Update is called once per frame
@@ -233,7 +235,7 @@ public class PlayerControl : EntityControl
         if (button is Dodge) dodgeMove = (Dodge)button;
         if (button is Parry) parryMove = (Parry)button;
         if (button is MeleeAttack) meleeAttack = (MeleeAttack)button;
-        //if (button is Assist) assistMove = (Assist)button;
+        //TODO if (button is Assist) assistMove = (Assist)button;
     }
     //saves the game for player
 
@@ -253,7 +255,7 @@ public class PlayerControl : EntityControl
         rangedAttack = loadout.RangedList[save.rangedAttack];
         specialAttack = loadout.SpecialList[save.specialAttack];
         parryMove = loadout.ParryList[save.parry];
-        //assistMove = loadout.AssistList[save.assist];
+        //TODO assistMove = loadout.AssistList[save.assist];
 
         bossesDefeated = save.bossesDefeated;
         dodgeUnlocked = save.dodgeUnlocked;
@@ -305,7 +307,7 @@ public class PlayerControl : EntityControl
         }
     }
 
-    //Player Assist Move
+    //TODO Player Assist Move
     void Assist()
     {
         //Assist animation occurs

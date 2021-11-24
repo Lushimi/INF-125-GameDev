@@ -73,7 +73,7 @@ public abstract class EntityData : MonoBehaviour
             HealthChanged.Raise();
             Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
-            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
+            myRb.AddForce((knockbackVector.normalized) * knockbackScale * myRb.mass * myRb.drag);
 
             if (currentHealth <= 0)
             {

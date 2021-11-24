@@ -40,6 +40,7 @@ public class Dodge : Button
         //iframe part of dodge
         float invulnDeltaTime = invuln / 75; //literal is arbitrary, could use anything else
         PlayerController.isInvulnerable = true;
+        PlayerController.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.5f);
         for (float i = 0; i < invuln; i += invulnDeltaTime)
         {
 

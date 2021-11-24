@@ -44,11 +44,7 @@ public abstract class EntityData : MonoBehaviour
 
     public void Update()
     {
-        if (isInvulnerable)
-        {
-            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
-        }
-        else
+        if (!isInvulnerable)
         {
             GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, new Color(255f, 255f, 255f, 255f), 5f * Time.deltaTime);
         }
@@ -65,6 +61,7 @@ public abstract class EntityData : MonoBehaviour
                 Die();
             }
             entityControl.invulnOnHit();
+            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
         }
     }
 
@@ -83,6 +80,7 @@ public abstract class EntityData : MonoBehaviour
                 Die();
             }
             entityControl.invulnOnHit();
+            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
         }
     }
 

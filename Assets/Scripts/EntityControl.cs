@@ -36,8 +36,8 @@ public abstract class EntityControl : MonoBehaviour
     {
         Debug.Log("GotInvuln?");
         isInvulnerable = true;
-        if (canAct)
-        {
+        if (canAct) 
+        { 
             canAct = false;
             for (float i = 0; i < invulnTime; i += (invulnTime))
             {

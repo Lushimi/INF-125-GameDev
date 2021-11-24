@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Trim bullet
 public class Wave : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
     public int damage;
     public Transform facing;
-    
+    public float lifespan = 3.1f;
 
     public void Setup(Transform facing)
     {
@@ -22,6 +21,7 @@ public class Wave : MonoBehaviour
     {
         //Debug.Log("RUNNING START");
         rb.velocity = new Vector2(facing.position.x, facing.position.y) * speed;
+       // Destroy(gameObject, lifespan);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)

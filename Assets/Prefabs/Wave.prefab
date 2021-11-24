@@ -139,3 +139,4 @@ MonoBehaviour:
   rb: {fileID: 8153121279779152434}
   damage: 20
   facing: {fileID: 0}
+  lifespan: 0.001

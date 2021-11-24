@@ -14,10 +14,6 @@ public class PlayerData : EntityData
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
 
-    public void Update()
-    {
-    }
-
     public override void Reset()
     {
         currentHealth = maxHP;
@@ -26,7 +22,7 @@ public class PlayerData : EntityData
         StaminaChanged.Raise();
         speed = 5.5f;
         staminaPerSecond = 30f;
-
+        GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 255f);
     }
 
     public override void TakeDamage(int damage)

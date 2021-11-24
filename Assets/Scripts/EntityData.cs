@@ -21,7 +21,6 @@ public abstract class EntityData : MonoBehaviour
     public float staminaPerSecond;
     public float knockbackScale = 100f;
     public bool isDead = false;
-    public bool isDamaged = false;
 
     [Header("Game Events")]
     [SerializeField]
@@ -42,12 +41,23 @@ public abstract class EntityData : MonoBehaviour
     internal Animator animator => entityControl.animator;
 
     abstract public void Reset();
-    
+
+    public void Update()
+    {
+        if (isInvulnerable)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, new Color(255f, 255f, 255f, 255f), 5f * Time.deltaTime);
+        }
+    }
+
     public virtual void TakeDamage(int damage)
     {
         if (!isInvulnerable && !isDead)
         {
-            isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
             if (currentHealth <= 0)
@@ -62,7 +72,6 @@ public abstract class EntityData : MonoBehaviour
     {
         if (!isInvulnerable && !isDead)
         {
-            isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
             Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;

@@ -25,6 +25,18 @@ public class LoadoutManager : MonoBehaviour
         return returnVal;
     }
 
+    public int DodgeToID(Dodge curDodge)
+    {
+        int returnVal = -1;
+        DodgeList.ForEach(
+            dodge => {
+                if (dodge.GetType().ToString() == curDodge.GetType().ToString())
+                { returnVal = DodgeList.IndexOf(dodge); }
+            }
+            );
+        return returnVal;
+    }
+
     public Dodge idToDodge(string id)
     {
         Dodge returnVal = null;

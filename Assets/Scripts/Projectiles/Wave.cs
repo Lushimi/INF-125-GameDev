@@ -21,7 +21,11 @@ public class Wave : MonoBehaviour
     {
         //Debug.Log("RUNNING START");
         rb.velocity = new Vector2(facing.position.x, facing.position.y) * speed;
-       // Destroy(gameObject, lifespan);
+
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * 90;
+        float angle = Mathf.Atan2(facing.position.y, facing.position.x) * Mathf.Rad2Deg;
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * angle;
+        // Destroy(gameObject, lifespan);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)

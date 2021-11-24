@@ -16,4 +16,4 @@ MonoBehaviour:
   maxStamina: 1000
   maxHP: 700
   staminaPerSecond: 25
-  knockbackScale: 65
+  knockbackScale: 50

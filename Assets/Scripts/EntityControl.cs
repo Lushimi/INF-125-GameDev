@@ -16,13 +16,15 @@ public abstract class EntityControl : MonoBehaviour
     //Flag for checking if on-hit effects should apply
     public bool isInvulnerable = false;
     //flag for checking if player can act
-    public bool canAct = false;
     public float invincibiltyTimeOnHit;
+    public bool canAct = false;
     public bool isDisabled = false;
+    public bool isDead = false;
 
     [Header("Vectors")]
     public Vector3 movementVector;
     public Vector3 orientationVector;
+
 
     public void invulnOnHit()
     {
@@ -32,14 +34,28 @@ public abstract class EntityControl : MonoBehaviour
     //this also stuns the mob by putting the canAct to false
     public IEnumerator ActivateInvincibility(float invulnTime)
     {
+        Debug.Log("GotInvuln?");
         isInvulnerable = true;
-        canAct = false;
-        for (float i = 0; i < invulnTime; i += (invulnTime / 75))
-        {
-            yield return new WaitForSeconds(invulnTime / 75);
+        if (canAct) 
+        { 
+            canAct = false;
+            for (float i = 0; i < invulnTime; i += (invulnTime))
+            {
+                yield return new WaitForSeconds(invulnTime);
+                isInvulnerable = false;
+            }
+            canAct = true;
         }
-        canAct = true;
-        isInvulnerable = false;
+        else
+        {
+            for (float i = 0; i < invulnTime; i += (invulnTime))
+            {
+                yield return new WaitForSeconds(invulnTime);
+                isInvulnerable = false;
+            }
+
+        }
+
     }
 
     public void Disable()
@@ -54,4 +70,5 @@ public abstract class EntityControl : MonoBehaviour
         cooldown = 0;
         isDisabled = false;
     }
+    
 }

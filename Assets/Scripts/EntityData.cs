@@ -21,8 +21,6 @@ public abstract class EntityData : MonoBehaviour
     public float staminaPerSecond;
     public float knockbackScale = 100f;
     public bool isDead = false;
-    public bool isDamaged = false;
-    public Image damageScreen;
 
     [Header("Game Events")]
     [SerializeField]
@@ -44,13 +42,18 @@ public abstract class EntityData : MonoBehaviour
 
     abstract public void Reset();
 
-    abstract public void Update();
-    
+    public void Update()
+    {
+        if (!isInvulnerable)
+        {
+            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, new Color(255f, 255f, 255f, 255f), 5f * Time.deltaTime);
+        }
+    }
+
     public virtual void TakeDamage(int damage)
     {
         if (!isInvulnerable && !isDead)
         {
-            isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
             if (currentHealth <= 0)
@@ -58,6 +61,7 @@ public abstract class EntityData : MonoBehaviour
                 Die();
             }
             entityControl.invulnOnHit();
+            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
         }
     }
 
@@ -65,19 +69,18 @@ public abstract class EntityData : MonoBehaviour
     {
         if (!isInvulnerable && !isDead)
         {
-            isDamaged = true;
             currentHealth -= damage;
             HealthChanged.Raise();
-            //this is causing issues
-/*            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
+            Rigidbody2D myRb = gameObject.GetComponent<EntityControl>().rb;
             Vector3 knockbackVector = gameObject.transform.position - attacker.transform.position;
-            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);*/
+            myRb.AddForce((knockbackVector) * knockbackScale * myRb.mass * myRb.drag);
 
             if (currentHealth <= 0)
             {
                 Die();
             }
             entityControl.invulnOnHit();
+            GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0.5f);
         }
     }
 
@@ -100,7 +103,7 @@ public abstract class EntityData : MonoBehaviour
         }
         else if (currentStamina < maxStamina)
         {
-            currentStamina += Math.Min(100 - currentStamina, Time.deltaTime * staminaPerSecond);
+            currentStamina += Time.deltaTime * staminaPerSecond;
             StaminaChanged.Raise();
         }
 

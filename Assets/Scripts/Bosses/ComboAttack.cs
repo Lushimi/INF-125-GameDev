@@ -13,7 +13,6 @@ public class ComboAttack : MonoBehaviour
 
     public int attackDamage = 5;
     public float attackRangeNormal = 1.5f;
-    public float finalAttackRange = 2.5f;
     public Rigidbody2D rb;
 
     public float startup = 0;
@@ -76,7 +75,6 @@ public class ComboAttack : MonoBehaviour
 
     public void finishAttack()
     {
-
         animator.SetBool("comboP3", false);
     }
 
@@ -85,7 +83,7 @@ public class ComboAttack : MonoBehaviour
 
         // Detect enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRangeNormal, enemyLayers);
-        AttackSwing.Raise();
+        ComboAttackSwing.Raise();
         // Damage enemies (loop over all enemies in collider array)
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -93,6 +91,13 @@ public class ComboAttack : MonoBehaviour
             Debug.Log("Player damaged by combo attack!");
         }
         
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(attackPoint.position, attackRangeNormal);
     }
 
     //Movement

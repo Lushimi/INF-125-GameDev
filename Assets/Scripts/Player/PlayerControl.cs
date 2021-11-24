@@ -38,6 +38,8 @@ public class PlayerControl : EntityControl
 
     [Header("Debug")]
     public bool verbose = false;
+    public bool ControllerMode = false;
+
     //theres probably a way better way than this idk
     [Header("Game Progress")]
     public int[] bossesDefeated = new int[1] { 0 };
@@ -65,8 +67,9 @@ public class PlayerControl : EntityControl
     {
         Player.StaminaRegen();
         //sets player orientation = to mouse position
-        if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height)
+        if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height && !ControllerMode)
         {
+            Cursor.lockState = CursorLockMode.None;
             orientationVector = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
             Vector2 orientationVector2D = new Vector2(orientationVector.x, orientationVector.y);
             Vector2 facing = (((orientationVector2D - rb.position) * 500).normalized);
@@ -85,6 +88,29 @@ public class PlayerControl : EntityControl
             //set the facing child object to facing
             facingObject.transform.position = facing;
 
+        }
+        else if (ControllerMode)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            orientationVector.x += Input.GetAxisRaw("Mouse X");
+            orientationVector.y += Input.GetAxisRaw("Mouse Y");
+            if (orientationVector.x >= 20) orientationVector.x = 20;
+            if (orientationVector.x <= -20) orientationVector.x = -20;
+            if (orientationVector.y >= 20) orientationVector.y = 20;
+            if (orientationVector.y <= -20) orientationVector.y = -20;
+            Vector2 facing = orientationVector.normalized;
+            try
+            {
+                MeleeAttackPoint.position = rb.position + meleeAttack.attackRange * facing;
+                RangedAttackPoint.position = rb.position + 1f * facing;
+            }
+            catch (Exception e)
+            {
+                // Debug.LogError(e);
+            }
+
+            //set the facing child object to facing
+            facingObject.transform.position = facing;
         }
         if (canAct)
         {
@@ -113,30 +139,31 @@ public class PlayerControl : EntityControl
             animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
             rb.MovePosition(rb.position + new Vector2(movementVector.x, movementVector.y).normalized * Player.speed * Time.fixedDeltaTime);
+            rb.velocity = Vector3.zero;
 
 
-            //Input processing
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            //Input processing (XBOX controller scheme)
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown("joystick button 0")) //a
             {
                 MeleeAttack();
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            else if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown("joystick button 5")) //right bumper
             {
                 RangedAttack();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            else if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown("joystick button 1")) //b
             {
                 Dodge();
             }
-            else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 4")) //left bumper
             {
                 Assist();
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 3")) //y
             {
                 Special();
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 2")) //x
             {
                 Parry();
             }
@@ -153,7 +180,6 @@ public class PlayerControl : EntityControl
             {
                 ChangeLoadout();
             }
-
         }
         else
         {
@@ -269,11 +295,13 @@ public class PlayerControl : EntityControl
         // Play dodge animationa
         // Move character in direction of dodge
         if (Player.currentStamina > 0) {
+
             cooldown = (dodgeMove.cooldown);
             dodgeMove.PerformDodge();
             Player.ReduceStamina(dodgeMove.staminaCost);
             canAct = false;
             if (verbose) Debug.Log("Dodge");
+
         }
     }
 

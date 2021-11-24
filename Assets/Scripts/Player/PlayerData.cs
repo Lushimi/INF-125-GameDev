@@ -8,23 +8,11 @@ using UnityEngine.UI;
 public class PlayerData : EntityData
 {
     public GameEvent DodgeSFX;
+    public Image damageScreen;
 
     [Header("Specific For Player")]
     public string RespawnScene = "HubScene";
     private GameObject Player => gameObject;
-
-    public override void Update()
-    {
-        if (isDamaged)
-        {
-            damageScreen.color = new Color(255f, 0f, 0f, 0.5f);
-        }
-        else
-        {
-            damageScreen.color = Color.Lerp(damageScreen.color, Color.clear, 5f * Time.deltaTime);
-        }
-        isDamaged = false;
-    }
 
     public override void Reset()
     {
@@ -32,9 +20,9 @@ public class PlayerData : EntityData
         HealthReset.Raise();
         currentStamina = maxStamina;
         StaminaChanged.Raise();
-        speed = 6f;
-        staminaPerSecond = 17f;
-
+        speed = 5.5f;
+        staminaPerSecond = 30f;
+        GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 255f);
     }
 
     public override void TakeDamage(int damage)

@@ -43,7 +43,9 @@ AnimationClip:
       value: {fileID: 21300000, guid: 8677e971acb472949a00767ee9a57bf4, type: 3}
     - time: 1.75
       value: {fileID: 21300000, guid: b9a06af07988a8940b6f449b4685e57c, type: 3}
-    - time: 1.9166666
+    - time: 2.1666667
+      value: {fileID: 21300000, guid: 8677e971acb472949a00767ee9a57bf4, type: 3}
+    - time: 2.5
       value: {fileID: 21300000, guid: c050e295f395edf4e933bfbeb5f6171c, type: 3}
     attribute: m_Sprite
     path: 
@@ -76,18 +78,19 @@ AnimationClip:
     - {fileID: 21300000, guid: 8677e971acb472949a00767ee9a57bf4, type: 3}
     - {fileID: 21300000, guid: 8677e971acb472949a00767ee9a57bf4, type: 3}
     - {fileID: 21300000, guid: b9a06af07988a8940b6f449b4685e57c, type: 3}
+    - {fileID: 21300000, guid: 8677e971acb472949a00767ee9a57bf4, type: 3}
     - {fileID: 21300000, guid: c050e295f395edf4e933bfbeb5f6171c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 2.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -116,15 +119,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.75
-    functionName: finishAttack
+  - time: 2.3333333
+    functionName: disableBossCooldown
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.9166666
-    functionName: disableCooldown
+  - time: 2.4166667
+    functionName: finishAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -3,31 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChooseDodge : MonoBehaviour
+public class ChooseDodge : ChooseButton
 {
-    public int dodgeId;
-    public LoadoutManager lm => GameObject.Find("LoadoutManager").GetComponent<LoadoutManager>();
-    public PlayerControl pc => GameObject.Find("Player").GetComponent<PlayerControl>();
-    public Image img;
-    public List<Color> colors = new List<Color>() { Color.blue, Color.green, Color.red, Color.black, Color.white, Color.yellow};
-    void Start()
+    public override void Start()
     {
-        dodgeId = lm.DodgeToID(pc.dodgeMove);
-        img.color = colors[dodgeId];
+        buttonID = lm.DodgeToID(pc.dodgeMove);
     }
-    public void ChangeDodge()
+    public override void ChangeButton()
     {
-        dodgeId = lm.DodgeToID(GameObject.Find("Player").GetComponent<PlayerControl>().dodgeMove);
-        dodgeId = (dodgeId + 1) % lm.DodgeList.Count;
+
+        buttonID = lm.DodgeToID(GameObject.Find("Player").GetComponent<PlayerControl>().dodgeMove);
+        buttonID = (buttonID + 1) % lm.DodgeList.Count;
         
-        while (pc.dodgeUnlocked[dodgeId] != 1)
+        while (pc.dodgeUnlocked[buttonID] != 1)
         {
-            dodgeId = (dodgeId + 1) % lm.DodgeList.Count;
+            buttonID = (buttonID + 1) % lm.DodgeList.Count;
             //Debug.Log(dodgeId);
         }
-        
-        img.color = colors[dodgeId];
-        pc.dodgeMove = lm.idToDodge(dodgeId);
+        img.color = colors[buttonID];
+        pc.dodgeMove = lm.idToDodge(buttonID);
         
     }
 }

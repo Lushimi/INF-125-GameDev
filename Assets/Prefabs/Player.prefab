@@ -233,14 +233,13 @@ MonoBehaviour:
   staminaPerSecond: 30
   knockbackScale: 50
   isDead: 0
-  isDamaged: 0
-  damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: b56823f11db4de642807368fcb31e085, type: 2}
   HealthReset: {fileID: 11400000, guid: f966ea0e0c3270848ac7c4b4fdb8df25, type: 2}
   StaminaChanged: {fileID: 11400000, guid: 4eedfb252426fa24fa05a098f3a82222, type: 2}
   Death: {fileID: 11400000, guid: 21c1dfd536a6f524e834c82b78abde5d, type: 2}
   SceneChanged: {fileID: 11400000, guid: 6848981e1a0891440a5509bc1081395e, type: 2}
   DodgeSFX: {fileID: 11400000, guid: 8becf12fabde2ff46bc51965c736df54, type: 2}
+  damageScreen: {fileID: 0}
   RespawnScene: HubScene
 --- !u!114 &3131920184545752251
 MonoBehaviour:
@@ -258,9 +257,10 @@ MonoBehaviour:
   animator: {fileID: 2928918565220437074}
   cooldown: 0
   isInvulnerable: 0
-  canAct: 1
   invincibiltyTimeOnHit: 1
+  canAct: 1
   isDisabled: 0
+  isDead: 0
   movementVector: {x: 0, y: 0, z: 0}
   orientationVector: {x: 0, y: 0, z: 0}
   Player: {fileID: 2711965455732394999}
@@ -275,11 +275,11 @@ MonoBehaviour:
   verbose: 0
   ControllerMode: 0
   bossesDefeated: 00000000
-  dodgeUnlocked: 00000000000000000000000000000000
-  meleeUnlocked: 0000000000000000
-  rangedUnlocked: 00000000
-  specialUnlocked: 00000000
-  parryUnlocked: 00000000
+  dodgeUnlocked: 01000000000000000000000000000000
+  meleeUnlocked: 0100000000000000
+  rangedUnlocked: 01000000
+  specialUnlocked: 01000000
+  parryUnlocked: 01000000
   assistUnlocked: 
 --- !u!114 &2046163533
 MonoBehaviour:

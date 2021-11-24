@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 //Wave attack - wave attack from boss, small range but large hitbox
+//Trim bullet
+//Bullet range after 0.01f doesn't get any smaller (about half the screen)
+
 public class WaveAttack : MonoBehaviour
 {
     public Transform wavePoint => transform.Find("RangedAttackPoint");
@@ -13,6 +15,7 @@ public class WaveAttack : MonoBehaviour
 
     public float startup = 0.1f;
     public float cooldown = 0.5f;
+    public float coneSize = 3.5f;
 
     public void waveAttack()
     {
@@ -23,7 +26,13 @@ public class WaveAttack : MonoBehaviour
     {
         // Wave logic
         //Instantiate(wavePrefab, wavePoint.position, wavePoint.rotation);
-        Transform waveTransform = (Instantiate(wavePrefab, wavePoint.position, wavePoint.rotation)).transform;
+        //https://forum.unity.com/threads/cone-shaped-bullet-spread.414893/
+        float xSpread = UnityEngine.Random.Range(-1, 1);
+        float ySpread = UnityEngine.Random.Range(-1, 1);
+        Vector3 spread = new Vector3(xSpread, ySpread, 0.0f).normalized * coneSize;
+        Quaternion rotation = Quaternion.Euler(spread) * wavePoint.rotation;
+
+        Transform waveTransform = (Instantiate(wavePrefab, wavePoint.position, rotation)).transform;
         waveTransform.GetComponent<Wave>().Setup(facing);
         //Destroy(gameObject);
     }

@@ -57,7 +57,7 @@ public class PlayerData : EntityData
     }
 
     // from this tutorial https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.MoveGameObjectToScene.html
-    IEnumerator LoadAsyncScene() 
+    public IEnumerator LoadAsyncScene() 
     {
         Scene currentScene = SceneManager.GetActiveScene();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(RespawnScene, LoadSceneMode.Additive);

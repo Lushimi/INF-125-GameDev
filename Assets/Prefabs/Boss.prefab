@@ -220,7 +220,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -228,7 +228,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!95 &1228116736
 Animator:
   serializedVersion: 3
@@ -264,9 +264,10 @@ MonoBehaviour:
   animator: {fileID: 1228116736}
   cooldown: 0
   isInvulnerable: 0
-  canAct: 0
   invincibiltyTimeOnHit: 0.25
+  canAct: 0
   isDisabled: 0
+  isDead: 0
   movementVector: {x: 0, y: 0, z: 0}
   orientationVector: {x: 0, y: 0, z: 0}
   Boss: {fileID: -3673268391658415719}
@@ -306,8 +307,6 @@ MonoBehaviour:
   staminaPerSecond: 0
   knockbackScale: 1
   isDead: 0
-  isDamaged: 0
-  damageScreen: {fileID: 0}
   HealthChanged: {fileID: 11400000, guid: a52d867f9dd56e7428b93c21314d7b86, type: 2}
   HealthReset: {fileID: 11400000, guid: 3dd7bacf40e9d9e418818df6c027b9c2, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
@@ -386,6 +385,7 @@ MonoBehaviour:
   wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
   startup: 0.3
   cooldown: 0.5
+  coneSize: 3.5
 --- !u!114 &1185117119
 MonoBehaviour:
   m_ObjectHideFlags: 0

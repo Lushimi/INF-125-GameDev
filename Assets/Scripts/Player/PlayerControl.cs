@@ -34,6 +34,7 @@ public class PlayerControl : EntityControl
 
 
     public int bossID => GameObject.Find("Boss").GetComponent<BossData>().bossID;
+    public bool bossDead => GameObject.Find("Boss").GetComponent<BossData>().isDead; 
 
     [Header("Game Events")]
     public GameEvent MeleeAttackEvent;
@@ -41,6 +42,9 @@ public class PlayerControl : EntityControl
     [Header("Debug")]
     public bool verbose = false;
     public bool ControllerMode = false;
+    public bool SCunlocked = false;
+    public GameObject triggeredNPC;
+    public bool triggeringNPC;
 
     //theres probably a way better way than this idk
     [Header("Game Progress")]
@@ -143,7 +147,6 @@ public class PlayerControl : EntityControl
             rb.MovePosition(rb.position + new Vector2(movementVector.x, movementVector.y).normalized * Player.speed * Time.fixedDeltaTime);
             rb.velocity = Vector3.zero;
 
-
             //Input processing (XBOX controller scheme)
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown("joystick button 0")) //a
             {
@@ -181,6 +184,15 @@ public class PlayerControl : EntityControl
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 ChangeLoadout();
+            }
+            else if (Input.GetKeyDown(KeyCode.Return) && bossDead) {
+                SpareOrConsumeBoss();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) && SCunlocked) {
+                SpareBoss();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && SCunlocked) {
+                ConsumeBoss();
             }
         }
         else
@@ -367,4 +379,43 @@ public class PlayerControl : EntityControl
         else if (verbose) Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToMelee(1).ToString()));
     }
 
+    void SpareOrConsumeBoss() {
+        if (triggeringNPC) {
+            Debug.Log("You have bested me.");
+            Debug.Log("Would you like to SPARE or CONSUME " + bossID + "?");
+            Debug.Log("1 : Spare | 2 : Consume"); 
+            SCunlocked = true;
+        }
+    }
+
+    void SpareBoss() {
+        if (triggeringNPC) {
+            Debug.Log("BOSS " + bossID + " was spared");
+            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
+        }
+
+    }
+
+    void ConsumeBoss() {
+        if (triggeringNPC) {
+            Debug.Log("BOSS " + bossID + " was consumed");
+            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "NPC") {
+            triggeringNPC = true;
+            triggeredNPC = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "NPC") {
+            triggeringNPC = false;
+            triggeredNPC = null;
+        }
+    }
 }

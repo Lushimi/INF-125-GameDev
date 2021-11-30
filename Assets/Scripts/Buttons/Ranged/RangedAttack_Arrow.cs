@@ -21,6 +21,5 @@ public class RangedAttack_Arrow : RangedAttack
         Transform arrowTransform = (Instantiate(arrowPrefab, rangedAttackPoint.position, rangedAttackPoint.rotation)).transform;
         arrowTransform.GetComponent<Arrow>().Setup(facing);
         animator.SetBool("isRangedAttacking", true);
-
     }
 }

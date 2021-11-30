@@ -25,8 +25,9 @@ public class PlayerControl : EntityControl
     internal Special specialAttack;
     [SerializeField]
     internal Parry parryMove;
-/*TODO    [SerializeField]
-    internal Assist assistMove;*/
+
+    [SerializeField]
+    internal Assist assistMove;
 
     public GameObject facingObject => transform.Find("Facing").gameObject;
     public Transform MeleeAttackPoint => transform.Find("MeleeAttackPoint").gameObject.transform;
@@ -65,7 +66,7 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
-        //TODO assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
+        assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
     }
 
     // Update is called once per frame
@@ -162,6 +163,7 @@ public class PlayerControl : EntityControl
             }
             else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 4")) //left bumper
             {
+                Debug.Log("HERE");
                 Assist();
             }
             else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 3")) //y
@@ -247,11 +249,10 @@ public class PlayerControl : EntityControl
         if (button is Dodge) dodgeMove = (Dodge)button;
         if (button is Parry) parryMove = (Parry)button;
         if (button is MeleeAttack) meleeAttack = (MeleeAttack)button;
-        //TODO if (button is Assist) assistMove = (Assist)button;
+        if (button is Assist) assistMove = (Assist)button;
     }
+
     //saves the game for player
-
-
     void SaveGame()
     {
         SaveLoad.Save(this);
@@ -267,7 +268,7 @@ public class PlayerControl : EntityControl
         rangedAttack = loadout.RangedList[save.rangedAttack];
         specialAttack = loadout.SpecialList[save.specialAttack];
         parryMove = loadout.ParryList[save.parry];
-        //TODO assistMove = loadout.AssistList[save.assist];
+        assistMove = loadout.AssistList[save.assist];
 
         bossesDefeated = save.bossesDefeated;
         dodgeUnlocked = save.dodgeUnlocked;
@@ -306,7 +307,7 @@ public class PlayerControl : EntityControl
     // Player Dodge Attack
     void Dodge()
     {
-        // Play dodge animationa
+        // Play dodge animation
         // Move character in direction of dodge
         if (Player.currentStamina > 0) {
 
@@ -319,11 +320,11 @@ public class PlayerControl : EntityControl
         }
     }
 
-    //TODO Player Assist Move
     void Assist()
     {
         //Assist animation occurs
         //Assisting character joins screen
+        assistMove.spawn();
         //leave this for later
         if (verbose) Debug.Log("Assist");
     }
@@ -391,7 +392,7 @@ public class PlayerControl : EntityControl
     void SpareBoss() {
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was spared");
-            assistUnlocked[bossID] = 1;
+            UnlockAssist(bossID);
             StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
         }
 
@@ -400,7 +401,6 @@ public class PlayerControl : EntityControl
     void ConsumeBoss() {
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was consumed");
-            assistUnlocked[bossID] = 1;
             StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
         }
     }

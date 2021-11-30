@@ -10,7 +10,8 @@ public class LoadoutManager : MonoBehaviour
     public List<RangedAttack> RangedList;
     public List<Special> SpecialList;
     public List<Parry> ParryList;
-    //public List<Assist> AssistList;
+    
+    public List<Assist> AssistList;
 
     public List<IList> allLists => new List<IList>() { DodgeList,RangedList, SpecialList, ParryList };
     public Dodge idToDodge(int id)

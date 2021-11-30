@@ -800,6 +800,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4760656221710792641, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4934154316307395043, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
       propertyPath: cam
       value: 
@@ -1674,6 +1678,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+--- !u!1 &1841758298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7052129423359454678, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+  m_PrefabInstance: {fileID: 2046163523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1841758309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841758298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e808a09b655dc924e881bde1c6bbd6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  bossPrefab: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  boss: {fileID: 0}
 --- !u!1 &1913220213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,6 +1846,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 733544222066610344, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: AssistList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 733544222066610344, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: AssistList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1841758309}
     - target: {fileID: 949143243342971814, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: cooldown
       value: 0.15
@@ -1918,6 +1950,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 815057659}
+    - target: {fileID: 3131920184545752251, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: assistUnlocked.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3358253236106991667, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: attackDamage
       value: 19

@@ -70,7 +70,7 @@ public class BossCharge : MonoBehaviour
         // Damage enemies (loop over all enemies in collider array)
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<PlayerData>().TakeDamage(attackDamage, this.gameObject);
+            enemy.GetComponent<EntityData>().TakeDamage(attackDamage, this.gameObject);
             Debug.Log("Player damaged by charge attack!");
         }
         animator.SetBool("isChargeAttackHitting", false);

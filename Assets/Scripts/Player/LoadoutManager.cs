@@ -189,7 +189,7 @@ public class LoadoutManager : MonoBehaviour
         return returnVal;
     }
 
-  /*  public Assist idToAssist(int id)
+    public Assist idToAssist(int id)
     {
         Assist returnVal = null;
         AssistList.ForEach(
@@ -224,5 +224,6 @@ public class LoadoutManager : MonoBehaviour
             }
             );
         return returnVal;
-    }*/
+    }
+    
 }

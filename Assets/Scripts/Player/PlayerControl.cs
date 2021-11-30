@@ -161,9 +161,8 @@ public class PlayerControl : EntityControl
             {
                 Dodge();
             }
-            else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 4")) //left bumper
+            else if (Input.GetKeyDown(KeyCode.F) ||  Input.GetKeyDown("joystick button 4")) //left bumper
             {
-                Debug.Log("HERE");
                 Assist();
             }
             else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 3")) //y
@@ -187,7 +186,7 @@ public class PlayerControl : EntityControl
             {
                 ChangeLoadout();
             }
-            else if (Input.GetKeyDown(KeyCode.Return) && bossDead) {
+            else if (Input.GetKeyDown(KeyCode.Space) && bossDead) {
                 SpareOrConsumeBoss();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1) && SCAvailable) {

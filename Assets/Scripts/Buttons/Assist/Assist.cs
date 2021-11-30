@@ -37,6 +37,6 @@ public class Assist : Button
         boss.GetComponent<BossControl>().target = GameObject.Find("Boss").GetComponent<Rigidbody2D>();
         boss.GetComponent<BossMeleeAttack>().enemyLayers = LayerMask.GetMask("Enemies");
         boss.GetComponent<BossCharge>().enemyLayers = LayerMask.GetMask("Enemies");
-        boss.GetComponent<ComboAttack>().enemyLayers = LayerMask.GetMask("Enemies");
+        boss.GetComponent<ComboAttack>().enemyLayers = LayerMask.GetMask("Enemies"); 
     }
 }

@@ -863,7 +863,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3673268391658415719, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
   m_PrefabInstance: {fileID: 900070666}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1683286686}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad46929c1b441b24482a0e087ef8fb00, type: 3}
@@ -1621,6 +1621,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1683286686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  m_PrefabInstance: {fileID: 900070666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1786822519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,7 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  bossPrefab: {fileID: 7876088130285233315, guid: 2a246fbcb0078dc4e98e2eac8fd55b17, type: 3}
+  bossPrefab: {fileID: 1683286686}
   boss: {fileID: 0}
 --- !u!1 &1913220213
 GameObject:

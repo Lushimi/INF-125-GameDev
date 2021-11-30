@@ -42,7 +42,7 @@ public class PlayerControl : EntityControl
     [Header("Debug")]
     public bool verbose = false;
     public bool ControllerMode = false;
-    public bool SCunlocked = false;
+    public bool SCAvailable = false;
     public GameObject triggeredNPC;
     public bool triggeringNPC;
 
@@ -54,7 +54,7 @@ public class PlayerControl : EntityControl
     public int[] rangedUnlocked = new int[1] { 1 };
     public int[] specialUnlocked = new int[1] { 1 };
     public int[] parryUnlocked = new int[1] { 1 };
-    public int[] assistUnlocked = new int[0] { };
+    public int[] assistUnlocked = new int[1] { 0 };
 
     private void Awake()
     {
@@ -188,10 +188,10 @@ public class PlayerControl : EntityControl
             else if (Input.GetKeyDown(KeyCode.Return) && bossDead) {
                 SpareOrConsumeBoss();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha1) && SCunlocked) {
+            else if (Input.GetKeyDown(KeyCode.Alpha1) && SCAvailable) {
                 SpareBoss();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && SCunlocked) {
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && SCAvailable) {
                 ConsumeBoss();
             }
         }
@@ -384,13 +384,14 @@ public class PlayerControl : EntityControl
             Debug.Log("You have bested me.");
             Debug.Log("Would you like to SPARE or CONSUME " + bossID + "?");
             Debug.Log("1 : Spare | 2 : Consume"); 
-            SCunlocked = true;
+            SCAvailable = true;
         }
     }
 
     void SpareBoss() {
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was spared");
+            assistUnlocked[bossID] = 1;
             StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
         }
 
@@ -399,6 +400,7 @@ public class PlayerControl : EntityControl
     void ConsumeBoss() {
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was consumed");
+            assistUnlocked[bossID] = 1;
             StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
         }
     }

@@ -1922,6 +1922,14 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 7696468475276610444, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
+    - target: {fileID: 7696468475276610444, guid: a22d488039a9669478e8fc615c1caead, type: 3}
+      propertyPath: staminaCost
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8538629211859943348, guid: a22d488039a9669478e8fc615c1caead, type: 3}
       propertyPath: AttackSwing
       value: 

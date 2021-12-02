@@ -60,9 +60,17 @@ public class BossControl : EntityControl
         Instantiate(HitEffect, transform.Find("MeleeAttackPoint").position, Quaternion.Euler(tempTransform.x, tempTransform.y, tempTransform.z) );
     }
 
+    IEnumerator WaitForPlayer() 
+    {
+        while (target == null)
+        { yield return null; }
+    }
+
     // Update is called once per frame
     void Update()
-    { 
+    {
+        StartCoroutine(WaitForPlayer());
+
         if (Boss.isDead)
         {
             isInvulnerable = true;
@@ -198,6 +206,11 @@ public class BossControl : EntityControl
                 }
             }
         }
+    }
+    public void OnSceneChange()
+    {
+        cam = Camera.main;
+        target = GameObject.Find("Player").GetComponent<Rigidbody2D>();
     }
 
     public void disableBossCooldown() 

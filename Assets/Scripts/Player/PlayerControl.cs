@@ -57,7 +57,7 @@ public class PlayerControl : EntityControl
     public int[] parryUnlocked = new int[1] { 1 };
     public int[] assistUnlocked = new int[1] { 0 };
 
-    private void Awake()
+    private void Start()
     {
         Player.Reset();
         //just so we don't have to press L for errors to go away
@@ -212,6 +212,7 @@ public class PlayerControl : EntityControl
         }
 
     }
+
 
     public void FindCamera()
     {
@@ -392,7 +393,7 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was spared");
             UnlockAssist(bossID);
-            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
+            StartCoroutine( Player.LoadAsyncScene(Player.RespawnScene) );
         }
 
     }
@@ -400,7 +401,7 @@ public class PlayerControl : EntityControl
     void ConsumeBoss() {
         if (triggeringNPC) {
             Debug.Log("BOSS " + bossID + " was consumed");
-            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerData>().LoadAsyncScene());
+            StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }
     }
 

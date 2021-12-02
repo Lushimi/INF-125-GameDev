@@ -6,6 +6,10 @@ public class BossData : EntityData
 {
     public int bossID;
 
+    public void Start()
+    {
+        SceneChanged.Raise();
+    }
 
     public override void Reset()
     {

@@ -12,7 +12,9 @@ public class PlayerData : EntityData
 
     [Header("Specific For Player")]
     public string RespawnScene = "HubScene";
+    public bool isInitialized = false;
     private GameObject Player => gameObject;
+
 
     public override void Reset()
     {
@@ -23,6 +25,7 @@ public class PlayerData : EntityData
         speed = 5.5f;
         staminaPerSecond = 30f;
         GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 255f);
+        isInitialized = true;
     }
 
     public override void TakeDamage(int damage)
@@ -53,15 +56,17 @@ public class PlayerData : EntityData
         Debug.Log("Player died!");
         // Die Animation
         Death.Raise();
-        StartCoroutine(LoadAsyncScene());
+        StartCoroutine(LoadAsyncScene(RespawnScene));
+        Reset();
     }
 
     // from this tutorial https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.MoveGameObjectToScene.html
-    public IEnumerator LoadAsyncScene() 
+    public IEnumerator LoadAsyncScene(string sceneChange) 
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(RespawnScene, LoadSceneMode.Additive);
-
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneChange, LoadSceneMode.Additive);
+        //AsyncOperation asyncLoad = EditorSceneManager.LoadSceneAsyncInPlayMode(sceneChange, new LoadSceneParameters(LoadSceneMode.Additive) );
+        Debug.Log("Loaded 2nd Scene");
         //wait until it's fully loaded
         while (!asyncLoad.isDone)
         {
@@ -69,9 +74,11 @@ public class PlayerData : EntityData
         }
 
         //move player to newly loaded scene
-        SceneManager.MoveGameObjectToScene(Player, SceneManager.GetSceneByName(RespawnScene));
+        SceneManager.MoveGameObjectToScene(Player, SceneManager.GetSceneByName(sceneChange));
+        Debug.Log("Moved Player");
         // Unload the previous Scene
         asyncLoad = SceneManager.UnloadSceneAsync(currentScene);
+        Debug.Log("Unloaded 1st Scene");
 
         //wait till the previous scene is unloaded
         while (!asyncLoad.isDone)
@@ -80,7 +87,8 @@ public class PlayerData : EntityData
         }
 
         // raise game event
+        Debug.Log("Done Loading");
         SceneChanged.Raise();
-        Reset();
+
     }
 }

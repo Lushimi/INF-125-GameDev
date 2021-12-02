@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     float switching = 0f;
     float timetoswitch = 1.5f;
     // Update is called once per frame
+    public GameObject playerPrefab;
+
     void Update()
     {
         Vector3 location = new Vector3(toFollow.position.x, toFollow.position.y, 0);
@@ -28,5 +30,28 @@ public class CameraController : MonoBehaviour
     public void FindPlayer()
     {
         toFollow = GameObject.Find("Player").transform;
+    }
+
+    public void SpawnPlayer()
+    {
+        GameObject existingPlayer = GameObject.Find("Player");
+        if (existingPlayer != null)
+        {
+            Destroy(existingPlayer);
+        }
+
+        PlayerData player = (Instantiate(playerPrefab)).GetComponent<PlayerData>();
+        player.name = "Player";
+        StartCoroutine(WaitForSpawn(player.isInitialized));
+        player.SceneChanged.Raise();
+    }
+
+    IEnumerator WaitForSpawn(bool initialized)
+    {
+        while (initialized == false)
+        {
+            yield return null;
+        }
+
     }
 }

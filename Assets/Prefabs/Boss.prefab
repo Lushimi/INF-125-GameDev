@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3938747563954686468}
   - component: {fileID: 7560315793711303002}
   - component: {fileID: 7070568087518662478}
+  - component: {fileID: 7996423152395871135}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -311,7 +312,7 @@ MonoBehaviour:
   HealthReset: {fileID: 11400000, guid: 3dd7bacf40e9d9e418818df6c027b9c2, type: 2}
   StaminaChanged: {fileID: 11400000, guid: db8788b8d9de7174e99355c54395857f, type: 2}
   Death: {fileID: 11400000, guid: 4dd2a0041cfd6df48971a67c6775a009, type: 2}
-  SceneChanged: {fileID: 0}
+  SceneChanged: {fileID: 11400000, guid: 6848981e1a0891440a5509bc1081395e, type: 2}
   bossID: 0
 --- !u!114 &4760656221710792641
 MonoBehaviour:
@@ -561,6 +562,34 @@ MonoBehaviour:
       - m_Target: {fileID: 4934154316307395043}
         m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
         m_MethodName: OnAttackSwing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7996423152395871135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6848981e1a0891440a5509bc1081395e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4934154316307395043}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: OnSceneChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

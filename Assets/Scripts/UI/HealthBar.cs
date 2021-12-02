@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthBar : ResourceBars
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         if (Entity.maxHP == null)
             slider.maxValue = Entity.bossVariables;

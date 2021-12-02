@@ -241,6 +241,7 @@ MonoBehaviour:
   DodgeSFX: {fileID: 11400000, guid: 8becf12fabde2ff46bc51965c736df54, type: 2}
   damageScreen: {fileID: 0}
   RespawnScene: HubScene
+  isInitialized: 0
 --- !u!114 &3131920184545752251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,9 +272,13 @@ MonoBehaviour:
   rangedAttack: {fileID: 0}
   specialAttack: {fileID: 0}
   parryMove: {fileID: 0}
+  assistMove: {fileID: 0}
   MeleeAttackEvent: {fileID: 11400000, guid: ab6f9598da6a3644097e5043d94de3b9, type: 2}
   verbose: 0
   ControllerMode: 0
+  SCAvailable: 0
+  triggeredNPC: {fileID: 0}
+  triggeringNPC: 0
   bossesDefeated: 00000000
   dodgeUnlocked: 01000000000000000000000000000000
   meleeUnlocked: 0100000000000000
@@ -459,6 +464,7 @@ MonoBehaviour:
   - {fileID: 4381452164691751340}
   ParryList:
   - {fileID: 8552030842669948890}
+  AssistList: []
 --- !u!114 &3072737302689632756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaCost: 0
   cooldown: 0.2
-  bulletPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
+  arrowPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
 --- !u!114 &4381452164691751340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c419ab4788e28a4a923f4d7b9e34640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: 80
+  staminaCost: 100
   cooldown: 0.7
   fireballPrefab: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
 --- !u!1 &7210680562664126696

@@ -66,6 +66,9 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
+        if (assistUnlocked[0] == 1) {
+            assistMove = assistMove == null ? loadout.AssistList[0]: assistMove;
+        }   
     }
 
     // Update is called once per frame
@@ -386,7 +389,7 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             // Anyone want to change this to say something more dramatic?
             Debug.Log("BIGKNIGHT: You have bested me.");
-            Debug.Log("Would you like to SPARE or CONSUME BOSS " + bossID + "?");
+            Debug.Log("Would you like to SPARE or CONSUME RAIMUND?");
             Debug.Log("1 : Spare | 2 : Consume"); 
             SCAvailable = true;
         }
@@ -396,7 +399,7 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             UnlockAssist(bossID);
             assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
-            Debug.Log("BOSS " + bossID + " was spared and will be here to assist you in your further battles!");
+            Debug.Log("RAIMUND has been spared and will be here to assist you in your further battles!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }
 
@@ -406,7 +409,7 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             UnlockMelee(bossID);
             UnlockRanged(bossID);
-            Debug.Log("BOSS " + bossID + " was consumed, you have been granted BIGKNIGHT's abilities!");
+            Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }
     }

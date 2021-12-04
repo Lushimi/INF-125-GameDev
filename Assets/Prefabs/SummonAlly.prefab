@@ -116,8 +116,8 @@ GameObject:
   - component: {fileID: 763090271847855338}
   - component: {fileID: 6112958842025834420}
   - component: {fileID: 6782844022109712800}
-  m_Layer: 7
-  m_Name: SummonBigKnight
+  m_Layer: 14
+  m_Name: SummonAlly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   animator: {fileID: 4340964840446881262}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   attackDamage: 17
   attackRangeNormal: 1.2
   rb: {fileID: 7555105651491093792}
@@ -351,7 +351,7 @@ MonoBehaviour:
   animator: {fileID: 4340964840446881262}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   attackDamage: 10
   attackRangeNormal: 1
   rb: {fileID: 7555105651491093792}
@@ -369,7 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}
+  animator: {fileID: 4340964840446881262}
+  projectilePrefab: {fileID: 8387881807223278250, guid: 327f1c8a0c673784184ffb200842763e, type: 3}
+  ShootSFX: {fileID: 0}
 --- !u!114 &6286048875699628894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4b1afd63c4dde47a9c080702224d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4340964840446881262}
   wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
   startup: 0.3
   cooldown: 0.5
@@ -401,7 +404,7 @@ MonoBehaviour:
   animator: {fileID: 4340964840446881262}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   attackDamage: 10
   attackRangeNormal: 1
   rb: {fileID: 7555105651491093792}

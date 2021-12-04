@@ -66,7 +66,6 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
-        assistMove = assistMove == null ? loadout.AssistList[0] : assistMove;
     }
 
     // Update is called once per frame
@@ -382,8 +381,9 @@ public class PlayerControl : EntityControl
 
     void SpareOrConsumeBoss() {
         if (triggeringNPC) {
-            Debug.Log("You have bested me.");
-            Debug.Log("Would you like to SPARE or CONSUME " + bossID + "?");
+            // Anyone want to change this to say something more dramatic?
+            Debug.Log("BIGKNIGHT: You have bested me.");
+            Debug.Log("Would you like to SPARE or CONSUME BOSS " + bossID + "?");
             Debug.Log("1 : Spare | 2 : Consume"); 
             SCAvailable = true;
         }
@@ -391,16 +391,19 @@ public class PlayerControl : EntityControl
 
     void SpareBoss() {
         if (triggeringNPC) {
-            Debug.Log("BOSS " + bossID + " was spared");
             UnlockAssist(bossID);
-            StartCoroutine( Player.LoadAsyncScene(Player.RespawnScene) );
+            assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
+            Debug.Log("BOSS " + bossID + " was spared and will be here to assist you in your further battles!");
+            StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }
 
     }
 
     void ConsumeBoss() {
         if (triggeringNPC) {
-            Debug.Log("BOSS " + bossID + " was consumed");
+            UnlockMelee(bossID);
+            UnlockRanged(bossID);
+            Debug.Log("BOSS " + bossID + " was consumed, you have been granted BIGKNIGHT's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }
     }

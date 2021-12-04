@@ -407,8 +407,8 @@ public class PlayerControl : EntityControl
 
     void ConsumeBoss() {
         if (triggeringNPC) {
-            UnlockMelee(bossID);
-            UnlockRanged(bossID);
+            UnlockMelee(bossID + 1);
+            UnlockRanged(bossID + 1);
             Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
         }

@@ -12,13 +12,16 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("Starting game");
+        //Put intro cutscene (introducing bigknight) by alex
         SceneManager.LoadSceneAsync("HubScene");
-
+        //Instantiate player
+        //StartCoroutine(PlayerData.LoadAsyncScene()); (when working)
     }
 
     public void LoadGame()
     {
         Debug.Log("Loading game");
+        //Put loaded file onto player
         SaveLoad.Load();
     }
 

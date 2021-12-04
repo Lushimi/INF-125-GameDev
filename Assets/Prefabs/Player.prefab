@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 1137835596353710404}
   - component: {fileID: 2124123746238584657}
   - component: {fileID: 3556059926477084371}
-  - component: {fileID: -5335901898362549193}
   - component: {fileID: 2928918565220437074}
   - component: {fileID: 2711965455732394999}
   - component: {fileID: 3131920184545752251}
@@ -177,22 +176,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &-5335901898362549193
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137835596353710393}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!95 &2928918565220437074
 Animator:
   serializedVersion: 3
@@ -239,6 +222,8 @@ MonoBehaviour:
   Death: {fileID: 11400000, guid: 21c1dfd536a6f524e834c82b78abde5d, type: 2}
   SceneChanged: {fileID: 11400000, guid: 6848981e1a0891440a5509bc1081395e, type: 2}
   DodgeSFX: {fileID: 11400000, guid: 8becf12fabde2ff46bc51965c736df54, type: 2}
+  NegativeStaminaToggle: {fileID: 11400000, guid: 418fb404d34cefa478c3f993ab3a3eb4, type: 2}
+  NegativeStaminaBool: 0
   damageScreen: {fileID: 0}
   RespawnScene: HubScene
   isInitialized: 0
@@ -285,7 +270,7 @@ MonoBehaviour:
   rangedUnlocked: 01000000
   specialUnlocked: 01000000
   parryUnlocked: 01000000
-  assistUnlocked: 
+  assistUnlocked: 00000000
 --- !u!114 &2046163533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +449,8 @@ MonoBehaviour:
   - {fileID: 4381452164691751340}
   ParryList:
   - {fileID: 8552030842669948890}
-  AssistList: []
+  AssistList:
+  - {fileID: 0}
 --- !u!114 &3072737302689632756
 MonoBehaviour:
   m_ObjectHideFlags: 0

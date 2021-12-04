@@ -9,6 +9,7 @@ public class BossBullet : MonoBehaviour
     public int damage;
     public Rigidbody2D rb;
     public Transform facing;
+    public float liveTime;
 
     public void Setup(Transform facing)
     {
@@ -16,42 +17,53 @@ public class BossBullet : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
 
         // Changes rigidbody velocity
-        rb.velocity = new Vector2(facing.position.x,facing.position.y) * speed;
+        rb.velocity = new Vector2(facing.position.x, facing.position.y) * speed;
 
-        
-        // Flip bullet sprite render x axis when switching directions - horizontally
-        if (facing.position.x > 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (facing.position.x < 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
+
+        //basically copypasted from rotat_e
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * 90;
+        float angle = Mathf.Atan2(facing.position.y, facing.position.x) * Mathf.Rad2Deg;
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * angle;
+        StartCoroutine(destroyTimer());
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+
+    internal IEnumerator destroyTimer()
     {
-        // Get info for the enemies we hit
-        PlayerData enemy = hitInfo.GetComponent<PlayerData>();
-        // If an enemy was hit
-        if (enemy != null)
-        {
-            // deal damage to enemy
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        
-        // destroy bullet
-        if(!(hitInfo.GetComponent<EntityData>() is BossData))
+        yield return new WaitForSecondsRealtime(liveTime);
         Destroy(gameObject);
     }
 
 
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        // Get info for the enemies we hit
+
+        //Add a case for colliding into world (trees, boundaries)
+        EntityData hit = hitInfo.GetComponent<EntityData>();
+        // If player was hit
+        if (hit is PlayerData)
+        {
+            // deal damage to enemy
+            hit.TakeDamage(damage, this.gameObject);
+            Destroy(gameObject);
+        }
+        else if (!(hit is BossData))
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
+
+    public virtual void OnDestroy()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 
 }
 

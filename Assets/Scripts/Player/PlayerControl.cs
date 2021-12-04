@@ -331,12 +331,15 @@ public class PlayerControl : EntityControl
     //Player Special
     void Special()
     {
-        cooldown = specialAttack.cooldown;
-        Player.ReduceStamina(specialAttack.staminaCost);
-        animator.SetFloat("Speed", 0);
-        specialAttack.special();
-        canAct = false;
-        if (verbose) Debug.Log("Special");
+        if (Player.currentStamina > 0)
+        { 
+            cooldown = specialAttack.cooldown;
+            Player.ReduceStamina(specialAttack.staminaCost);
+            animator.SetFloat("Speed", 0);
+            specialAttack.special();
+            canAct = false;
+            if (verbose) Debug.Log("Special");
+        }
     }
 
     //Player Parry

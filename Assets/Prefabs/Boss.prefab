@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 8989925771136507691}
   - component: {fileID: 6117880652488786894}
   - component: {fileID: -3245912758373198599}
-  - component: {fileID: 1695161214}
   - component: {fileID: 1228116736}
   - component: {fileID: 4934154316307395043}
   - component: {fileID: -3673268391658415719}
@@ -117,9 +116,10 @@ GameObject:
   - component: {fileID: 7560315793711303002}
   - component: {fileID: 7070568087518662478}
   - component: {fileID: 7996423152395871135}
+  - component: {fileID: 3443990265922076099}
   m_Layer: 7
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 7876088130285233315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.95, y: 2.95, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 446629925}
   - {fileID: 1356734734}
@@ -214,22 +214,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1695161214
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7876088130285233315}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
 --- !u!95 &1228116736
 Animator:
   serializedVersion: 3
@@ -280,7 +264,7 @@ MonoBehaviour:
   rangedAttack: {fileID: 8849157948837749563}
   chargeAttack: {fileID: 4760656221710792641}
   waveAttack: {fileID: 7710932909215552944}
-  verbose: 0
+  verbose: 1
   movement_override: 0
   decisionLocked: 0
   roll: 0
@@ -302,7 +286,7 @@ MonoBehaviour:
   maxHP: {fileID: 0}
   maxStamina: {fileID: 0}
   bossVariables: {fileID: 11400000, guid: bf7ee4ae090cf274284e3b2560758612, type: 2}
-  speed: 5
+  speed: 6
   currentStamina: 0
   currentHealth: 100
   staminaPerSecond: 0
@@ -370,7 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7450923888499438ca055ac7bb90aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5447002502195557359, guid: 00f023a58c1b32945856447962e18736, type: 3}
+  animator: {fileID: 1228116736}
+  projectilePrefab: {fileID: 8387881807223278250, guid: 327f1c8a0c673784184ffb200842763e, type: 3}
+  ShootSFX: {fileID: 0}
 --- !u!114 &7710932909215552944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4b1afd63c4dde47a9c080702224d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
+  animator: {fileID: 1228116736}
+  wavePrefab: {fileID: 1385342004151546656, guid: c5f007c5912372a4abb163c7dd862de4, type: 3}
   startup: 0.3
   cooldown: 0.5
   coneSize: 3.5
@@ -448,12 +435,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.5
+  radius: 0.4
   height: 2
-  repathRate: 0.5
+  repathRate: 0.3
   canSearch: 1
   canMove: 1
-  maxSpeed: 5
+  maxSpeed: 6
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -462,9 +449,9 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 20
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 0.5
   pickNextWaypointDist: 2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
@@ -590,6 +577,46 @@ MonoBehaviour:
       - m_Target: {fileID: 4934154316307395043}
         m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
         m_MethodName: OnSceneChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3443990265922076099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876088130285233315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8adff26dcc8d9f641bc7dc30146c54d5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8849157948837749563}
+        m_TargetAssemblyTypeName: BossRangedAttack, Assembly-CSharp
+        m_MethodName: FinishAxeThrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4934154316307395043}
+        m_TargetAssemblyTypeName: BossControl, Assembly-CSharp
+        m_MethodName: disableBossCooldown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

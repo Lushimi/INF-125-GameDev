@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class PlayerData : EntityData
 {
     public GameEvent DodgeSFX;
+    public GameEvent NegativeStaminaToggle;
+    public bool NegativeStaminaBool = false;
     public Image damageScreen;
 
     [Header("Specific For Player")]
@@ -46,6 +48,22 @@ public class PlayerData : EntityData
         base.TakeDamage(damage, attacker);
     }
 
+    public override void StaminaRegen()
+    {
+        base.StaminaRegen();
+        if (currentStamina < 0 && NegativeStaminaBool == false)
+        {
+            NegativeStaminaToggle.Raise();
+            NegativeStaminaBool = true;
+        }
+        else if (currentStamina >= 0 && NegativeStaminaBool == true)
+        {
+            NegativeStaminaToggle.Raise();
+            NegativeStaminaBool = false;
+        }
+    }
+
+
     private void DodgedDamage()
     {
         DodgeSFX.Raise();
@@ -58,6 +76,11 @@ public class PlayerData : EntityData
         Death.Raise();
         StartCoroutine(LoadAsyncScene(RespawnScene));
         Reset();
+    }
+
+    public void PortalChange(string sceneChange)
+    {
+        StartCoroutine( LoadAsyncScene(sceneChange) );
     }
 
     // from this tutorial https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.MoveGameObjectToScene.html

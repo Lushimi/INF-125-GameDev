@@ -15,7 +15,7 @@ public class PortalScript : MonoBehaviour
         if (playerHit != null)
         {
             Debug.Log("Player went through: " + this.name);
-            StartCoroutine( playerHit.LoadAsyncScene(SceneChangeName) );
+            playerHit.PortalChange(SceneChangeName);
         }
     }
 

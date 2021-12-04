@@ -42,16 +42,17 @@ public class CameraController : MonoBehaviour
 
         PlayerData player = (Instantiate(playerPrefab)).GetComponent<PlayerData>();
         player.name = "Player";
-        StartCoroutine(WaitForSpawn(player.isInitialized));
+        StartCoroutine(WaitForSpawn(player));
         player.SceneChanged.Raise();
     }
 
-    IEnumerator WaitForSpawn(bool initialized)
+    IEnumerator WaitForSpawn(PlayerData player)
     {
-        while (initialized == false)
+        while (player.isInitialized == false)
         {
             yield return null;
         }
+
 
     }
 }

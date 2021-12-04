@@ -139,3 +139,4 @@ MonoBehaviour:
   damage: 5
   rb: {fileID: 8522170208853628223}
   facing: {fileID: 0}
+  liveTime: 5

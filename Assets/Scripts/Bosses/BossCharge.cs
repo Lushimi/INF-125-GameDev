@@ -53,13 +53,19 @@ public class BossCharge : MonoBehaviour
             float step = Boss.Boss.speed * 3 *Time.deltaTime; //boss boss lmao (it work tho)
             transform.position = Vector3.MoveTowards(transform.position, playerPos, step);
             timeout -= Time.deltaTime;
-            if (timeout <= 0) break;
+            if (timeout <= 0) timeoutFunc();
         }
 
         animator.SetBool("isChargeAttacking", false);
         animator.SetBool("isChargeAttackHitting", true);
     }
 
+    public void timeoutFunc()
+    {
+        hit();
+        animator.SetBool("isChargeAttacking", false);
+        animator.SetBool("isChargeAttackHitting", true);
+    }
     public void hit()
     {
         

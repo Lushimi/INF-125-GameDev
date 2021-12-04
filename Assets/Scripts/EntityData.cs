@@ -34,8 +34,6 @@ public abstract class EntityData : MonoBehaviour
     [SerializeField]
     internal GameEvent SceneChanged;
 
-  
-
     internal EntityControl entityControl => gameObject.GetComponent<EntityControl>();
     internal bool isInvulnerable => entityControl.isInvulnerable;
     internal Animator animator => entityControl.animator;
@@ -93,6 +91,7 @@ public abstract class EntityData : MonoBehaviour
 
     public virtual void StaminaRegen()
     {
+        //can refactor, split into two override functions for each respective class
         if (bossVariables != null)
         {
             if (currentStamina < bossVariables.maxStamina)

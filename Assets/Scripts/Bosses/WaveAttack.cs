@@ -9,6 +9,7 @@ using System;
 
 public class WaveAttack : MonoBehaviour
 {
+    public Animator animator;
     public Transform wavePoint => transform.Find("RangedAttackPoint");
     public Transform facing => transform.Find("Facing");
     public GameObject wavePrefab;
@@ -19,8 +20,14 @@ public class WaveAttack : MonoBehaviour
 
     public void waveAttack()
     {
-        Wave();
+        StartWave();
     }
+
+    public void StartWave()
+    {
+        animator.SetBool("isWaveAttacking", true);
+    }
+
 
     void Wave()
     {
@@ -33,7 +40,14 @@ public class WaveAttack : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(spread) * wavePoint.rotation;*/
 
         Transform waveTransform = (Instantiate(wavePrefab, wavePoint.position, wavePoint.rotation)).transform;
-        waveTransform.GetComponent<Wave>().Setup(facing);
+        waveTransform.GetComponentInChildren<Wave>().Setup(facing);
         //Destroy(gameObject);
     }
+
+    public void FinishWave()
+    {
+        animator.SetBool("isWaveAttacking", false);
+    }
+
+
 }

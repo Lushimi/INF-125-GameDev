@@ -1,31 +1,28 @@
 fileFormatVersion: 2
-guid: 1712b0c101ef22441abc340cc8073e42
+guid: 0fc1a5b510f1b464f8f3c0010544384f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -834726989563141198
-    second: WaveAttack3_0
+      213: -2791156148101967561
+    second: BigKnight_ThrowAxe 1_0
   - first:
-      213: 3888476857398917028
-    second: WaveAttack3_1
+      213: -5408344664142856466
+    second: BigKnight_ThrowAxe 1_1
   - first:
-      213: -426584212926468068
-    second: WaveAttack3_2
+      213: 8903697222414763899
+    second: BigKnight_ThrowAxe 1_2
   - first:
-      213: 945025200411612151
-    second: WaveAttack3_3
+      213: 2232887057752537312
+    second: BigKnight_ThrowAxe 1_3
   - first:
-      213: -9069660366219359885
-    second: WaveAttack3_4
+      213: 2194841157339940536
+    second: BigKnight_ThrowAxe 1_4
   - first:
-      213: -2232080626211698266
-    second: WaveAttack3_5
+      213: -2985270614309623466
+    second: BigKnight_ThrowAxe 1_5
   - first:
-      213: 6441004342788125792
-    second: WaveAttack3_6
-  - first:
-      213: 1671909403517017330
-    second: WaveAttack3_7
+      213: -1184695879210865637
+    second: BigKnight_ThrowAxe 1_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,7 +53,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -115,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaveAttack3_0
+      name: BigKnight_ThrowAxe 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b368aeb9347a64f0800000000000000
-      internalID: -834726989563141198
+      spriteID: 7311cbf7542d349d0800000000000000
+      internalID: -2791156148101967561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_1
+      name: BigKnight_ThrowAxe 1_1
       rect:
         serializedVersion: 2
         x: 200
@@ -150,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a7f69a8915a6f530800000000000000
-      internalID: 3888476857398917028
+      spriteID: eeeb2eebe23b1f4b0800000000000000
+      internalID: -5408344664142856466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_2
+      name: BigKnight_ThrowAxe 1_2
       rect:
         serializedVersion: 2
         x: 400
@@ -171,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c107ab12be7741af0800000000000000
-      internalID: -426584212926468068
+      spriteID: b770aa13379409b70800000000000000
+      internalID: 8903697222414763899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_3
+      name: BigKnight_ThrowAxe 1_3
       rect:
         serializedVersion: 2
         x: 600
@@ -192,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f3935ea9676d1d00800000000000000
-      internalID: 945025200411612151
+      spriteID: 0e838ecd2feccfe10800000000000000
+      internalID: 2232887057752537312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_4
+      name: BigKnight_ThrowAxe 1_4
       rect:
         serializedVersion: 2
         x: 800
@@ -213,14 +210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3794e0633f7122280800000000000000
-      internalID: -9069660366219359885
+      spriteID: 8b687a16764a57e10800000000000000
+      internalID: 2194841157339940536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_5
+      name: BigKnight_ThrowAxe 1_5
       rect:
         serializedVersion: 2
         x: 1000
@@ -234,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a9ce9c1f7e0601e0800000000000000
-      internalID: -2232080626211698266
+      spriteID: 659a9a361303296d0800000000000000
+      internalID: -2985270614309623466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveAttack3_6
+      name: BigKnight_ThrowAxe 1_6
       rect:
         serializedVersion: 2
         x: 1200
@@ -255,29 +252,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06472a8e25b036950800000000000000
-      internalID: 6441004342788125792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveAttack3_7
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 0
-        width: 200
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fc544d8eb0d33710800000000000000
-      internalID: 1671909403517017330
+      spriteID: b1c64c8ef5d1f8fe0800000000000000
+      internalID: -1184695879210865637
       vertices: []
       indices: 
       edges: []

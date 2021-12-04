@@ -116,15 +116,13 @@ public class BossControl : EntityControl
         facingobj.GetComponent<Transform>().position = facing;
 
         decisionLocked -= Time.deltaTime;
-
         if (!movement_override) gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
-
         if (canAct)
         {
             if (decisionLocked <= 0)
             {
                 //Remove once working
-                roll = (int)Random.Range(90, 101);
+                roll = (int)Random.Range(0, 101);
                 Debug.Log("Boss " + Boss.bossID + " rolled a 1d100: " + roll);
             }
 
@@ -136,21 +134,33 @@ public class BossControl : EntityControl
             {
                 if ((target.position - rb.position).magnitude < meleeRange)
                 {
-                    /*if (roll <= 45)
+                    if (Boss.currentStamina >= 50)
+                    {
+                        Boss.currentStamina = Boss.currentStamina - 50;
+                        ComboAttack();
+                    }
+                    else
                     {
                         MeleeAttack();
                     }
-                    else*/ if (Boss.currentStamina >= 50)
-                    {
-                        Boss.ReduceStamina(50);
-                        ComboAttack();
-                    }
+                    /*                    if (roll <= 45)
+                                        {
+                                            MeleeAttack();
+                                        }
+                                        else if (Boss.currentStamina >= 50)
+                                        {
+                                            Boss.ReduceStamina(50);
+                                            ComboAttack();
+                                        }*/
+
                 }
                 else
                 {
                     gameObject.GetComponent<Pathfinding.AIPath>().canMove = true;
                 }
 
+
+                if (decisionLocked <= 0) decisionLocked = comboAttack.cooldown;
             }
             else if (roll <= 90)
             {
@@ -177,7 +187,7 @@ public class BossControl : EntityControl
         }
         else
         {
-            if(!isDisabled)
+            if (!isDisabled)
             {
                 // prevents Boss from attacking consecutively without cooldown
                 cooldown -= Time.deltaTime;

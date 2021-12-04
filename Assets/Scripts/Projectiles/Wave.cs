@@ -15,7 +15,7 @@ public class Wave : BossBullet
 
 
         //basically copypasted from rotat_e
-        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * -180;
+        gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * 180;
         float angle = Mathf.Atan2(facing.position.y, facing.position.x) * Mathf.Rad2Deg;
         gameObject.GetComponent<Transform>().eulerAngles = Vector3.forward * angle * -90;
         StartCoroutine(destroyTimer());

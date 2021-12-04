@@ -15,28 +15,10 @@ public class Assist : Button
             cooldown -= Time.deltaTime;
         }
     }
-    public void spawn()
-    {
-        if (ShouldSpawn()) 
-        {
-            boss = Instantiate(bossPrefab, transform.position, transform.rotation);
-            setCloneProperties();
-            Destroy(boss, 30.0f);
-            cooldown = 30;
-        }
-    }
+    public virtual void spawn() {}
 
-    private bool ShouldSpawn()
+    public bool ShouldSpawn()
     {
         return cooldown <= 0;
-    }
-
-    void setCloneProperties() 
-    {
-        boss.layer = LayerMask.NameToLayer("Player");
-        boss.GetComponent<BossControl>().target = GameObject.Find("Boss").GetComponent<Rigidbody2D>();
-        boss.GetComponent<BossMeleeAttack>().enemyLayers = LayerMask.GetMask("Enemies");
-        boss.GetComponent<BossCharge>().enemyLayers = LayerMask.GetMask("Enemies");
-        boss.GetComponent<ComboAttack>().enemyLayers = LayerMask.GetMask("Enemies"); 
     }
 }

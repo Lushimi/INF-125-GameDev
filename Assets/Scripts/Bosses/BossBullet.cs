@@ -39,7 +39,7 @@ public class BossBullet : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    public virtual void OnTriggerEnter2D(Collider2D hitInfo)
     {
         // Get info for the enemies we hit
 

@@ -27,25 +27,4 @@ public class Wave : BossBullet
         Destroy(gameObject);
     }
 
-
-    public void OnTriggerEnter2D(Collider2D hitInfo)
-    {
-        // Get info for the enemies we hit
-
-        //Add a case for colliding into world (trees, boundaries)
-        EntityData hit = hitInfo.GetComponent<EntityData>();
-        // If player was hit
-        if (hit is PlayerData)
-        {
-            // deal damage to enemy
-            hit.TakeDamage(damage, this.gameObject);
-            Destroy(gameObject);
-        }
-        else if (!(hit is BossData))
-        {
-            Destroy(gameObject);
-        }
-
-
-    }
 }

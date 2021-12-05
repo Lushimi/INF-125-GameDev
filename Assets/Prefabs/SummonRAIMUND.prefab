@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340964839668545227}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: MeleeAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340964840060706663}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Facing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340964840838684640}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: RangedAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

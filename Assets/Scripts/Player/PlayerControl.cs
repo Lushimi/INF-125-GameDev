@@ -398,6 +398,7 @@ public class PlayerControl : EntityControl
             assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
             Debug.Log("RAIMUND has been spared and will be here to assist you in your further battles!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
+            SCAvailable = false;
         }
 
     }
@@ -408,6 +409,7 @@ public class PlayerControl : EntityControl
             UnlockRanged(bossID + 1);
             Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
+            SCAvailable = false;
         }
     }
 

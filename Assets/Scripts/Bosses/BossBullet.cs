@@ -52,8 +52,9 @@ public class BossBullet : MonoBehaviour
             hit.TakeDamage(damage, this.gameObject);
             Destroy(gameObject);
         }
-        else if (!(hit is BossData))
+        else if (hit is BossData)
         {
+            hit.TakeDamage(damage, this.gameObject);
             Destroy(gameObject);
         }
 

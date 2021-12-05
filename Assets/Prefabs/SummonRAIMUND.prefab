@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4340964840446881262}
-  projectilePrefab: {fileID: 8387881807223278250, guid: 327f1c8a0c673784184ffb200842763e, type: 3}
+  projectilePrefab: {fileID: 1381144520415115868, guid: d9061dfde586d204db9c8aecb839f1ef, type: 3}
   ShootSFX: {fileID: 0}
 --- !u!114 &6286048875699628894
 MonoBehaviour:
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4340964840446881262}
-  wavePrefab: {fileID: 8153121279779152446, guid: dfd7dd32a08d4674b9e181c15628cb37, type: 3}
+  wavePrefab: {fileID: 6922911995791395310, guid: f0bead4105ec346429452360b7bb1577, type: 3}
   startup: 0.3
   cooldown: 0.5
   coneSize: 3.5

@@ -13,7 +13,7 @@ public class Assist_RAIMUND : Assist
             boss.GetComponent<AIDestinationSetter>().target = GameObject.Find("Boss").GetComponent<Transform>();
             boss.GetComponent<BossControl>().target = GameObject.Find("Boss").GetComponent<Rigidbody2D>();
             Destroy(boss, 5.0f);
-            cooldown = 60;
+            cooldown = 30;
         }
         else 
         {

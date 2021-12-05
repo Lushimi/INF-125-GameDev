@@ -16,7 +16,6 @@ public class WaveAttack : MonoBehaviour
 
     public float startup = 0.1f;
     public float cooldown = 0.5f;
-    public float coneSize = 3.5f;
 
     public void waveAttack()
     {
@@ -29,19 +28,13 @@ public class WaveAttack : MonoBehaviour
     }
 
 
-    void Wave()
+    public void Wave()
     {
-        // Wave logic
-        //Instantiate(wavePrefab, wavePoint.position, wavePoint.rotation);
-        //https://forum.unity.com/threads/cone-shaped-bullet-spread.414893/
-        /*float xSpread = UnityEngine.Random.Range(-1, 1);
-        float ySpread = UnityEngine.Random.Range(-1, 1);
-        Vector3 spread = new Vector3(xSpread, ySpread, 0.0f).normalized * coneSize;
-        Quaternion rotation = Quaternion.Euler(spread) * wavePoint.rotation;*/
+        Vector3 tempTransform = Vector3.forward;
+        float angle = Mathf.Atan2(facing.transform.position.y, facing.transform.position.x) * Mathf.Rad2Deg;
+        tempTransform = Vector3.forward * (angle + 270);
 
-        Transform waveTransform = (Instantiate(wavePrefab, wavePoint.position, wavePoint.rotation)).transform;
-        waveTransform.GetComponentInChildren<Wave>().Setup(facing);
-        //Destroy(gameObject);
+        Instantiate(wavePrefab, wavePoint.position, Quaternion.Euler(tempTransform.x, tempTransform.y, tempTransform.z));
     }
 
     public void FinishWave()

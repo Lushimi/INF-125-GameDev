@@ -19,13 +19,6 @@ public class BossRangedAttack : MonoBehaviour
         StartThrowAxe();
     }
 
-    public void Shoot()
-    {
-        // shooting logic
-        Transform bulletTransform=( Instantiate(projectilePrefab, rangedAttackPoint.position, rangedAttackPoint.rotation) ).transform;
-        bulletTransform.GetComponentInChildren<BossBullet>().Setup(facing);
-    }
-
     public void StartThrowAxe()
     {
         animator.SetBool("isThrowingAxe", true);

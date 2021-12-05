@@ -28,7 +28,7 @@ public class ComboAttack : MonoBehaviour
     public float firstmovex = 1f;
     public float firstmovey = 0;
 
-    public float secondmovex = -1f;
+    public float secondmovex = 1f;
     public float secondmovey = 0;
 
     [Header("Game Events")]
@@ -120,7 +120,7 @@ public class ComboAttack : MonoBehaviour
             gameObject.GetComponent<BossControl>().movement_override = true;
             gameObject.GetComponent<Pathfinding.AIPath>().canMove = true;
             float oldSpeed = gameObject.GetComponent<Pathfinding.AIPath>().maxSpeed;
-            gameObject.GetComponent<Pathfinding.AIPath>().maxSpeed = 10;
+            gameObject.GetComponent<Pathfinding.AIPath>().maxSpeed = 14;
             yield return new WaitForSeconds(tracking_time);
             gameObject.GetComponent<Pathfinding.AIPath>().canMove = false;
             gameObject.GetComponent<Pathfinding.AIPath>().maxSpeed = oldSpeed;

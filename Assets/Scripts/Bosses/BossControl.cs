@@ -193,8 +193,7 @@ public class BossControl : EntityControl
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                 {
-                    canAct = true;
-                    //ResetAllBossAnimBools();
+                    disableBossCooldown();
                 }
             }
         }

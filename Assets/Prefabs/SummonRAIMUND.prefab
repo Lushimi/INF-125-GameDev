@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6112958842025834420}
   - component: {fileID: 6782844022109712800}
   m_Layer: 14
-  m_Name: SummonAlly
+  m_Name: SummonRAIMUND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

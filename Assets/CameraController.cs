@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         GameObject existingPlayer = GameObject.Find("Player");
         if (existingPlayer != null)
         {
-            Destroy(existingPlayer);
+            DestroyImmediate(existingPlayer);
         }
 
         PlayerData player = (Instantiate(playerPrefab)).GetComponent<PlayerData>();

@@ -66,9 +66,6 @@ public class PlayerControl : EntityControl
         rangedAttack = rangedAttack == null ? loadout.RangedList[0] : rangedAttack;
         specialAttack = specialAttack == null ? loadout.SpecialList[0] : specialAttack;
         parryMove = parryMove == null ? loadout.ParryList[0] : parryMove;
-        if (assistUnlocked[0] == 1) {
-            assistMove = assistMove == null ? loadout.AssistList[0]: assistMove;
-        }   
     }
 
     // Update is called once per frame
@@ -388,7 +385,7 @@ public class PlayerControl : EntityControl
     void SpareOrConsumeBoss() {
         if (triggeringNPC) {
             // Anyone want to change this to say something more dramatic?
-            Debug.Log("BIGKNIGHT: You have bested me.");
+            Debug.Log("RAIMUND: You have bested me.");
             Debug.Log("Would you like to SPARE or CONSUME RAIMUND?");
             Debug.Log("1 : Spare | 2 : Consume"); 
             SCAvailable = true;

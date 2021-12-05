@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 3358253236106991667}
   - component: {fileID: 7696468475276610444}
   - component: {fileID: 4381452164691751340}
+  - component: {fileID: 5359045030500570806}
   m_Layer: 0
   m_Name: LoadoutManager
   m_TagString: Untagged
@@ -450,7 +451,7 @@ MonoBehaviour:
   ParryList:
   - {fileID: 8552030842669948890}
   AssistList:
-  - {fileID: 0}
+  - {fileID: 5359045030500570806}
 --- !u!114 &3072737302689632756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 0
-  cooldown: 0.2
+  cooldown: 0.7
   arrowPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
 --- !u!114 &4381452164691751340
 MonoBehaviour:
@@ -600,6 +601,21 @@ MonoBehaviour:
   staminaCost: 100
   cooldown: 0.7
   fireballPrefab: {fileID: 7830812919132867637, guid: a0448f9c6e98e0b4e98d7eb68c3b1365, type: 3}
+--- !u!114 &5359045030500570806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052129423359454678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ac3596cc9305846b7fa0a9519a5c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  bossPrefab: {fileID: 5869114906857052749, guid: 19df99924cb1d194cbc4b811af7d634d, type: 3}
+  boss: {fileID: 0}
 --- !u!1 &7210680562664126696
 GameObject:
   m_ObjectHideFlags: 0

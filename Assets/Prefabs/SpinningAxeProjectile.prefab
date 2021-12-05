@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5616956973426214342}
   - component: {fileID: 6486676412670026237}
   - component: {fileID: 4995395109321223754}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: BigKnight_SpinningAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  damage: 10
+  damage: 25
   rb: {fileID: 8657611603668489382}
   facing: {fileID: 0}
   liveTime: 7
@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8263126635483323643}
   - component: {fileID: 8657611603668489382}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: SpinningAxeProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,7 @@ public class ChooseMelee : ChooseButton
     public override void Start()
     {
         buttonID = lm.MeleeToID(pc.meleeAttack);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {

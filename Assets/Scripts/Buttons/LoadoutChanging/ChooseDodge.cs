@@ -8,6 +8,7 @@ public class ChooseDodge : ChooseButton
     public override void Start()
     {
         buttonID = lm.DodgeToID(pc.dodgeMove);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {

@@ -8,6 +8,7 @@ public class ChooseRanged : ChooseButton
     public override void Start()
     {
         buttonID = lm.RangedToID(pc.rangedAttack);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {

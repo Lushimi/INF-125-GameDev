@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ChooseAssist : ChooseButton
 {
-/*    public override void Start()
+    public override void Start()
     {
         buttonID = lm.AssistToID(pc.assistMove);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {
@@ -23,5 +24,5 @@ public class ChooseAssist : ChooseButton
         img.color = colors[buttonID];
         pc.assistMove = lm.idToAssist(buttonID);
 
-    }*/
+    }
 }

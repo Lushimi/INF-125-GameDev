@@ -8,6 +8,7 @@ public class ChooseParry : ChooseButton
     public override void Start()
     {
         buttonID = lm.ParryToID(pc.parryMove);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {

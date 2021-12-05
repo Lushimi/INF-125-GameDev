@@ -8,6 +8,7 @@ public class ChooseSpecial : ChooseButton
     public override void Start()
     {
         buttonID = lm.SpecialToID(pc.specialAttack);
+        img.color = colors[buttonID];
     }
     public override void ChangeButton()
     {

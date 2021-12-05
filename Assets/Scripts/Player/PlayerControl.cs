@@ -52,7 +52,7 @@ public class PlayerControl : EntityControl
     public int[] bossesDefeated = new int[1] { 0 };
     public int[] dodgeUnlocked = new int[4] { 1, 0, 0, 0 };
     public int[] meleeUnlocked = new int[2] { 1, 0 };
-    public int[] rangedUnlocked = new int[1] { 1 };
+    public int[] rangedUnlocked = new int[2] { 1, 0 };
     public int[] specialUnlocked = new int[1] { 1 };
     public int[] parryUnlocked = new int[1] { 1 };
     public int[] assistUnlocked = new int[1] { 0 };
@@ -406,6 +406,7 @@ public class PlayerControl : EntityControl
     void ConsumeBoss() {
         if (triggeringNPC) {
             UnlockMelee(bossID + 1);
+            Debug.Log("hello");
             UnlockRanged(bossID + 1);
             Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));

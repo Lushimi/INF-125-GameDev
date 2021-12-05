@@ -50,11 +50,21 @@ public class BossBullet : MonoBehaviour
         {
             // deal damage to enemy
             hit.TakeDamage(damage, this.gameObject);
+            if (!hit.isInvulnerable)
             Destroy(gameObject);
         }
         else if (!(hit is BossData))
         {
-            Destroy(gameObject);
+            if (gameObject.layer == (LayerMask)13)
+            {
+                if (!(hitInfo.gameObject.layer == (LayerMask)10) && !(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
+                    Destroy(gameObject);
+            }
+            else
+            {
+                if (!(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
+                    Destroy(gameObject);
+            }
         }
 
 

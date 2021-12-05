@@ -37,10 +37,11 @@ public class Arrow : MonoBehaviour
         {
             // deal damage to enemy
             enemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
 
         // destroy bullet
-        if (!(hitInfo.gameObject.layer == (LayerMask)11) && !(hitInfo.gameObject.layer == (LayerMask)10))
+        if (!(hitInfo.gameObject.layer == (LayerMask)11) && !(hitInfo.gameObject.layer == (LayerMask)10) && !(hitInfo.gameObject.layer == (LayerMask)12))
             Destroy(gameObject);
     }
 

@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaCost: 0
-  cooldown: 0.7
+  cooldown: 0.2
   arrowPrefab: {fileID: 5447002502195557359, guid: 848ea70f797ad59419b844739728bbc4, type: 3}
 --- !u!114 &4381452164691751340
 MonoBehaviour:

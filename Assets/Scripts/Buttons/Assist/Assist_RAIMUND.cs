@@ -12,8 +12,8 @@ public class Assist_RAIMUND : Assist
             boss = Instantiate(bossPrefab, transform.position, transform.rotation);
             boss.GetComponent<AIDestinationSetter>().target = GameObject.Find("Boss").GetComponent<Transform>();
             boss.GetComponent<BossControl>().target = GameObject.Find("Boss").GetComponent<Rigidbody2D>();
-            Destroy(boss, 30.0f);
-            cooldown = 9000;
+            Destroy(boss, 5.0f);
+            cooldown = 60;
         }
         else 
         {

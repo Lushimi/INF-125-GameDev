@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
         // Get info for the enemies we hit
         BossData enemy = hitInfo.GetComponent<BossData>();
         // If an enemy was hit
-        if (enemy != null)
+        if (enemy != null && enemy.gameObject.tag != "Ally")
         {
             // deal damage to enemy
             enemy.TakeDamage(damage);

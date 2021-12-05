@@ -267,7 +267,7 @@ MonoBehaviour:
   bossesDefeated: 00000000
   dodgeUnlocked: 01000000000000000000000000000000
   meleeUnlocked: 0100000000000000
-  rangedUnlocked: 01000000
+  rangedUnlocked: 0100000000000000
   specialUnlocked: 01000000
   parryUnlocked: 01000000
   assistUnlocked: 00000000
@@ -445,6 +445,7 @@ MonoBehaviour:
   - {fileID: 3358253236106991667}
   - {fileID: 4581394794437067730}
   RangedList:
+  - {fileID: 7696468475276610444}
   - {fileID: 7696468475276610444}
   SpecialList:
   - {fileID: 4381452164691751340}

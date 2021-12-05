@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Starting game");
         //Put intro cutscene (introducing bigknight) by alex
-        SceneManager.LoadSceneAsync("HubScene");
+        SceneManager.LoadSceneAsync("IntroCutscene");
         //Instantiate player
         //StartCoroutine(PlayerData.LoadAsyncScene()); (when working)
     }

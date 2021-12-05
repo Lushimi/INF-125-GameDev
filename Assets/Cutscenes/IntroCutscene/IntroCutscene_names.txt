@@ -7,20 +7,20 @@ Malefiax
 Malefiax
 
 
-BIG_KNIGHT
-Wizard
-Wizard
+Raimund
+Tedar
+Tedar
 
-Thief
-Ranger
-BIG_KNIGHT
-Wizard
-BIG_KNIGHT
-Wizard
-Ranger
-Thief
-BIG_KNIGHT
+Stroud
+Ysmene
+Raimund
+Tedar
+Raimund
+Tedar
+Ysmene
+Stroud
+Raimund
 
-Wizard
-Thief
-Ranger
+Tedar
+Stroud
+Ysmene

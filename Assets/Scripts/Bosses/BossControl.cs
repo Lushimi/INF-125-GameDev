@@ -226,7 +226,7 @@ public class BossControl : EntityControl
     }
     void MeleeAttack()
     {
-        cooldown = 30;
+        cooldown = 3;
         animator.SetBool("isMeleeAttacking", true);
         canAct = false;
         if (verbose) Debug.Log("Boss Melee Attack");
@@ -234,7 +234,7 @@ public class BossControl : EntityControl
 
     void ChargeAttack()
     {
-        cooldown = 30;
+        cooldown = 3;
         Boss.ReduceStamina(chargeAttack.staminaCost);
         chargeAttack.attack();
         canAct = false;
@@ -243,7 +243,7 @@ public class BossControl : EntityControl
 
     void ComboAttack()
     {
-        cooldown = 30;
+        cooldown = 10;
         comboAttack.comboAttack();
         canAct = false;
         if (verbose) Debug.Log("Boss Combo Attack");

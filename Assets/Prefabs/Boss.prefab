@@ -370,10 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1228116736}
-  wavePrefab: {fileID: 1385342004151546656, guid: c5f007c5912372a4abb163c7dd862de4, type: 3}
+  wavePrefab: {fileID: 8387881807223278250, guid: 3f52eca1ce387ee48ae6d9d64b370bd0, type: 3}
   startup: 0.3
   cooldown: 0.5
-  coneSize: 3.5
 --- !u!114 &1185117119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +396,7 @@ MonoBehaviour:
   firstmovelag: 1
   firstmovetracking: 0.2
   secondmovelag: 2
-  secondmovetracking: 0.4
+  secondmovetracking: 3
   finalattacklag: 2
   movedistance: 1
   firstmovex: 1

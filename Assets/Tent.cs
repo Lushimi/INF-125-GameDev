@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tent : MonoBehaviour
 {
     [SerializeField]
+    public GameObject lul;
     public GameObject dodgeChange;
     public GameObject dodgeButton;
     public GameObject dodgeBackButton;
@@ -46,6 +47,8 @@ public class Tent : MonoBehaviour
 
     void Start()
     {
+        lul.SetActive(false);
+
         dodgeChange.SetActive(false);
         dodgeButton.SetActive(false);
         dodgeBackButton.SetActive(false);
@@ -85,6 +88,8 @@ public class Tent : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        lul.SetActive(true);
+
         dodgeChange.SetActive(true);
         dodgeButton.SetActive(true);
         dodgeBackButton.SetActive(true);
@@ -124,6 +129,8 @@ public class Tent : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D hitInfo)
     {
+        lul.SetActive(false);
+
         //Debug.Log("Exited!");
         dodgeChange.SetActive(false);
         dodgeButton.SetActive(false);

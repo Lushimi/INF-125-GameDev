@@ -41,12 +41,20 @@ public class CutsceneControllerS1 : CutsceneController
         {
             player.transform.position = GameObject.Find("Respawn Point").transform.position;
         }
-        if (sceneState == 7)
+        if (sceneState >= 7)
         {
             cutsceneOver.Raise();
             player.GetComponent<PlayerControl>().cutscenesViewed[0] = 1;
             this.MassEnable();
             player.GetComponent<PlayerData>().PortalChange("Stage1_BigKnight");
         }
+    }
+    public override void skip()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        cutsceneOver.Raise();
+        player.GetComponent<PlayerControl>().cutscenesViewed[0] = 1;
+        this.MassEnable();
+        player.GetComponent<PlayerData>().PortalChange("Stage1_BigKnight");
     }
 }

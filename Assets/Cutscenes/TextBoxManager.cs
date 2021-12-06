@@ -23,6 +23,7 @@ public class TextBoxManager : MonoBehaviour
     public int charsPerDelay = 2;
 
     public GameEvent textAdvanced;
+    public GameEvent cutsceneSkipped;
     public GameEvent diasound;
     public GameEvent diasoundOver;
     private bool showingText = false;
@@ -125,6 +126,27 @@ public class TextBoxManager : MonoBehaviour
             }
             
         }
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (showingText && !Array.Exists(unskippableLines, element => element == currentLine))
+            {
+                if (co != null) StopCoroutine(co);
+                if (nameLines[currentLine].Length > 1)
+                {
+                    textObj.text = nameLines[currentLine] + ": " + textLines[currentLine];
+                    textObj.maxVisibleCharacters = 999;
+                }
+                else
+                {
+                    textObj.text = textLines[currentLine];
+                    textObj.maxVisibleCharacters = 999;
+                }
+
+                diasoundOver.Raise();
+                showingText = false;
+            }
+            currentLine=endAtLine-1;
+            cutsceneSkipped.Raise();
+        }
     }
 }

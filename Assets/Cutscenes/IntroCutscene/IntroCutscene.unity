@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 1172535220}
   - component: {fileID: 1172535217}
   - component: {fileID: 1172535218}
+  - component: {fileID: 1172535221}
   m_Layer: 0
   m_Name: Cutscene Controller
   m_TagString: Untagged
@@ -930,9 +931,38 @@ MonoBehaviour:
   delay: 0.1
   charsPerDelay: 2
   textAdvanced: {fileID: 11400000, guid: 26aef08a9d727d04eaf748aee15b1cb4, type: 2}
+  cutsceneSkipped: {fileID: 11400000, guid: 21a3662098c777c43a7eaa71507c37ec, type: 2}
   diasound: {fileID: 11400000, guid: 80483135b1718404c86aeb3fabcd10fa, type: 2}
   diasoundOver: {fileID: 11400000, guid: c9e9f63dca983944ea2b8366badac52e, type: 2}
   unskippableLines: 010000000700000008000000160000001a000000
+--- !u!114 &1172535221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172535216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a74fec18d1fb544f816515151469d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 21a3662098c777c43a7eaa71507c37ec, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1172535218}
+        m_TargetAssemblyTypeName: CutsceneControllerIntro, Assembly-CSharp
+        m_MethodName: skip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1179008172
 GameObject:
   m_ObjectHideFlags: 0

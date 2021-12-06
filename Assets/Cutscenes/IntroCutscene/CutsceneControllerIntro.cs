@@ -115,7 +115,7 @@ public class CutsceneControllerIntro : CutsceneController
             psprite.color = Color.grey;
             player.transform.localScale = new Vector3(2f, 2f, 2f);
         }
-        if (sceneState == 26)
+        if (sceneState >= 26)
         {
             var mcam = GameObject.Find("Main Camera").GetComponent<CameraController>();
             mcam.SpawnPlayer();
@@ -123,4 +123,12 @@ public class CutsceneControllerIntro : CutsceneController
             player.GetComponent<PlayerData>().PortalChange("HubScene");
         }
     }
+    public override void skip()
+    {
+        var mcam = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        mcam.SpawnPlayer();
+        var player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerData>().PortalChange("HubScene");
+    }
 }
+

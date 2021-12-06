@@ -88,5 +88,5 @@ public abstract class CutsceneController : MonoBehaviour
 
     public abstract void resolveAtomicState(int sceneState);
 
-
+    public abstract void skip();
 }

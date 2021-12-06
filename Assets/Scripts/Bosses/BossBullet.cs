@@ -57,16 +57,20 @@ public class BossBullet : MonoBehaviour
         }
         else if (hit is BossData)
         {
-            if (gameObject.layer == (LayerMask)13)
+            if (gameObject.layer == (LayerMask)10)
             {
-                if (!(hitInfo.gameObject.layer == (LayerMask)10) && !(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
-                    Destroy(gameObject);
+                hit.TakeDamage(damage, this.gameObject);
+                Destroy(gameObject);
             }
-            else
-            {
-                if (!(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
-                    Destroy(gameObject);
-            }
+        }
+        else if (gameObject.layer == (LayerMask)13)
+        {
+            if (!(hitInfo.gameObject.layer == (LayerMask)10) && !(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
+                Destroy(gameObject);
+        }
+        else if (!(hitInfo.gameObject.layer == (LayerMask)12) && !(hitInfo.gameObject.layer == (LayerMask)13))
+        { 
+                Destroy(gameObject);
         }
         else
         {

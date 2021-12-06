@@ -34,7 +34,8 @@ public class WaveAttack : MonoBehaviour
         float angle = Mathf.Atan2(facing.transform.position.y, facing.transform.position.x) * Mathf.Rad2Deg;
         tempTransform = Vector3.forward * (angle + 270);
 
-        Instantiate(wavePrefab, wavePoint.position, Quaternion.Euler(tempTransform.x, tempTransform.y, tempTransform.z));
+        BossBullet bullet = Instantiate(wavePrefab, wavePoint.position, Quaternion.Euler(tempTransform.x, tempTransform.y, tempTransform.z)).GetComponent<BossBullet>();
+        bullet.Setup(facing);
     }
 
     public void FinishWave()

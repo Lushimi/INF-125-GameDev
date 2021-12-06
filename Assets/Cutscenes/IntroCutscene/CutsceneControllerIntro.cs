@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutsceneControllerIntro : CutsceneController
 {
@@ -89,7 +90,7 @@ public class CutsceneControllerIntro : CutsceneController
         var magician = GameObject.FindGameObjectWithTag("Player");
         var psprite = player.GetComponent<SpriteRenderer>();
         
-        if(sceneState==7)
+        if (sceneState==7)
         {
             meleeAttack.Raise();
         }
@@ -113,6 +114,13 @@ public class CutsceneControllerIntro : CutsceneController
             scream2.Raise();
             psprite.color = Color.grey;
             player.transform.localScale = new Vector3(2f, 2f, 2f);
+        }
+        if (sceneState == 26)
+        {
+            var mcam = GameObject.Find("Main Camera").GetComponent<CameraController>();
+            mcam.SpawnPlayer();
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerData>().PortalChange("HubScene");
         }
     }
 }

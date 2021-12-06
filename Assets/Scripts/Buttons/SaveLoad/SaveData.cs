@@ -21,4 +21,5 @@ public class SaveData
     public int[] specialUnlocked;
     public int[] parryUnlocked;
     public int[] assistUnlocked;
+    public int[] cutscenesViewed;
 }

@@ -34,7 +34,7 @@ public class SaveLoad
         saveData.specialUnlocked = player.specialUnlocked;
         saveData.parryUnlocked = player.parryUnlocked;
         saveData.assistUnlocked = player.assistUnlocked;
-
+        saveData.cutscenesViewed = player.cutscenesViewed;
         //serialize to xml
         DataContractSerializer ser = new DataContractSerializer(typeof(SaveData));
         ser.WriteObject(file, saveData);

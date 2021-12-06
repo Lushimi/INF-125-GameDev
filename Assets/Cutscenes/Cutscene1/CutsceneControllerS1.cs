@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CutsceneControllerS1 : CutsceneController
 {
     
@@ -36,10 +36,17 @@ public class CutsceneControllerS1 : CutsceneController
 
     public override void resolveAtomicState(int sceneState)
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if(sceneState==0)
+        {
+            player.transform.position = GameObject.Find("Respawn Point").transform.position;
+        }
         if (sceneState == 7)
         {
-            MassEnable();
             cutsceneOver.Raise();
+            player.GetComponent<PlayerControl>().cutscenesViewed[0] = 1;
+            this.MassEnable();
+            player.GetComponent<PlayerData>().PortalChange("Stage1_BigKnight");
         }
     }
 }

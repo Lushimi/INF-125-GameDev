@@ -668,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toFollow: {fileID: 2046163539}
   leashRange: 7
+  playerPrefab: {fileID: 1137835596353710393, guid: a22d488039a9669478e8fc615c1caead, type: 3}
 --- !u!1 &1165666893
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +932,7 @@ MonoBehaviour:
   textAdvanced: {fileID: 11400000, guid: 26aef08a9d727d04eaf748aee15b1cb4, type: 2}
   diasound: {fileID: 11400000, guid: 80483135b1718404c86aeb3fabcd10fa, type: 2}
   diasoundOver: {fileID: 11400000, guid: c9e9f63dca983944ea2b8366badac52e, type: 2}
-  unskippableLines: 03000000
+  unskippableLines: 010000000700000008000000160000001a000000
 --- !u!1 &1179008172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1340,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e91b96a8bb41344a6fac22bdb78631, type: 3}
+--- !u!1 &1828425546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1828425547}
+  m_Layer: 0
+  m_Name: Respawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1828425547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828425546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -2.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861986678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1760,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 423123589440437367, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.014285743
+      objectReference: {fileID: 0}
+    - target: {fileID: 423123589440437367, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.014285743
+      objectReference: {fileID: 0}
     - target: {fileID: 423123589990507752, guid: f6ad100930631704bafa64dfed65eeeb, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].y
       value: 2.0441089

@@ -56,6 +56,7 @@ public class PlayerControl : EntityControl
     public int[] specialUnlocked = new int[1] { 1 };
     public int[] parryUnlocked = new int[1] { 1 };
     public int[] assistUnlocked = new int[1] { 0 };
+    public int[] cutscenesViewed = new int[1] { 0 };
 
     private void Start()
     {
@@ -276,6 +277,7 @@ public class PlayerControl : EntityControl
         specialUnlocked = save.specialUnlocked;
         parryUnlocked = save.parryUnlocked;
         assistUnlocked = save.assistUnlocked;
+        cutscenesViewed = save.cutscenesViewed;
         if (verbose) Debug.Log("Loaded game!");
     }
 

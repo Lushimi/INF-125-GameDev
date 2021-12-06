@@ -14,6 +14,10 @@ public class PlayerControl : EntityControl
     
     [SerializeField]
     internal GameObject deathDialog;
+    [SerializeField]
+    internal GameObject consumeDialog;
+    [SerializeField]
+    internal GameObject spareDialog;
 
     [Header("Loadout")]
     [SerializeField]
@@ -73,7 +77,7 @@ public class PlayerControl : EntityControl
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         Player.StaminaRegen();
         //sets player orientation = to mouse position
         if (Input.mousePosition.x >= 0 && Input.mousePosition.y >= 0 && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height && !ControllerMode)
@@ -395,10 +399,9 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             UnlockAssist(bossID);
             assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
-            Debug.Log("RAIMUND has been spared and will be here to assist you in your further battles!");
-            StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
-            SCAvailable = false;
             deathDialog.SetActive(false);
+            spareDialog.SetActive(true);
+            StartCoroutine(CountDown(2));
         }
 
     }
@@ -407,10 +410,9 @@ public class PlayerControl : EntityControl
         if (triggeringNPC) {
             UnlockMelee(bossID + 1);
             UnlockRanged(bossID + 1);
-            Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
-            StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
-            SCAvailable = false;
             deathDialog.SetActive(false);
+            consumeDialog.SetActive(true);
+            StartCoroutine(CountDown(2));
         }
     }
 
@@ -428,5 +430,14 @@ public class PlayerControl : EntityControl
             triggeringNPC = false;
             triggeredNPC = null;
         }
+    }
+
+    IEnumerator CountDown(float RestartAfter)
+    {
+        yield return new WaitForSeconds(RestartAfter);
+        spareDialog.SetActive(false);
+        consumeDialog.SetActive(false);
+        SCAvailable = false;
+        StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
     }
 }

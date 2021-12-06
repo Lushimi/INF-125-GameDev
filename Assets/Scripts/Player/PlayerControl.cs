@@ -401,7 +401,7 @@ public class PlayerControl : EntityControl
             assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
             deathDialog.SetActive(false);
             spareDialog.SetActive(true);
-            StartCoroutine(CountDown(2));
+            StartCoroutine(CountDown(4));
         }
 
     }
@@ -412,7 +412,7 @@ public class PlayerControl : EntityControl
             UnlockRanged(bossID + 1);
             deathDialog.SetActive(false);
             consumeDialog.SetActive(true);
-            StartCoroutine(CountDown(2));
+            StartCoroutine(CountDown(4));
         }
     }
 

@@ -42,6 +42,7 @@ public abstract class EntityData : MonoBehaviour
 
     public void Update()
     {
+
         if (!isInvulnerable)
         {
             GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, new Color(255f, 255f, 255f, 255f), 5f * Time.deltaTime);

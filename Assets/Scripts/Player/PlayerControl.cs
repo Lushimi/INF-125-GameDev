@@ -11,6 +11,9 @@ public class PlayerControl : EntityControl
     internal PlayerData Player;
     [SerializeField]
     internal Camera cam;
+    
+    [SerializeField]
+    internal GameObject deathDialog;
 
     [Header("Loadout")]
     [SerializeField]
@@ -35,7 +38,6 @@ public class PlayerControl : EntityControl
 
 
     public int bossID => GameObject.Find("Boss").GetComponent<BossData>().bossID;
-    public bool bossDead => GameObject.Find("Boss").GetComponent<BossData>().isDead; 
 
     [Header("Game Events")]
     public GameEvent MeleeAttackEvent;
@@ -185,9 +187,6 @@ public class PlayerControl : EntityControl
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 ChangeLoadout();
-            }
-            else if (Input.GetKeyDown(KeyCode.Space) && bossDead) {
-                SpareOrConsumeBoss();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1) && SCAvailable) {
                 SpareBoss();
@@ -384,35 +383,34 @@ public class PlayerControl : EntityControl
         else if (verbose) Debug.Log(String.Format("This dodge {0} is not unlocked!", loadout.idToMelee(1).ToString()));
     }
 
-    void SpareOrConsumeBoss() {
+    public void SpareOrConsumeBoss() {
         if (triggeringNPC) {
             // Anyone want to change this to say something more dramatic?
-            Debug.Log("RAIMUND: You have bested me.");
-            Debug.Log("Would you like to SPARE or CONSUME RAIMUND?");
-            Debug.Log("1 : Spare | 2 : Consume"); 
+            deathDialog.SetActive(true);
             SCAvailable = true;
         }
     }
 
-    void SpareBoss() {
+    public void SpareBoss() {
         if (triggeringNPC) {
             UnlockAssist(bossID);
             assistMove = assistMove == null ? loadout.AssistList[bossID] : assistMove;
             Debug.Log("RAIMUND has been spared and will be here to assist you in your further battles!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
             SCAvailable = false;
+            deathDialog.SetActive(false);
         }
 
     }
 
-    void ConsumeBoss() {
+    public void ConsumeBoss() {
         if (triggeringNPC) {
             UnlockMelee(bossID + 1);
-            Debug.Log("hello");
             UnlockRanged(bossID + 1);
             Debug.Log("RAIMUND was consumed, you have been granted RAIMUND's abilities!");
             StartCoroutine(Player.LoadAsyncScene(Player.RespawnScene));
             SCAvailable = false;
+            deathDialog.SetActive(false);
         }
     }
 

@@ -10,13 +10,11 @@ public class PlayerData : EntityData
     public GameEvent DodgeSFX;
     public GameEvent NegativeStaminaToggle;
     public bool NegativeStaminaBool = false;
-    public Image damageScreen;
 
     [Header("Specific For Player")]
     public string RespawnScene = "HubScene";
     public bool isInitialized = false;
     private GameObject Player => gameObject;
-
 
     public override void Reset()
     {
@@ -48,6 +46,12 @@ public class PlayerData : EntityData
         base.TakeDamage(damage, attacker);
     }
 
+    public void HealthRegen()
+    {
+        currentHealth += 10;
+        HealthChanged.Raise();
+    }
+    
     public override void StaminaRegen()
     {
         base.StaminaRegen();

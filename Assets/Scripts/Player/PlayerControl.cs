@@ -256,14 +256,14 @@ public class PlayerControl : EntityControl
     }
 
     //saves the game for player
-    void SaveGame()
+    public void SaveGame()
     {
         SaveLoad.Save(this);
         if(verbose) Debug.Log("Saved game!");
     }
 
     //loads the game for player
-    void LoadGame()
+    public void LoadGame()
     {
         SaveData save = SaveLoad.Load();
         dodgeMove = loadout.DodgeList[save.dodge];

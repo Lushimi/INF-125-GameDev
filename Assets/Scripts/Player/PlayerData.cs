@@ -48,6 +48,7 @@ public class PlayerData : EntityData
 
     public void HealthRegen()
     {
+        if (currentHealth < maxHP)
         currentHealth += 10;
         HealthChanged.Raise();
     }

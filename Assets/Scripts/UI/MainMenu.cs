@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject controlsScreen;
     public void PlayGame()
     {
         Debug.Log("Starting game");
@@ -33,6 +34,18 @@ public class MainMenu : MonoBehaviour
         #else
                 Application.Quit();
         #endif
-    } 
+    }
+
+    public void ToggleControls()
+    {
+        if (controlsScreen.activeInHierarchy)
+        {
+            controlsScreen.SetActive(false);
+        }
+        else if (!controlsScreen.activeInHierarchy)
+        {
+            controlsScreen.SetActive(true);
+        }
+    }
 }
  
